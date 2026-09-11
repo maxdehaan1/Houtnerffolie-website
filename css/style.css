@@ -35,6 +35,7 @@
   .stagger>*:nth-child(4){transition-delay:240ms;}
   .stagger>*:nth-child(5){transition-delay:320ms;}
   .stagger>*:nth-child(6){transition-delay:400ms;}
+  .stagger>*:nth-child(7){transition-delay:480ms;}
   @media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none;} }
 
   section{padding:64px 0;}
