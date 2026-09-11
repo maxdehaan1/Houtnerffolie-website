@@ -42,10 +42,11 @@
   .swatch{position:absolute;bottom:0;width:112px;height:200px;border-radius:4px;box-shadow:0 16px 30px rgba(0,0,0,.4);display:flex;flex-direction:column;justify-content:flex-end;padding:12px;font-family:Arial,sans-serif;font-size:.66rem;color:rgba(255,255,255,.9);transform-origin:bottom left;}
   .swatch{animation:swatch-float 4.5s ease-in-out infinite;}
   @keyframes swatch-float{0%,100%{transform:translateY(0) rotate(var(--rot,0deg));}50%{transform:translateY(-10px) rotate(var(--rot,0deg));}}
-  .s1{left:0;background:linear-gradient(160deg,#8f5a26,#5f3d1a);--rot:-13deg;transform:rotate(var(--rot));animation-delay:0s;}
+  .swatch::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;mix-blend-mode:overlay;opacity:.65;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22150%22%20height%3D%2240%22%3E%3Cpath%20d%3D%22M0%208%20Q35%202%2070%207%20T150%205%22%20stroke%3D%22%23808080%22%20stroke-width%3D%221.4%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.55%22/%3E%3Cpath%20d%3D%22M0%2018%20Q35%2013%2070%2017%20T150%2016%22%20stroke%3D%22%23808080%22%20stroke-width%3D%221.2%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.4%22/%3E%3Cpath%20d%3D%22M0%2028%20Q35%2024%2070%2028%20T150%2027%22%20stroke%3D%22%23808080%22%20stroke-width%3D%221.3%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.5%22/%3E%3C/svg%3E');background-size:150px 40px;}
+  .s1{left:0;background:linear-gradient(160deg,#f2ead8,#dcd0b8);color:#3a332a;--rot:-13deg;transform:rotate(var(--rot));animation-delay:0s;}
   .s2{left:66px;background:linear-gradient(160deg,#c9946a,#b8783a);--rot:-4deg;transform:rotate(var(--rot));z-index:2;animation-delay:.35s;animation-duration:4.9s;}
   .s3{left:142px;background:linear-gradient(160deg,#4a6b5c,#2c4136);--rot:5deg;transform:rotate(var(--rot));z-index:3;animation-delay:.7s;animation-duration:4.2s;}
-  .s4{left:218px;background:linear-gradient(160deg,#e7ded0,#b9ac91);color:#3a332a;--rot:12deg;transform:rotate(var(--rot));z-index:1;animation-delay:1.05s;animation-duration:5.3s;}
+  .s4{left:218px;background:linear-gradient(160deg,#5a5f63,#2f3336);--rot:12deg;transform:rotate(var(--rot));z-index:1;animation-delay:1.05s;animation-duration:5.3s;}
   @media (max-width:880px){ .fan{height:180px;} .swatch{width:86px;height:150px;} .s3{left:100px;} .s4{left:158px;} }
 
   .head{max-width:640px;margin-bottom:40px;}
@@ -66,15 +67,6 @@
   .layer.base{background:#6e6354;color:#fff;}
   .layer.base .desc{color:#eee7d9;}
 
-  .variant-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--ink);}
-  @media (max-width:880px){ .variant-grid{grid-template-columns:1fr;} }
-  .variant{background:#fff;padding:26px 24px 24px;}
-  .variant .tab{font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;color:#fff;background:var(--oak);border-radius:20px;display:inline-block;padding:4px 12px;margin-bottom:14px;}
-  .variant h3{font-size:1.3rem;margin-bottom:4px;}
-  .variant .sub{color:var(--sub);font-size:.88rem;margin-bottom:14px;}
-  .specs{list-style:none;margin:0;padding:14px 0 0;border-top:1px solid var(--line);}
-  .specs li{display:flex;justify-content:space-between;gap:10px;font-size:.86rem;padding:5px 0;color:var(--sub);font-family:Arial,sans-serif;}
-  .specs li b{color:var(--ink);font-weight:700;text-align:right;}
 
   .color-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:2px;background:var(--ink);}
   .chip{background:#fff;}
@@ -83,8 +75,8 @@
   .chip .info .n{font-size:.88rem;font-weight:600;}
   .chip .info .r{font-family:Arial,sans-serif;font-size:.72rem;color:var(--sub);}
 
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink);color:#fff;}
-  @media (max-width:760px){ .stats{grid-template-columns:1fr 1fr;} }
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--ink);color:#fff;}
+  @media (max-width:760px){ .stats{grid-template-columns:1fr;} }
   .stat{padding:30px 22px;border-right:1px solid #3a3a35;}
   .stat:last-child{border-right:none;}
   .stat .num{font-size:2.1rem;color:var(--oak-bright);font-weight:600;}
