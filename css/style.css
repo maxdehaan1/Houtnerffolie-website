@@ -63,7 +63,7 @@
   .grain-dark::before{background-image:url('../images/houtnerf-textuur.svg');opacity:.18;}
   .grain-light::before{background-image:url('../images/houtnerf-textuur-licht.svg');opacity:.22;}
   .s1{left:0;background:linear-gradient(160deg,#f2ead8,#dcd0b8);color:#3a332a;--rot:-13deg;transform:rotate(var(--rot));animation-delay:0s;}
-  .s2{left:74px;background:linear-gradient(160deg,#c9946a,#b8783a);--rot:-4deg;transform:rotate(var(--rot));z-index:2;animation-delay:.35s;animation-duration:4.9s;}
+  .s2{left:74px;background:linear-gradient(160deg,#7d2b32,#4a151b);--rot:-4deg;transform:rotate(var(--rot));z-index:2;animation-delay:.35s;animation-duration:4.9s;}
   .s3{left:158px;background:linear-gradient(160deg,#4a6b5c,#2c4136);--rot:5deg;transform:rotate(var(--rot));z-index:3;animation-delay:.7s;animation-duration:4.2s;}
   .s4{left:244px;background:linear-gradient(160deg,#5a5f63,#2f3336);--rot:12deg;transform:rotate(var(--rot));z-index:1;animation-delay:1.05s;animation-duration:5.3s;}
   @media (max-width:880px){ .fan{height:200px;} .swatch{width:96px;height:172px;margin-top:-86px;} .s2{left:56px;} .s3{left:112px;} .s4{left:176px;} }
