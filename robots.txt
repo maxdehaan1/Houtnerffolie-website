@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://houtnerffolie.nl/sitemap.xml
