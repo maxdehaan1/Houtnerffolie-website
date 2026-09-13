@@ -36,7 +36,15 @@
   .stagger>*:nth-child(5){transition-delay:320ms;}
   .stagger>*:nth-child(6){transition-delay:400ms;}
   .stagger>*:nth-child(7){transition-delay:480ms;}
+  .stagger>*:nth-child(8){transition-delay:560ms;}
+  .stagger>*:nth-child(9){transition-delay:640ms;}
+  .stagger>*:nth-child(10){transition-delay:720ms;}
   @media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none;} }
+
+  .site-note{background:var(--oak-soft);border-bottom:1px solid rgba(27,36,29,.08);}
+  .site-note p{max-width:none;margin:0;padding:16px 0;font-family:Arial,sans-serif;font-size:.86rem;line-height:1.55;color:var(--sub);}
+  .site-note strong{color:var(--ink);}
+  .site-note a{color:var(--oak-deep);font-weight:700;}
 
   section{padding:64px 0;}
   section h2{font-size:clamp(1.6rem,3vw,2.1rem);}
