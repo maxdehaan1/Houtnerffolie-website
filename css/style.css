@@ -166,6 +166,7 @@
   .faq-item[open] summary::after{content:"–";background:var(--oak-bright);}
   .faq-item[open] summary:hover::after{transform:rotate(0deg);}
   .faq-item .a{padding:0 4px 20px;color:var(--sub);max-width:66ch;}
+  .faq-item .a:not(:last-child){padding-bottom:0;}
 
   .cta-band{background:var(--oak);color:#fff;border-radius:var(--r-lg);padding:48px 56px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:0 20px 40px rgba(27,36,29,.18);transition:box-shadow .35s ease,transform .35s ease;}
   .cta-band:hover{box-shadow:0 26px 54px rgba(36,89,57,.4);transform:translateY(-3px);}
