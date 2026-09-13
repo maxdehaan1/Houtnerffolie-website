@@ -4,8 +4,19 @@
     {
       "name": "kozijnwrap-static",
       "runtimeExecutable": "/bin/sh",
-      "runtimeArgs": ["-c", "cd /Users/maxdehaan/Downloads/kozijnwrap-project && python3 -m http.server 4173"],
+      "runtimeArgs": [
+        "-c",
+        "cd /Users/maxdehaan/Downloads/kozijnwrap-project && python3 -m http.server 4173"
+      ],
       "port": 4173
+    },
+    {
+      "name": "iwrap",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "/Users/maxdehaan/Downloads/iwrap-project/serve.py"
+      ],
+      "port": 8010
     }
   ]
 }
