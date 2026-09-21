@@ -32,8 +32,11 @@ images/
   og-image.jpg            1200x630 deelafbeelding voor social media
   stalen/                 89 staalafbeeldingen voor kleuren.html, afkomstig van
                           de RENOLIT eShop en verkleind naar 260px WebP
-  projecten/              Projectfoto's voor de praktijkvoorbeelden, overgenomen
-                          van de portfoliopagina's op iwrap.nl (eigen materiaal)
+  projecten/              Projectfoto's voor de praktijkvoorbeelden, uit het
+                          iwrap-project en de portfoliopagina's op iwrap.nl
+                          (eigen materiaal). Let op: alleen projecten die met
+                          Renolit houtnerffolie zijn gedaan horen hier thuis,
+                          niet die met facadefilm.
 ```
 
 De favicon staat als inline data-URI in `index.html`.
