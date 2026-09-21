@@ -21,7 +21,7 @@
  },
  {
   "slug": "white-9152",
-  "naam": "White",
+  "naam": "Wit / White",
   "code": "9152",
   "soort": "kleur",
   "bestand": "images/stalen/white-9152.webp",
@@ -231,7 +231,7 @@
  },
  {
   "slug": "anthracite-grey-7016",
-  "naam": "Anthracite Grey",
+  "naam": "Antracietgrijs / Anthracite Grey",
   "code": "7016",
   "soort": "kleur",
   "bestand": "images/stalen/anthracite-grey-7016.webp",
@@ -271,7 +271,7 @@
  },
  {
   "slug": "dark-green-6125",
-  "naam": "Dark Green",
+  "naam": "Dennengroen / Dark Green",
   "code": "6125",
   "soort": "kleur",
   "bestand": "images/stalen/dark-green-6125.webp",
@@ -281,7 +281,7 @@
  },
  {
   "slug": "black-grey-7021",
-  "naam": "Black Grey",
+  "naam": "Zwartgrijs / Black Grey",
   "code": "7021",
   "soort": "kleur",
   "bestand": "images/stalen/black-grey-7021.webp",
@@ -411,7 +411,7 @@
  },
  {
   "slug": "steel-blue-5150",
-  "naam": "Steel Blue",
+  "naam": "Staalblauw / Steel Blue",
   "code": "5150",
   "soort": "kleur",
   "bestand": "images/stalen/steel-blue-5150.webp",

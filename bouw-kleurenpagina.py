@@ -102,8 +102,19 @@ def main():
     for sleutel, waarde in vervang.items():
         pagina = pagina.replace(sleutel, waarde)
     (HIER / "kleuren.html").write_text(pagina, encoding="utf-8")
+
+    # Dezelfde zes stalen op de homepage, zodat namen en kleuren op beide
+    # pagina's nooit uit elkaar lopen.
+    teaser = '    <div class="color-grid stagger">\n' + "\n".join(
+        kaart(s, True, toon_badge=False).replace('class="staal"', 'class="staal reveal"')
+        for s in populair) + "\n    </div>\n"
+    start, einde = "<!-- VEELGEKOZEN:START -->", "<!-- VEELGEKOZEN:EINDE -->"
+    index_nieuw = index[:index.index(start) + len(start)] + "\n" + teaser + index[index.index(einde):]
+    (HIER / "index.html").write_text(index_nieuw, encoding="utf-8")
+
     print(f"kleuren.html gebouwd: {len(kleuren)} kleuren, {len(decors)} decors, "
           f"{len(populair)} veelgekozen, {vervang['{ZONDER}']} zonder staalfoto")
+    print("index.html: zes veelgekozen stalen bijgewerkt")
 
 
 if __name__ == "__main__":

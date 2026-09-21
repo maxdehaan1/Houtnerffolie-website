@@ -45,6 +45,9 @@ De favicon staat als inline data-URI in `index.html`.
 - **Scroll-animaties.** Elementen met `.reveal` worden pas zichtbaar bij scrollen. Dat
   verbergen gebeurt via `.js .reveal`, waarbij de klasse `js` door een klein script in de
   `<head>` wordt gezet. Zo blijft de pagina leesbaar als JavaScript niet draait.
+- **De zes stalen op de homepage komen uit hetzelfde bouwscript** als de
+  kleurenpagina, tussen de markers VEELGEKOZEN:START en :EINDE in index.html.
+  Zo kunnen namen en kleuren op beide pagina's niet uit elkaar lopen.
 - **Kleurenpagina aanpassen.** Wijzig `stalen.json` en draai daarna
   `python3 bouw-kleurenpagina.py`. Het script sorteert de stalen op
   kleurverwantschap, zet de RAL-codes en markeert de veelgekozen kleuren.
@@ -59,7 +62,9 @@ De favicon staat als inline data-URI in `index.html`.
 
 ## Huisstijl
 
-- Lettertype: Newsreader (serif, via Google Fonts)
+- Lettertype: Inter (via Google Fonts), één familie voor alles. Koppen zwaar en
+  strak gespatieerd, bodytekst 17px. Bewust geen tweede lettertype: eerder liep
+  hier Arial doorheen voor labels en knoppen, wat onaf oogde.
 - Kleuren: RAL 9001 (crèmewit, canvas) en RAL 6009 (dennengroen, accent)
 - Dezelfde stijl wordt ook gebruikt op kozijnwrap.nl (los project)
 
