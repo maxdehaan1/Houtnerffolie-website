@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alle kleuren en houtnerf-decors van Renolit Exofol | Houtnerffolie.nl</title>
+<meta name="description" content="Het volledige overzicht van Renolit Exofol reparatiefolie: {NK} effen kleuren en {ND} houtnerf-decors, met RAL-code en de meest gekozen kleuren.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="iWrap">
+<meta name="theme-color" content="#1b241d">
+<link rel="canonical" href="https://houtnerffolie.nl/kleuren.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="houtnerffolie.nl">
+<meta property="og:url" content="https://houtnerffolie.nl/kleuren.html">
+<meta property="og:title" content="Alle kleuren en houtnerf-decors van Renolit Exofol">
+<meta property="og:description" content="Het volledige overzicht: {NK} effen kleuren en {ND} houtnerf-decors, met RAL-code en de meest gekozen kleuren.">
+<meta property="og:image" content="https://houtnerffolie.nl/images/og-image.jpg">
+{HEAD}<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+{HEADER}
+
+<section class="paginakop">
+  <div class="wrap">
+    <p class="kicker">Kleuren &amp; decors</p>
+    <h1>Alle {NTOT} kleuren en decors van Renolit Exofol</h1>
+    <p class="lede-sm">Het volledige reparatiefolie-assortiment: {NK} effen kleuren en {ND} houtnerf-decors. Let op dat een beeldscherm kleur nooit exact weergeeft &mdash; voor een definitieve keuze is een fysiek staal doorslaggevend.</p>
+    <input type="search" id="zoek" class="zoekveld" placeholder="Zoek op naam of code, bijvoorbeeld Golden Oak of 7016" aria-label="Zoek een kleur of decor">
+    <p class="geen-resultaat" id="geenResultaat" hidden>Geen kleur of decor gevonden.</p>
+  </div>
+</section>
+
+<section id="effen">
+  <div class="wrap">
+    <div class="populair-blok" id="populairBlok">
+      <h3>Veelgekozen kleuren</h3>
+      <p>Dit zijn de kleuren waar in de praktijk het vaakst voor wordt gekozen. Ze staan hieronder ook gewoon tussen het volledige assortiment.</p>
+      <div class="populair-grid">
+{POPULAIR}
+      </div>
+    </div>
+    <div class="head">
+      <h2>Effen kleuren <span class="telling">({NK})</span></h2>
+      <p>Alle kleuren hieronder hebben een houtnerfstructuur &mdash; effen wil hier dus niet vlak zeggen. Gladde en matte uitvoeringen staan bewust niet in dit overzicht. Waar de kleur overeenkomt met een RAL-kleur staat de RAL-code erbij, gevolgd door het Renolit-artikelnummer als dat afwijkt.</p>
+    </div>
+    <div class="stalen-grid">
+{KLEUREN}
+    </div>
+  </div>
+</section>
+
+<section id="decors" style="background:#fff;">
+  <div class="wrap">
+    <div class="head"><h2>Houtnerf-decors <span class="telling">({ND})</span></h2></div>
+    <div class="stalen-grid">
+{DECORS}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="bron">Staalafbeeldingen: RENOLIT. Het assortiment kan wijzigen; de actuele collectie staat bij Renolit zelf. Van {ZONDER} stalen is geen afbeelding beschikbaar.</p>
+    <div class="cta-band">
+      <div>
+        <h2>Een kleur gezien die je wilt?</h2>
+        <p>Deze site legt uit hoe de folie werkt. Het aanbrengen zelf doet iWrap, het bedrijf achter deze site: herstel van kozijnen, deuren en gevels door heel Nederland.</p>
+      </div>
+      <a class="btn" href="https://iwrap.nl/kunststof-kozijn-herstellen/?utm_source=houtnerffolie&amp;utm_medium=referral&amp;utm_content=kleurenpagina" target="_blank" rel="noopener">Ga naar iwrap.nl</a>
+    </div>
+  </div>
+</section>
+
+{FOOTER}
+
+<script>
+(function(){
+  var veld = document.getElementById('zoek'), leeg = document.getElementById('geenResultaat');
+  var blok = document.getElementById('populairBlok');
+  var stalen = [].slice.call(document.querySelectorAll('.stalen-grid .staal'));
+  veld.addEventListener('input', function(){
+    var q = veld.value.trim().toLowerCase(), zichtbaar = 0;
+    stalen.forEach(function(s){
+      var hit = !q || s.dataset.zoek.indexOf(q) !== -1;
+      s.hidden = !hit; if (hit) zichtbaar++;
+    });
+    blok.hidden = !!q;
+    leeg.hidden = zichtbaar > 0;
+    [].forEach.call(document.querySelectorAll('#effen, #decors'), function(sec){
+      sec.hidden = !sec.querySelector('.stalen-grid .staal:not([hidden])');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

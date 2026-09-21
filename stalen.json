@@ -1,0 +1,942 @@
+[
+ {
+  "slug": "crystal-white-47852",
+  "naam": "Crystal White",
+  "code": "47852",
+  "soort": "kleur",
+  "bestand": "images/stalen/crystal-white-47852.webp",
+  "hex": "#e9e6e1",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "crystal-white-ash-p-9294",
+  "naam": "Crystal White Ash P",
+  "code": "9294",
+  "soort": "kleur",
+  "bestand": "images/stalen/crystal-white-ash-p-9294.webp",
+  "hex": "#e9e6e1",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "white-9152",
+  "naam": "White",
+  "code": "9152",
+  "soort": "kleur",
+  "bestand": "images/stalen/white-9152.webp",
+  "hex": "#e8e5df",
+  "ral": "9010",
+  "populair": true
+ },
+ {
+  "slug": "ice-cream-b-46835",
+  "naam": "Crèmewit / Ice Cream B",
+  "code": "46835",
+  "soort": "kleur",
+  "bestand": "images/stalen/ice-cream-b-46835.webp",
+  "hex": "#dcded0",
+  "ral": "9001",
+  "populair": true
+ },
+ {
+  "slug": "light-grey-7251",
+  "naam": "Light Grey",
+  "code": "7251",
+  "soort": "kleur",
+  "bestand": "images/stalen/light-grey-7251.webp",
+  "hex": "#d0d7d9",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "agate-grey-7038",
+  "naam": "Agate Grey",
+  "code": "7038",
+  "soort": "kleur",
+  "bestand": "images/stalen/agate-grey-7038.webp",
+  "hex": "#b8c3bb",
+  "ral": "7038",
+  "populair": false
+ },
+ {
+  "slug": "signal-grey-7004",
+  "naam": "Signal Grey",
+  "code": "7004",
+  "soort": "kleur",
+  "bestand": "images/stalen/signal-grey-7004.webp",
+  "hex": "#9fa3a2",
+  "ral": "7004",
+  "populair": false
+ },
+ {
+  "slug": "chartwell-green-49246",
+  "naam": "Chartwell Green",
+  "code": "49246",
+  "soort": "kleur",
+  "bestand": "images/stalen/chartwell-green-49246.webp",
+  "hex": "#93ac9d",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "grey-7155",
+  "naam": "Grey",
+  "code": "7155",
+  "soort": "kleur",
+  "bestand": "images/stalen/grey-7155.webp",
+  "hex": "#989da1",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "silver-v-9705",
+  "naam": "Silver V",
+  "code": "9705",
+  "soort": "kleur",
+  "bestand": "images/stalen/silver-v-9705.webp",
+  "hex": "#96a0a2",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "silver-d",
+  "naam": "Silver D",
+  "code": null,
+  "soort": "kleur",
+  "bestand": "images/stalen/silver-d.webp",
+  "hex": "#959a94",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "moondance-c-31-n",
+  "naam": "Moondance C 31 N",
+  "code": null,
+  "soort": "kleur",
+  "bestand": "images/stalen/moondance-c-31-n.webp",
+  "hex": "#8b938c",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "hazy-grey-49124",
+  "naam": "Hazy Grey",
+  "code": "49124",
+  "soort": "kleur",
+  "bestand": "images/stalen/hazy-grey-49124.webp",
+  "hex": "#899394",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "kensington-grey-46870",
+  "naam": "Kensington Grey",
+  "code": "46870",
+  "soort": "kleur",
+  "bestand": "images/stalen/kensington-grey-46870.webp",
+  "hex": "#797c80",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "balmoral-46858",
+  "naam": "Balmoral",
+  "code": "46858",
+  "soort": "kleur",
+  "bestand": "images/stalen/balmoral-46858.webp",
+  "hex": "#837a71",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "slate-grey-7015",
+  "naam": "Slate Grey",
+  "code": "7015",
+  "soort": "kleur",
+  "bestand": "images/stalen/slate-grey-7015.webp",
+  "hex": "#5a6271",
+  "ral": "7015",
+  "populair": false
+ },
+ {
+  "slug": "buckingham-grey-46871",
+  "naam": "Buckingham Grey",
+  "code": "46871",
+  "soort": "kleur",
+  "bestand": "images/stalen/buckingham-grey-46871.webp",
+  "hex": "#626564",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "basalt-grey-7012",
+  "naam": "Basalt Grey",
+  "code": "7012",
+  "soort": "kleur",
+  "bestand": "images/stalen/basalt-grey-7012.webp",
+  "hex": "#5f6467",
+  "ral": "7012",
+  "populair": false
+ },
+ {
+  "slug": "quartz-grey-7039",
+  "naam": "Quartz Grey",
+  "code": "7039",
+  "soort": "kleur",
+  "bestand": "images/stalen/quartz-grey-7039.webp",
+  "hex": "#5d6057",
+  "ral": "7039",
+  "populair": false
+ },
+ {
+  "slug": "slate-grey-49229",
+  "naam": "Slate Grey",
+  "code": "49229",
+  "soort": "kleur",
+  "bestand": "images/stalen/slate-grey-49229.webp",
+  "hex": "#555d62",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "trompet-c-32-n",
+  "naam": "Trompet C 32 N",
+  "code": null,
+  "soort": "kleur",
+  "bestand": "images/stalen/trompet-c-32-n.webp",
+  "hex": "#585a4f",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "flemish-gold-c-33-n",
+  "naam": "Flemish Gold C 33 N",
+  "code": null,
+  "soort": "kleur",
+  "bestand": "images/stalen/flemish-gold-c-33-n.webp",
+  "hex": "#4c4936",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "brown-8972",
+  "naam": "Brown",
+  "code": "8972",
+  "soort": "kleur",
+  "bestand": "images/stalen/brown-8972.webp",
+  "hex": "#403229",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "anthracite-grey-7016",
+  "naam": "Anthracite Grey",
+  "code": "7016",
+  "soort": "kleur",
+  "bestand": "images/stalen/anthracite-grey-7016.webp",
+  "hex": "#2c3339",
+  "ral": "7016",
+  "populair": true
+ },
+ {
+  "slug": "black",
+  "naam": "Black",
+  "code": null,
+  "soort": "kleur",
+  "bestand": "images/stalen/black.webp",
+  "hex": "#313133",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "gale-grey-49122",
+  "naam": "Gale Grey",
+  "code": "49122",
+  "soort": "kleur",
+  "bestand": "images/stalen/gale-grey-49122.webp",
+  "hex": "#2c3234",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "ash-c-35-n",
+  "naam": "Ash C 35 N",
+  "code": null,
+  "soort": "kleur",
+  "bestand": "images/stalen/ash-c-35-n.webp",
+  "hex": "#2a2927",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "dark-green-6125",
+  "naam": "Dark Green",
+  "code": "6125",
+  "soort": "kleur",
+  "bestand": "images/stalen/dark-green-6125.webp",
+  "hex": "#142c1e",
+  "ral": "6009",
+  "populair": true
+ },
+ {
+  "slug": "black-grey-7021",
+  "naam": "Black Grey",
+  "code": "7021",
+  "soort": "kleur",
+  "bestand": "images/stalen/black-grey-7021.webp",
+  "hex": "#1b1c20",
+  "ral": "7021",
+  "populair": true
+ },
+ {
+  "slug": "ceylon-c-34-n",
+  "naam": "Ceylon C 34 N",
+  "code": null,
+  "soort": "kleur",
+  "bestand": "images/stalen/ceylon-c-34-n.webp",
+  "hex": "#211e17",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "black-blue-5004",
+  "naam": "Black Blue",
+  "code": "5004",
+  "soort": "kleur",
+  "bestand": "images/stalen/black-blue-5004.webp",
+  "hex": "#0e1420",
+  "ral": "5004",
+  "populair": false
+ },
+ {
+  "slug": "black-brown-8518",
+  "naam": "Black Brown",
+  "code": "8518",
+  "soort": "kleur",
+  "bestand": "images/stalen/black-brown-8518.webp",
+  "hex": "#180e04",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "light-ivory-1015",
+  "naam": "Light Ivory",
+  "code": "1015",
+  "soort": "kleur",
+  "bestand": "images/stalen/light-ivory-1015.webp",
+  "hex": "#b9a88c",
+  "ral": "1015",
+  "populair": false
+ },
+ {
+  "slug": "windsor-46857",
+  "naam": "Windsor",
+  "code": "46857",
+  "soort": "kleur",
+  "bestand": "images/stalen/windsor-46857.webp",
+  "hex": "#b09f8b",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "sepia-brown-8014",
+  "naam": "Sepia Brown",
+  "code": "8014",
+  "soort": "kleur",
+  "bestand": "images/stalen/sepia-brown-8014.webp",
+  "hex": "#5c483c",
+  "ral": "8014",
+  "populair": false
+ },
+ {
+  "slug": "chocolate-brown-8875",
+  "naam": "Chocolate Brown",
+  "code": "8875",
+  "soort": "kleur",
+  "bestand": "images/stalen/chocolate-brown-8875.webp",
+  "hex": "#220f02",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "pyrite",
+  "naam": "Pyrite",
+  "code": null,
+  "soort": "kleur",
+  "bestand": "images/stalen/pyrite.webp",
+  "hex": "#857d66",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "moss-green-6005",
+  "naam": "Moss Green",
+  "code": "6005",
+  "soort": "kleur",
+  "bestand": "images/stalen/moss-green-6005.webp",
+  "hex": "#014133",
+  "ral": "6005",
+  "populair": false
+ },
+ {
+  "slug": "monumentengruen-9925",
+  "naam": "Monumentengruen",
+  "code": "9925",
+  "soort": "kleur",
+  "bestand": "images/stalen/monumentengruen-9925.webp",
+  "hex": "#01201b",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "brilliant-blue-5007",
+  "naam": "Brilliant Blue",
+  "code": "5007",
+  "soort": "kleur",
+  "bestand": "images/stalen/brilliant-blue-5007.webp",
+  "hex": "#0f6087",
+  "ral": "5007",
+  "populair": false
+ },
+ {
+  "slug": "dark-blue-5030",
+  "naam": "Dark Blue",
+  "code": "5030",
+  "soort": "kleur",
+  "bestand": "images/stalen/dark-blue-5030.webp",
+  "hex": "#01508e",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "steel-blue-5150",
+  "naam": "Steel Blue",
+  "code": "5150",
+  "soort": "kleur",
+  "bestand": "images/stalen/steel-blue-5150.webp",
+  "hex": "#082139",
+  "ral": "5011",
+  "populair": true
+ },
+ {
+  "slug": "wine-red-3005",
+  "naam": "Wine Red",
+  "code": "3005",
+  "soort": "kleur",
+  "bestand": "images/stalen/wine-red-3005.webp",
+  "hex": "#52021c",
+  "ral": "3005",
+  "populair": false
+ },
+ {
+  "slug": "dark-red-3081",
+  "naam": "Dark Red",
+  "code": "3081",
+  "soort": "kleur",
+  "bestand": "images/stalen/dark-red-3081.webp",
+  "hex": "#6c020e",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "champagne",
+  "naam": "Champagne",
+  "code": null,
+  "soort": "kleur",
+  "bestand": null,
+  "hex": null,
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "cream-white-1379",
+  "naam": "Cream White",
+  "code": "1379",
+  "soort": "kleur",
+  "bestand": null,
+  "hex": null,
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "px-umbra-grey-7022",
+  "naam": "PX Umbra Grey",
+  "code": "7022",
+  "soort": "kleur",
+  "bestand": null,
+  "hex": null,
+  "ral": "7022",
+  "populair": false
+ },
+ {
+  "slug": "grey-amanita-oak",
+  "naam": "Grey Amanita Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/grey-amanita-oak.webp",
+  "hex": "#8d8d88",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "anteak",
+  "naam": "Anteak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/anteak.webp",
+  "hex": "#918c7c",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "iron-glimmer-slate",
+  "naam": "Iron Glimmer Slate",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/iron-glimmer-slate.webp",
+  "hex": "#74777d",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "quarz-platinum",
+  "naam": "Quarz Platinum",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/quarz-platinum.webp",
+  "hex": "#686b64",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "monument-oak",
+  "naam": "Monument Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/monument-oak.webp",
+  "hex": "#6c6358",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "crown-platinum",
+  "naam": "Crown Platinum",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/crown-platinum.webp",
+  "hex": "#3f464c",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "chia-oak",
+  "naam": "Chia Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/chia-oak.webp",
+  "hex": "#2d3740",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "earl-platinum",
+  "naam": "Earl Platinum",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/earl-platinum.webp",
+  "hex": "#21231c",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "swamp-oak-st-f",
+  "naam": "Swamp Oak ST F",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/swamp-oak-st-f.webp",
+  "hex": "#261c12",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "black-cherry",
+  "naam": "Black Cherry",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/black-cherry.webp",
+  "hex": "#2c0f0b",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "mahogony",
+  "naam": "Mahogony",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/mahogony.webp",
+  "hex": "#32150d",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "sapeli",
+  "naam": "Sapeli",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/sapeli.webp",
+  "hex": "#33160b",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "weissbach-eiche",
+  "naam": "Weissbach Eiche",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/weissbach-eiche.webp",
+  "hex": "#cbba9e",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "shogun-ac",
+  "naam": "Shogun AC",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/shogun-ac.webp",
+  "hex": "#cba075",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "mountain-pine",
+  "naam": "Mountain Pine",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/mountain-pine.webp",
+  "hex": "#c09562",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "irish-oak",
+  "naam": "Irish Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/irish-oak.webp",
+  "hex": "#a98a5c",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "desert-oak",
+  "naam": "Desert Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/desert-oak.webp",
+  "hex": "#ad8157",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "oregon-4",
+  "naam": "Oregon 4",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/oregon-4.webp",
+  "hex": "#d08c23",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "ginger-oak",
+  "naam": "Ginger Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/ginger-oak.webp",
+  "hex": "#a67946",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "winchester-xa",
+  "naam": "Winchester XA",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/winchester-xa.webp",
+  "hex": "#98754d",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "shogun-af",
+  "naam": "Shogun AF",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/shogun-af.webp",
+  "hex": "#a56d3e",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "rustic-cherry",
+  "naam": "Rustic Cherry",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/rustic-cherry.webp",
+  "hex": "#906b47",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "mountain-oak",
+  "naam": "Mountain Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/mountain-oak.webp",
+  "hex": "#7c6a55",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "stripe-douglas-fir",
+  "naam": "Stripe Douglas Fir",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/stripe-douglas-fir.webp",
+  "hex": "#946138",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "light-oak",
+  "naam": "Light Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/light-oak.webp",
+  "hex": "#7f663f",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "cinnamon-oak",
+  "naam": "Cinnamon Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/cinnamon-oak.webp",
+  "hex": "#7f502e",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "siena-pl",
+  "naam": "Siena PL",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/siena-pl.webp",
+  "hex": "#70522d",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "shogun-ad",
+  "naam": "Shogun AD",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/shogun-ad.webp",
+  "hex": "#775225",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "honey-oak",
+  "naam": "Honey Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/honey-oak.webp",
+  "hex": "#734726",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "sherwood-g",
+  "naam": "Sherwood G",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/sherwood-g.webp",
+  "hex": "#6f4f27",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "soft-cherry",
+  "naam": "Soft Cherry",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/soft-cherry.webp",
+  "hex": "#6e4123",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "golden-oak",
+  "naam": "Golden Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/golden-oak.webp",
+  "hex": "#694919",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "siena-pr",
+  "naam": "Siena PR",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/siena-pr.webp",
+  "hex": "#5c3c26",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "nutmeg-oak",
+  "naam": "Nutmeg Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/nutmeg-oak.webp",
+  "hex": "#5e3f20",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "oak-st-g",
+  "naam": "Oak ST G",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/oak-st-g.webp",
+  "hex": "#553f1e",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "amaranth-oak",
+  "naam": "Amaranth Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/amaranth-oak.webp",
+  "hex": "#423025",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "macore",
+  "naam": "Macore",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/macore.webp",
+  "hex": "#4c2c17",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "winchester-xc",
+  "naam": "Winchester XC",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/winchester-xc.webp",
+  "hex": "#483116",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "siena-pn",
+  "naam": "Siena PN",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/siena-pn.webp",
+  "hex": "#3d2a1c",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "walnut-v",
+  "naam": "Walnut V",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/walnut-v.webp",
+  "hex": "#443015",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "rustic-oak",
+  "naam": "Rustic Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/rustic-oak.webp",
+  "hex": "#3f2a12",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "dark-oak-fl-f1",
+  "naam": "Dark Oak FL F1",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/dark-oak-fl-f1.webp",
+  "hex": "#2d1b0c",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "natural-oak-fl-g",
+  "naam": "Natural Oak FL G",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/natural-oak-fl-g.webp",
+  "hex": "#b9a074",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "bronze-platinum",
+  "naam": "Bronze Platinum",
+  "code": null,
+  "soort": "decor",
+  "bestand": "images/stalen/bronze-platinum.webp",
+  "hex": "#403014",
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "coriander-oak",
+  "naam": "Coriander Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": null,
+  "hex": null,
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "pepper-oak",
+  "naam": "Pepper Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": null,
+  "hex": null,
+  "ral": null,
+  "populair": false
+ },
+ {
+  "slug": "truffle-oak",
+  "naam": "Truffle Oak",
+  "code": null,
+  "soort": "decor",
+  "bestand": null,
+  "hex": null,
+  "ral": null,
+  "populair": false
+ }
+]

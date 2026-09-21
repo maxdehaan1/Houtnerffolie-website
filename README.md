@@ -12,7 +12,12 @@ iwrap.nl te zien is hoeveel verkeer deze site oplevert en via welk element.
 
 ```
 index.html              Hoofdpagina
-kleuren.html            Volledig kleurenoverzicht (96 stalen, met zoekfunctie)
+kleuren.html            Volledig kleurenoverzicht -- NIET met de hand bewerken,
+                        dit bestand wordt gegenereerd
+stalen.json             De gegevens achter kleuren.html: naam, RAL-code,
+                        artikelnummer, kleurwaarde en of een kleur veelgekozen is
+bouw-kleurenpagina.py   Bouwt kleuren.html uit stalen.json
+kleurenpagina-sjabloon.html  Sjabloon dat dat script invult
 css/style.css           Alle styling
 robots.txt              Verwijst naar de sitemap
 sitemap.xml             Eén URL; bijwerken zodra er pagina's bijkomen
@@ -40,6 +45,11 @@ De favicon staat als inline data-URI in `index.html`.
 - **Scroll-animaties.** Elementen met `.reveal` worden pas zichtbaar bij scrollen. Dat
   verbergen gebeurt via `.js .reveal`, waarbij de klasse `js` door een klein script in de
   `<head>` wordt gezet. Zo blijft de pagina leesbaar als JavaScript niet draait.
+- **Kleurenpagina aanpassen.** Wijzig `stalen.json` en draai daarna
+  `python3 bouw-kleurenpagina.py`. Het script sorteert de stalen op
+  kleurverwantschap, zet de RAL-codes en markeert de veelgekozen kleuren.
+  Handmatig in kleuren.html knippen gaat mis: dat heeft eerder de stalen
+  gedupliceerd.
 - **Staalafbeeldingen.** De stalen op kleuren.html komen van de RENOLIT eShop en
   worden lokaal gehost met bronvermelding op de pagina. Van 7 stalen bestaat daar
   geen bruikbare foto; die tonen een placeholder. Zes stalen zijn uitgesneden uit
