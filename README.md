@@ -32,6 +32,8 @@ images/
   og-image.jpg            1200x630 deelafbeelding voor social media
   stalen/                 89 staalafbeeldingen voor kleuren.html, afkomstig van
                           de RENOLIT eShop en verkleind naar 260px WebP
+  projecten/              Projectfoto's voor de praktijkvoorbeelden, overgenomen
+                          van de portfoliopagina's op iwrap.nl (eigen materiaal)
 ```
 
 De favicon staat als inline data-URI in `index.html`.
@@ -72,5 +74,4 @@ De favicon staat als inline data-URI in `index.html`.
 
 - Het domein houtnerffolie.nl wijst nog niet naar deze site
 - Gebruik van RENOLIT-beeldmateriaal nog even afstemmen met de contactpersoon daar
-- Referentiesectie heeft nog 2 placeholders ("Voor/na-foto's volgen")
 - Google Search Console nog koppelen en sitemap aanmelden
