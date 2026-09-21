@@ -72,7 +72,7 @@
   .grain-dark::before{background-image:url('../images/houtnerf-textuur.webp');opacity:.18;}
   /* zelfde bestand, kleur omgekeerd: bespaart een tweede download van de textuur */
   .grain-light::before{background-image:url('../images/houtnerf-textuur.webp');opacity:.22;filter:invert(1);}
-  .s1{left:0;background:linear-gradient(160deg,#e6e8da,#cdd1c0);color:#33372c;--rot:-13deg;transform:rotate(var(--rot));animation-delay:0s;}
+  .s1{left:0;background:linear-gradient(160deg,#f0e9dd,#ddd3c2);color:#3a332a;--rot:-13deg;transform:rotate(var(--rot));animation-delay:0s;}
   .s2{left:74px;background:linear-gradient(160deg,#0f2b47,#05162a);--rot:-4deg;transform:rotate(var(--rot));z-index:2;animation-delay:.35s;animation-duration:4.9s;}
   .s3{left:158px;background:linear-gradient(160deg,#1c3b28,#0d1f14);--rot:5deg;transform:rotate(var(--rot));z-index:3;animation-delay:.7s;animation-duration:4.2s;}
   .s4{left:244px;background:linear-gradient(160deg,#3a424a,#1f242a);--rot:12deg;transform:rotate(var(--rot));z-index:1;animation-delay:1.05s;animation-duration:5.3s;}

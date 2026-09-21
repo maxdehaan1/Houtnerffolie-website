@@ -35,9 +35,10 @@
   "code": "46835",
   "soort": "kleur",
   "bestand": "images/stalen/ice-cream-b-46835.webp",
-  "hex": "#dcded0",
+  "hex": "#e9e0d2",
   "ral": "9001",
-  "populair": true
+  "populair": true,
+  "eigen_staal": true
  },
  {
   "slug": "light-grey-7251",

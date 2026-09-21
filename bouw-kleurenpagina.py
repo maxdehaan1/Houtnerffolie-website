@@ -55,9 +55,10 @@ def kaart(staal, nerf_overlay, toon_badge=True):
         staal["naam"], staal.get("code"), staal.get("ral"), tekst,
         "populair veelgekozen" if staal.get("populair") else "",
     ]))
-    # de decors tonen hun eigen echte houtnerf; daar zou een overlay dubbelop zijn
+    # De decors tonen hun eigen echte houtnerf; daar zou een overlay dubbelop zijn.
+    # Hetzelfde geldt voor stalen die we zelf hebben opgebouwd met de nerf er al in.
     overlay = ""
-    if nerf_overlay and staal["hex"]:
+    if nerf_overlay and staal["hex"] and not staal.get("eigen_staal"):
         overlay = " grain-dark" if helderheid(staal["hex"]) > 140 else " grain-light"
     if staal["bestand"]:
         vlak = (f'<img src="{staal["bestand"]}" alt="RENOLIT EXOFOL {naam}" width="260" height="260" '
