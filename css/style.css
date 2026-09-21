@@ -192,7 +192,10 @@
   .stalen-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:16px;}
   .staal{background:#fff;border-radius:var(--r-sm);overflow:hidden;box-shadow:var(--shadow-card);transition:transform .2s ease,box-shadow .2s ease;}
   .staal:hover{transform:translateY(-3px);box-shadow:var(--shadow-card-hover);}
-  .staal-vlak{aspect-ratio:1/1;background:var(--grey);}
+  .staal-vlak{position:relative;aspect-ratio:1/1;background:var(--grey);}
+  /* subtieler dan op de hero: de staalfoto heeft zelf al wat structuur */
+  .staal-vlak.grain-dark::before{opacity:.13;}
+  .staal-vlak.grain-light::before{opacity:.16;}
   .staal-vlak img{width:100%;height:100%;object-fit:cover;display:block;}
   .staal-leeg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;font-family:Arial,sans-serif;font-size:.68rem;color:var(--sub);background:repeating-linear-gradient(135deg,#e7e1d4,#e7e1d4 8px,#ded7c7 8px,#ded7c7 16px);}
   .staal-info{padding:9px 11px 11px;}
