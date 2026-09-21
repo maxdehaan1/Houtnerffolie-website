@@ -180,3 +180,22 @@
   footer{background:var(--ink);color:#b9b7b0;padding:32px 0;font-size:.85rem;font-family:Arial,sans-serif;}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
   footer a{color:#e7e5df;text-decoration:none;}
+
+  /* --- kleurenoverzicht (kleuren.html) --- */
+  .paginakop{padding:56px 0 32px;}
+  .paginakop h1{font-size:clamp(1.8rem,3.6vw,2.6rem);max-width:20ch;}
+  .lede-sm{color:var(--sub);max-width:62ch;font-size:1rem;}
+  .zoekveld{margin-top:20px;width:100%;max-width:440px;padding:13px 18px;border:1px solid var(--line);border-radius:26px;background:#fff;font-family:Arial,sans-serif;font-size:.92rem;color:var(--ink);}
+  .zoekveld:focus{outline:2px solid var(--oak-bright);outline-offset:1px;border-color:transparent;}
+  .geen-resultaat{margin-top:16px;color:var(--sub);font-family:Arial,sans-serif;font-size:.9rem;}
+  .telling{color:var(--sub);font-weight:400;}
+  .stalen-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:16px;}
+  .staal{background:#fff;border-radius:var(--r-sm);overflow:hidden;box-shadow:var(--shadow-card);transition:transform .2s ease,box-shadow .2s ease;}
+  .staal:hover{transform:translateY(-3px);box-shadow:var(--shadow-card-hover);}
+  .staal-vlak{aspect-ratio:1/1;background:var(--grey);}
+  .staal-vlak img{width:100%;height:100%;object-fit:cover;display:block;}
+  .staal-leeg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;font-family:Arial,sans-serif;font-size:.68rem;color:var(--sub);background:repeating-linear-gradient(135deg,#e7e1d4,#e7e1d4 8px,#ded7c7 8px,#ded7c7 16px);}
+  .staal-info{padding:9px 11px 11px;}
+  .staal-info .n{font-size:.84rem;font-weight:600;line-height:1.25;}
+  .staal-info .r{font-family:Arial,sans-serif;font-size:.7rem;color:var(--sub);margin-top:2px;}
+  .bron{font-family:Arial,sans-serif;font-size:.78rem;color:var(--sub);max-width:70ch;margin-bottom:28px;}

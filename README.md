@@ -11,7 +11,8 @@ iwrap.nl te zien is hoeveel verkeer deze site oplevert en via welk element.
 ## Structuur
 
 ```
-index.html              Volledige pagina (één document)
+index.html              Hoofdpagina
+kleuren.html            Volledig kleurenoverzicht (96 stalen, met zoekfunctie)
 css/style.css           Alle styling
 robots.txt              Verwijst naar de sitemap
 sitemap.xml             Eén URL; bijwerken zodra er pagina's bijkomen
@@ -24,6 +25,8 @@ images/
   kozijn-na.jpg           Voorbeeld: nieuwe folie na herstel
   ral9001-textuur.jpg     Echte nerftextuur, gebruikt als RAL 9001-swatch
   og-image.jpg            1200x630 deelafbeelding voor social media
+  stalen/                 89 staalafbeeldingen voor kleuren.html, afkomstig van
+                          de RENOLIT eShop en verkleind naar 260px WebP
 ```
 
 De favicon staat als inline data-URI in `index.html`.
@@ -37,6 +40,10 @@ De favicon staat als inline data-URI in `index.html`.
 - **Scroll-animaties.** Elementen met `.reveal` worden pas zichtbaar bij scrollen. Dat
   verbergen gebeurt via `.js .reveal`, waarbij de klasse `js` door een klein script in de
   `<head>` wordt gezet. Zo blijft de pagina leesbaar als JavaScript niet draait.
+- **Staalafbeeldingen.** De stalen op kleuren.html komen van de RENOLIT eShop en
+  worden lokaal gehost met bronvermelding op de pagina. Van 7 stalen bestaat daar
+  geen bruikbare foto; die tonen een placeholder. Zes stalen zijn uitgesneden uit
+  een productfoto waar een folie-stift op lag.
 - **Feitelijke claims.** Getallen op de site (10 jaar garantie, 95% UV-absorptie, 18-35°C
   verwerkingstemperatuur) zijn gecontroleerd. Nieuwe claims niet zomaar toevoegen.
 
@@ -49,5 +56,6 @@ De favicon staat als inline data-URI in `index.html`.
 ## Openstaand
 
 - Het domein houtnerffolie.nl wijst nog niet naar deze site
+- Gebruik van RENOLIT-beeldmateriaal nog even afstemmen met de contactpersoon daar
 - Referentiesectie heeft nog 2 placeholders ("Voor/na-foto's volgen")
 - Google Search Console nog koppelen en sitemap aanmelden
