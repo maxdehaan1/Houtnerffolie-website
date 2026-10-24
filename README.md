@@ -78,3 +78,16 @@ De favicon staat als inline data-URI in `index.html`.
 - Het domein houtnerffolie.nl wijst nog niet naar deze site
 - Gebruik van RENOLIT-beeldmateriaal nog even afstemmen met de contactpersoon daar
 - Google Search Console nog koppelen en sitemap aanmelden
+
+## Samenwerking met iwrap.nl
+
+- **iWrap doet kozijnen, draairamen, schuifpuien en deuren**, geen gevels of
+  gevelbekleding. De folie zelf wordt wel op gevels gebruikt, dus in de uitleg over de
+  folie mag "gevels" staan; bij wat iWrap doet niet.
+- **De knop "Offerte aanvragen bij iWrap"** (`utm_content=cta`) gaat naar
+  `iwrap.nl/contact/`. Zolang iwrap.nl op WordPress draait staat daar het
+  contactformulier. Na de overstap stuurt de nieuwe iwrap.nl deze link (aan de
+  utm-codes herkend) door naar het offerteformulier, en staat "houtnerffolie.nl" als
+  herkomst in de aanvraag. Die doorverwijzing staat in `vercel.json` van iwrap.nl.
+- De praktijkvoorbeelden linken naar de oude portfolio-pagina's van iwrap.nl. Na de
+  overstap gaan die vanzelf naar `/voorbeelden` (ook in `vercel.json` van iwrap.nl).
