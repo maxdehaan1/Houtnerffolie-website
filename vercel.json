@@ -16,5 +16,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/kleuren",
+      "destination": "/kleuren.html",
+      "permanent": true
+    }
   ]
 }
