@@ -146,6 +146,13 @@
   .ref-card:hover .ref-photo-split img{transform:scale(1.06);}
   .ref-card:hover .ref-photo{background-position:8px 8px;}
   .ref-half{position:relative;}
+  /* Voor en na zijn op elkaar gelegd: links de linkerhelft van de voorfoto, rechts de
+     rechterhelft van de nafoto. Samen zie je één kozijn, half oud en half nieuw. */
+  .ref-half:first-child img{object-position:left center;}
+  .ref-half:last-child img{object-position:right center;}
+  .ref-half:last-child .lbl{left:auto;right:6px;}
+  /* Bij "zelfde" tonen beide helften hetzelfde stuk kozijn naast elkaar. */
+  .ref-photo-split.zelfde .ref-half:last-child img{object-position:left center;}
   .ref-half .lbl{position:absolute;left:6px;bottom:6px;font-size:.68rem;font-weight:700;background:rgba(24,24,26,.75);color:#fff;padding:2px 8px;border-radius:12px;}
   .ref-body{padding:16px 18px;}
   .ref-body .loc{font-size:.98rem;font-weight:600;}
