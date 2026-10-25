@@ -25,9 +25,8 @@
 <meta name="twitter:image" content="https://www.houtnerffolie.nl/images/og-image.jpg">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='7' fill='%2327352a'/%3E%3Cpath d='M3 10 Q11 6 17.5 9.2 T32 8.4' stroke='%23e9e0d2' stroke-width='2.1' fill='none' stroke-linecap='round'/%3E%3Cpath d='M3 17 Q11 13 17.5 16.2 T32 15.4' stroke='%23e9e0d2' stroke-width='2.1' fill='none' stroke-linecap='round'/%3E%3Cpath d='M3 24 Q11 20 17.5 23.2 T32 22.4' stroke='%23e9e0d2' stroke-width='2.1' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Lettertype op de site zelf: zo gaat het IP-adres van een bezoeker niet naar Google. -->
+<link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/style.css">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">
@@ -118,7 +117,7 @@
       "name": "Waarom kan het aanbrengen niet het hele jaar door?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "De folie hecht het beste tussen ongeveer 18°C en 35°C en in droge omstandigheden. Daarom vindt het aanbrengen in de praktijk vooral plaats van eind maart tot medio oktober."
+        "text": "De folie hecht het beste tussen ongeveer 18°C en 35°C en in droge omstandigheden. Daarom gebeurt het meeste werk van maart tot november; in de winter alleen kleinere klussen, op droge dagen."
       }
     },
     {
@@ -324,7 +323,7 @@
       </div>
       <div class="reveal">
         <h3>Het buitenseizoen</h3>
-        <p>Folie vervangen gebeurt buiten, dus weersafhankelijk. Werkzaamheden vinden doorgaans plaats van eind maart tot medio oktober, wanneer temperatuur en droogte geschikt zijn voor een duurzaam resultaat.</p>
+        <p>Folie vervangen gebeurt buiten, dus weersafhankelijk. Het meeste werk gebeurt van maart tot november, wanneer temperatuur en droogte geschikt zijn voor een duurzaam resultaat. In de winter kan een kleinere klus op een droge dag; grote projecten wachten op het voorjaar.</p>
       </div>
     </div>
   </div>
@@ -411,7 +410,7 @@
     </details>
     <details class="faq-item reveal">
       <summary>Waarom kan het aanbrengen niet het hele jaar door?</summary>
-      <p class="a">De folie hecht het beste tussen ongeveer 18°C en 35°C en in droge omstandigheden. Daarom vindt het aanbrengen in de praktijk vooral plaats van eind maart tot medio oktober.</p>
+      <p class="a">De folie hecht het beste tussen ongeveer 18°C en 35°C en in droge omstandigheden. Daarom gebeurt het meeste werk van maart tot november; in de winter alleen kleinere klussen, op droge dagen.</p>
     </details>
     <details class="faq-item reveal">
       <summary>Kan ik houtnerffolie zelf aanbrengen?</summary>
@@ -439,7 +438,7 @@
 
 <footer>
   <div class="wrap">
-    <div>houtnerffolie.nl — onderdeel van iWrap</div>
+    <div>houtnerffolie.nl — onderdeel van iWrap · geen cookies; bezoek wordt alleen anoniem geteld · <a href="https://iwrap.nl/privacy" target="_blank" rel="noopener">privacy</a></div>
     <div><a href="https://iwrap.nl/?utm_source=houtnerffolie&utm_medium=referral&utm_content=footer" target="_blank" rel="noopener">Uitvoering: iWrap</a></div>
   </div>
 </footer>
@@ -481,5 +480,7 @@
 })();
 </script>
 
+<!-- Bezoekers tellen zonder cookies (Vercel Web Analytics), dus zonder banner. -->
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

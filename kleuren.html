@@ -17,9 +17,8 @@
 <meta property="og:description" content="Het volledige overzicht: 47 effen kleuren en 47 houtnerf-decors, met RAL-code en de meest gekozen kleuren.">
 <meta property="og:image" content="https://www.houtnerffolie.nl/images/og-image.jpg">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='7' fill='%2327352a'/%3E%3Cpath d='M3 10 Q11 6 17.5 9.2 T32 8.4' stroke='%23e9e0d2' stroke-width='2.1' fill='none' stroke-linecap='round'/%3E%3Cpath d='M3 17 Q11 13 17.5 16.2 T32 15.4' stroke='%23e9e0d2' stroke-width='2.1' fill='none' stroke-linecap='round'/%3E%3Cpath d='M3 24 Q11 20 17.5 23.2 T32 22.4' stroke='%23e9e0d2' stroke-width='2.1' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Lettertype op de site zelf: zo gaat het IP-adres van een bezoeker niet naar Google. -->
+<link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/style.css">
 <script>document.documentElement.classList.add('js')</script>
 <script>document.documentElement.classList.add('js')</script>
@@ -497,7 +496,7 @@
 
 <footer>
   <div class="wrap">
-    <div>houtnerffolie.nl — onderdeel van iWrap</div>
+    <div>houtnerffolie.nl — onderdeel van iWrap · geen cookies; bezoek wordt alleen anoniem geteld · <a href="https://iwrap.nl/privacy" target="_blank" rel="noopener">privacy</a></div>
     <div><a href="https://iwrap.nl/?utm_source=houtnerffolie&utm_medium=referral&utm_content=footer" target="_blank" rel="noopener">Uitvoering: iWrap</a></div>
   </div>
 </footer>
@@ -540,5 +539,7 @@
 })();
 </script>
 
+<!-- Bezoekers tellen zonder cookies (Vercel Web Analytics), dus zonder banner. -->
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
