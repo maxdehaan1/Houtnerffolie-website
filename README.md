@@ -77,7 +77,7 @@ De favicon staat als inline data-URI in `index.html`.
 
 - Het domein houtnerffolie.nl wijst nog niet naar deze site
 - Gebruik van RENOLIT-beeldmateriaal nog even afstemmen met de contactpersoon daar
-- Google Search Console nog koppelen en sitemap aanmelden
+- Google Search Console nog koppelen en sitemap aanmelden (staat in `../iwrap-project/LIVEGANG.md`, stap 5)
 
 ## Samenwerking met iwrap.nl
 
