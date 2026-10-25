@@ -169,6 +169,10 @@
   .cta-band h2{color:#fff;font-size:clamp(1.5rem,3vw,2rem);max-width:20ch;}
   .cta-band p{color:#fbe9d8;}
   .cta-band .btn{background:var(--oak-bright);color:var(--ink);}
+  .cta-reviews{display:inline-block;margin-top:6px;color:#fbe9d8;text-decoration:none;font-size:.92rem;border-bottom:1px solid transparent;transition:border-color .2s ease;}
+  .cta-reviews:hover{border-bottom-color:rgba(251,233,216,.6);}
+  .cta-reviews b{color:#fff;}
+  .cta-sterren{color:#ffc94d;letter-spacing:.06em;}
 
   footer{background:var(--ink);color:#b9b7b0;padding:32px 0;font-size:.85rem;}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}

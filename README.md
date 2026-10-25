@@ -89,5 +89,9 @@ De favicon staat als inline data-URI in `index.html`.
   contactformulier. Na de overstap stuurt de nieuwe iwrap.nl deze link (aan de
   utm-codes herkend) door naar het offerteformulier, en staat "houtnerffolie.nl" als
   herkomst in de aanvraag. Die doorverwijzing staat in `vercel.json` van iwrap.nl.
+- **Het Google-cijfer van iWrap** staat bij beide offerteblokken (`.cta-reviews`, ook in
+  `kleurenpagina-sjabloon.html`). Het getal in de html is een reserve; een klein script
+  onderaan de pagina haalt de live stand op bij `iwrap.nl/api/reviews` (tot de overstap:
+  `iwrap-website.vercel.app/api/reviews`). Verandert het aantal, dan hoeft hier dus niets.
 - De praktijkvoorbeelden linken naar de oude portfolio-pagina's van iwrap.nl. Na de
   overstap gaan die vanzelf naar `/voorbeelden` (ook in `vercel.json` van iwrap.nl).
