@@ -303,13 +303,47 @@ def kiezer_json(stalen):
 
 # ---------- vaste onderdelen --------------------------------------------------------
 
-# Het beeldmerk van de site: drie nerflijnen in het mintgroen van iWrap
-LOGO_TEKEN = ('<svg class="woordmerk-teken" viewBox="0 0 64 64" aria-hidden="true">'
-              '<rect width="64" height="64" rx="15" fill="#2f5a50"/>'
-              '<path d="M8 22 Q22 14 33 20 T56 18.5" stroke="#fff" stroke-width="3.6" fill="none" stroke-linecap="round"/>'
-              '<path d="M8 33.5 Q22 25.5 33 31.5 T56 30" stroke="#a3cdc2" stroke-width="3.6" fill="none" stroke-linecap="round"/>'
-              '<path d="M8 45 Q22 37 33 43 T56 41.5" stroke="#a3cdc2" stroke-width="3.6" fill="none" stroke-linecap="round" opacity=".55"/>'
-              '</svg>')
+# Het beeldmerk van de site: de houtnerf vormt een H, in het mint van iWrap. De staanders en
+# de dwarsbalk van de H zijn glad; eromheen loopt de nerf, als witte (uitgesneden) lijnen.
+MINT = "#a3cdc2"
+NERF_ZIJ = [  # langs de zijkanten: twee nerflijnen per kant (de eerste twee horen bij de H)
+    "M11.4 -2 C8.8 15 9.6 27 8.6 38 S9.8 56 11.8 66",
+    "M52.6 -2 C55.2 11 54.2 24 55.6 35.5 S54 55 52.4 66",
+    "M6 -2 C3.6 14 4.4 26 3.4 37 S4.8 55 6.6 66",
+    "M58 -2 C60.6 12 59.4 25 60.8 36 S59.2 55 57.6 66",
+]
+NERF_VAK = [  # de vakken boven en onder de dwarsbalk: drie geneste lijnen, zoals de vlam in eiken
+    "M23 -2 V18.5 Q23 25 29.5 25 H34.5 Q41 25 41 18.5 V-2",
+    "M27.8 -2 C28 6 27.6 12 28.6 16 C29.4 19.4 30.8 20.6 32.2 20.6 C33.8 20.6 35.2 19 35.8 15.6 C36.4 12 36 6 36.4 -2",
+    "M32 -2 C32.2 4 31.6 9 32 14.4",
+    "M23 66 V45.5 Q23 39 29.5 39 H34.5 Q41 39 41 45.5 V66",
+    "M27.6 66 C27.8 58 27.4 52 28.4 48 C29.2 44.6 30.6 43.4 32 43.4 C33.6 43.4 35 45 35.6 48.4 C36.2 52 35.8 58 36.2 66",
+    "M32.2 66 C32 60 32.6 55 32.2 49.6",
+]
+
+
+def beeldmerk(id_, klasse="woordmerk-teken", eenvoudig=False, rond=13, extra=' aria-hidden="true"'):
+    """Het beeldmerk als svg. eenvoudig: alleen de H, met dikkere lijnen (pictogrammen tot 48 px).
+    id_ moet per pagina uniek zijn (het teken staat in de kop en in de voet)."""
+    if eenvoudig:
+        lijnen, dikte = NERF_ZIJ[:2] + [NERF_VAK[0], NERF_VAK[3]], 4.4
+    else:
+        lijnen, dikte = NERF_ZIJ + NERF_VAK, 2.3
+    paden = "".join(f'<path d="{d}"/>' for d in lijnen)
+    k = f' class="{klasse}"' if klasse else ""
+    return (f'<svg{k} viewBox="0 0 64 64"{extra}>'
+            f'<clipPath id="{id_}"><rect width="64" height="64" rx="{rond}"/></clipPath>'
+            f'<rect width="64" height="64" rx="{rond}" fill="{MINT}"/>'
+            f'<g clip-path="url(#{id_})" fill="none" stroke="#fff" stroke-width="{dikte}" '
+            f'stroke-linecap="round">{paden}</g></svg>')
+
+
+def schrijf_beeldmerken():
+    """images/logo.svg en favicon.svg komen uit dezelfde tekening als het teken in de kop."""
+    los = lambda svg: svg.replace("<svg", '<svg xmlns="http://www.w3.org/2000/svg"', 1) + "\n"
+    (ROOT / "images" / "logo.svg").write_text(
+        los(beeldmerk("hn", klasse=None, extra=' role="img" aria-label="Houtnerffolie"')), encoding="utf-8")
+    (ROOT / "favicon.svg").write_text(los(beeldmerk("hn", klasse=None, eenvoudig=True, extra="")), encoding="utf-8")
 
 
 def render_kop(actief):
@@ -320,7 +354,7 @@ def render_kop(actief):
     return f"""<a class="overslaan" href="#inhoud">Naar de inhoud</a>
 <header class="kop">
   <div class="wrap kop-in">
-    <a class="woordmerk" href="/" aria-label="Houtnerffolie, alles over Renolit folie: naar de homepage">{LOGO_TEKEN}<span class="woordmerk-tekst"><b>Houtnerf<span>folie</span></b><small>Alles over Renolit folie</small></span></a>
+    <a class="woordmerk" href="/" aria-label="Houtnerffolie, alles over Renolit folie: naar de homepage">{beeldmerk("hn-kop")}<span class="woordmerk-tekst"><b>Houtnerffolie</b><small>Alles over Renolit folie</small></span></a>
     <a class="kop-renolit" href="/renolit-folie" aria-label="Wat is Renolit folie?"><img src="/images/renolit-logo.svg" alt="RENOLIT" width="34" height="34"></a>
     <nav class="nav" aria-label="Hoofdmenu">{links}</nav>
     <a class="knop knop-klein knop-glans" href="{naar_iwrap('menu')}">Laten herstellen</a>
@@ -350,7 +384,7 @@ def render_voet():
     return f"""<footer class="voet">
   <div class="wrap voet-in">
     <div>
-      <a class="woordmerk" href="/">{LOGO_TEKEN}<span class="woordmerk-tekst"><b>Houtnerf<span>folie</span></b></span></a>
+      <a class="woordmerk" href="/">{beeldmerk("hn-voet")}<span class="woordmerk-tekst"><b>Houtnerffolie</b></span></a>
       <p>Alles over Renolit folie en houtnerffolie op kunststof kozijnen: hoe de folie is opgebouwd, welke kleuren er zijn, de specificaties en het onderhoud. Deze site verkoopt niets; wie het werk wil laten doen, verwijzen we door naar iWrap.</p>
     </div>
     <div>
@@ -653,6 +687,7 @@ def schrijf_feed(artikelen):
 # ---------- bouwen ------------------------------------------------------------------
 
 def bouw():
+    schrijf_beeldmerken()
     ver = versie("css/site.css", "js/folie3d.js", "js/site.js")
     stalen, kleuren, decors, populair = laad_stalen()
     per_slug = {s["slug"]: s for s in stalen}

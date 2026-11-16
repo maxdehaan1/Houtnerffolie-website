@@ -148,20 +148,25 @@ zo verweert.
   elke pagina en achter het 3D-kozijn. Het menu blijft altijd zichtbaar (licht
   doorschijnend). Op de homepage staan onder de 3D-uitleg tegels naar Specificaties,
   Mogelijkheden en Kleuren; het offerteblok is mint.
-- **Kleuren:** die van iWrap. Mint `#a3cdc2` met de lichte tinten `#dbece7` en `#eef6f3`,
-  mintgroen `#3f7468` voor links en accenten, `#2f5a50` voor knoppen. Antraciet `#1d2125`
-  alleen voor tekst. Alles staat als variabelen bovenin `css/site.css`.
+- **Kleuren:** die van iWrap. Het accent is mint `#a3cdc2` (met de lichte tinten `#dbece7`
+  en `#eef6f3`): als markering achter de woorden met nadruk in grote koppen, als stip voor
+  de kleine kopjes, als knop (met donkere tekst), als rondje achter de pijltjes en als
+  onderstreping van links. Geen donkergroene tekst: dat vond Max niet mooi. Mint zelf haalt op
+  wit te weinig contrast om tekst te zijn, dus alle tekst is antraciet `#22262a` of grijs. Alles
+  staat als variabelen bovenin `css/site.css`.
 - **Letters:** het lettertype van het apparaat zelf: San Francisco op een Mac en iPhone,
   Segoe UI op Windows, Roboto op Android. Er wordt dus geen lettertype gedownload.
-- **Logo:** drie nerflijnen in een afgerond vierkant in `#2f5a50` (`images/logo.svg`, in de
-  kop als `LOGO_TEKEN` in `build.py`), met "Houtnerf**folie**" en daaronder "Alles over
-  Renolit folie". Rechts ervan, achter een dun streepje, het RENOLIT-logo
-  (`images/renolit-logo.svg`), dat naar /renolit-folie linkt. De pictogrammen
-  (`favicon.svg`, `favicon.ico`, `apple-touch-icon.png`) en `images/logo.png` (512 px, voor
-  Google) zijn van hetzelfde teken gemaakt.
+- **Logo:** de houtnerf vormt een H: een mint vlak met witte nerflijnen, waarin de staanders
+  en de dwarsbalk van de H glad blijven. Getekend in `build.py` (`beeldmerk()`, met de lijnen
+  in `NERF_ZIJ` en `NERF_VAK`); elke build schrijft daaruit `images/logo.svg` en `favicon.svg`
+  (een eenvoudige versie met alleen de H, die ook op 16 pixels leesbaar is). Naast het teken
+  "Houtnerffolie" en daaronder "Alles over Renolit folie", en achter een dun streepje het
+  RENOLIT-logo (`images/renolit-logo.svg`), dat naar /renolit-folie linkt. `images/logo.png`
+  (512 px, voor Google), `apple-touch-icon.png` en `favicon.ico` zijn van dezelfde tekening
+  gemaakt; maak ze opnieuw als het teken verandert.
 - **Beelden:** de artikelbeelden staan op `#eeece7`; de deelafbeeldingen (1200x630) hebben
-  links de kop en het woordmerk op de achtergrondkleur met de mintgloed, rechts een beeld op
-  `#eeece7`. De beelden voor de tegels staan in `images/tegels/` (transparant).
+  links de kop (met de mint markering) en het woordmerk op de achtergrondkleur met de
+  mintgloed, rechts een beeld op `#eeece7`. De beelden voor de tegels staan in `images/tegels/` (transparant).
 
 ## Vindbaarheid: Google en AI
 
