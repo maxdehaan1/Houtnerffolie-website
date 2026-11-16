@@ -144,24 +144,27 @@ zo verweert.
 
 - **Opzet:** licht en modern, richting Apple, in de stijl van de nieuwe iwrap.nl: de
   achtergrond is `#f7f6f3` (dezelfde als iwrap.nl), met witte vlakken erop. Grote strakke
-  koppen, afgeronde vlakken zonder schaduw, ronde knoppen, een zachte gloed in eiken bovenaan
+  koppen, afgeronde vlakken zonder schaduw, ronde knoppen, een zachte gele gloed bovenaan
   elke pagina en achter het 3D-kozijn. Het menu blijft altijd zichtbaar (licht
   doorschijnend). Op de homepage staan onder de 3D-uitleg tegels naar Specificaties,
-  Mogelijkheden en Kleuren; het offerteblok is eiken.
+  Mogelijkheden en Kleuren; het offerteblok is zonnegeel.
 - **Kleuren:** elke site van iWrap heeft een eigen leidende kleur op dezelfde lichte basis:
-  iwrap.nl mint `#a3cdc2`, kozijnwrap.nl hemelsblauw `#a9c8e4`, en deze site **eiken
-  `#dcb98d`** (`--accent`, met `--accent-zacht` `#f1e3d1` en `--accent-hover` `#d2ab7a`). Die
+  iwrap.nl mint `#a3cdc2`, kozijnwrap.nl hemelsblauw `#a9c8e4`, en deze site **zonnegeel
+  `#f1d27e`** (`--accent`, met `--accent-zacht` `#f9edcb`, `--accent-hover` `#ebc667`, en
+  `--accent-lijn` `#e3b746` voor dunne lijnen, stippen en opsommingstekens, want zonnegeel
+  zelf is daar te licht). Die
   kleur komt terug als markering achter de woorden met nadruk in grote koppen, als stip voor
   de kleine kopjes, als knop (met donkere tekst), als rondje achter de pijltjes, als
   onderstreping van links, in het logo en in het offerteblok. Geen gekleurde tekst: de
   leidende kleur haalt op wit te weinig contrast, en donkergroene tekst vond Max niet mooi.
-  Alle tekst is antraciet `#22262a` of grijs. Geen eikenkleurige vlakken als achtergrond
+  Alle tekst is antraciet `#22262a` of grijs. Geen gele vlakken als achtergrond
   (dat leest als crème); de gloed bovenaan is bewust heel zacht. Alles staat als variabelen
   bovenin `css/site.css`.
 - **Letters:** het lettertype van het apparaat zelf: San Francisco op een Mac en iPhone,
   Segoe UI op Windows, Roboto op Android. Er wordt dus geen lettertype gedownload.
-- **Logo:** de houtnerf vormt een H: een eikenkleurig vlak met witte nerflijnen, waarin de staanders
-  en de dwarsbalk van de H glad blijven. Getekend in `build.py` (`beeldmerk()`, met de lijnen
+- **Logo:** de houtnerf vormt een H: een zonnegeel vlak met goudbruine nerflijnen (`#a87a26`; wit
+  viel op geel weg), zodat het teken oogt als licht hout. De staanders
+  en de dwarsbalk van de H blijven glad. Getekend in `build.py` (`beeldmerk()`, met de lijnen
   in `NERF_ZIJ` en `NERF_VAK`); elke build schrijft daaruit `images/logo.svg` en `favicon.svg`
   (een eenvoudige versie met alleen de H, die ook op 16 pixels leesbaar is). Naast het teken
   "Houtnerffolie" en daaronder "Alles over Renolit folie", en achter een dun streepje het
@@ -169,7 +172,7 @@ zo verweert.
   (512 px, voor Google), `apple-touch-icon.png` en `favicon.ico` zijn van dezelfde tekening
   gemaakt; maak ze opnieuw als het teken verandert.
 - **Beelden:** de artikelbeelden staan op `#eeece7`; de deelafbeeldingen (1200x630) hebben
-  links de kop (met de markering in eiken) en het woordmerk op de achtergrondkleur met een
+  links de kop (met de gele markering) en het woordmerk op de achtergrondkleur met een
   zachte gloed, rechts een beeld op `#eeece7`. De beelden voor de tegels staan in `images/tegels/` (transparant).
 
 ## Vindbaarheid: Google en AI
