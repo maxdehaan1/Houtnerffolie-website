@@ -232,6 +232,11 @@ def laad_stalen():
     return stalen, kleuren, decors, populair
 
 
+# De stalen in de kleurentegel op de homepage
+TEGEL_STALEN = ["ice-cream-b-46835", "white-9152", "agate-grey-7038", "anthracite-grey-7016", "black-grey-7021", "dark-green-6125",
+                "chartwell-green-49246", "steel-blue-5150", "wine-red-3005", "irish-oak", "golden-oak", "mahogony"]
+
+
 def alle_kleuren_json(stalen):
     """Alle stalen voor de 3D-weergave op de kleurenpagina."""
     data = [{
@@ -556,6 +561,7 @@ def schrijf_feed(artikelen):
 def bouw():
     ver = versie("css/site.css", "js/folie3d.js", "js/site.js")
     stalen, kleuren, decors, populair = laad_stalen()
+    per_slug = {s["slug"]: s for s in stalen}
 
     bronnen = sorted(SRC.rglob("*.html"))
     paginas = [(lees(p)) for p in bronnen]
@@ -586,6 +592,7 @@ def bouw():
                 "{{stalen-kleuren}}": "".join(staal_item(s, knop=True) for s in kleuren),
                 "{{stalen-decors}}": "".join(staal_item(s, knop=True) for s in decors),
                 "{{folie-kleuren-alle}}": alle_kleuren_json(stalen),
+                "{{tegel-stalen}}": "".join(staal_vlak(per_slug[k]) for k in TEGEL_STALEN),
                 "{{aantal-totaal}}": str(len(stalen)),
                 "{{aantal-kleuren}}": str(len(kleuren)),
                 "{{aantal-decors}}": str(len(decors)),

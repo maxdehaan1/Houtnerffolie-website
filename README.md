@@ -117,7 +117,8 @@ renders op te slaan; online doet die niets.
 
 ## Specificaties: welke folie
 
-De specificatiepagina beschrijft één folie: **Renolit Exofol PR**, de zelfklevende reparatiefolie
+De specificatiepagina beschrijft één folie: **Renolit Exofol PR** (door Max bevestigd: dat is de
+folie die iWrap bestelt, met tien jaar garantie van Renolit), de zelfklevende reparatiefolie
 in dezelfde kwaliteit als Renolit Exofol PX. Renolit maakt reparatiefolie in vier kwaliteiten
 (MR, PR, FR en PFR). FR is de hoogste, maar bestaat maar in een kleine groep kleuren; de
 klassieke houtnerfkleuren (crèmewit, wit, dennengroen, staalblauw, Irish Oak) zijn het hoogst
@@ -136,16 +137,20 @@ zo verweert.
 
 ## Huisstijl
 
-- **Opzet:** licht en rustig, richting Apple: wit en lichtgrijs (`#f5f6f7`), grote strakke
-  koppen, veel witruimte, afgeronde vlakken zonder schaduw, ronde knoppen. Geen crème
-  achtergronden.
+- **Opzet:** licht en modern, richting Apple, in de stijl van de nieuwe iwrap.nl: de
+  achtergrond is `#f7f6f3` (dezelfde als iwrap.nl), met witte vlakken erop. Grote strakke
+  koppen, afgeronde vlakken zonder schaduw, ronde knoppen, een zachte mintgloed bovenaan
+  elke pagina en achter het 3D-kozijn. Het menu blijft altijd zichtbaar (licht
+  doorschijnend). Op de homepage staan onder de 3D-uitleg tegels naar Specificaties,
+  Mogelijkheden en Kleuren; het offerteblok is mint.
 - **Kleuren:** die van iWrap. Mint `#a3cdc2` met de lichte tinten `#dbece7` en `#eef6f3`,
   mintgroen `#3f7468` voor links en accenten, `#2f5a50` voor knoppen. Antraciet `#1d2125`
   alleen voor tekst. Alles staat als variabelen bovenin `css/site.css`.
 - **Letters:** het lettertype van het apparaat zelf: San Francisco op een Mac en iPhone,
   Segoe UI op Windows, Roboto op Android. Er wordt dus geen lettertype gedownload.
-- **Beelden:** de artikelbeelden staan op lichtgrijs `#f2f4f5`; de deelafbeeldingen
-  (1200x630) hebben links witte tekstruimte en rechts een beeld op lichtgrijs.
+- **Beelden:** de artikelbeelden staan op `#eeece7`; de deelafbeeldingen (1200x630) hebben
+  links tekst op de achtergrondkleur met de mintgloed, rechts een beeld op `#eeece7`. De
+  beelden voor de tegels staan in `images/tegels/` (transparant).
 
 ## Structuur
 
@@ -198,8 +203,6 @@ Gebouwd en meegecommit: `index.html`, `kleuren.html`, `404.html`, `artikelen/`,
 
 - Gebruik van RENOLIT-beeldmateriaal nog even afstemmen met de contactpersoon daar, en
   vragen of de waarden uit het productblad van Exofol PR op de specificatiepagina mogen
-- Garantie op Exofol PR navragen: de sites noemen tien jaar fabrieksgarantie; Renolit geeft
-  op de fabrieksversie (Exofol PX) tot vijftien jaar in Noord- en Midden-Europa
 - Google Search Console koppelen en de sitemap aanmelden (staat in
   `../iwrap-project/LIVEGANG.md`, stap 5); na de overstap naar het nieuwe ontwerp ook de
   nieuwe adressen (`/artikelen/...`) laten indexeren
