@@ -81,19 +81,36 @@ button { font: inherit; color: inherit; }
 .kop { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, .8); -webkit-backdrop-filter: saturate(180%) blur(18px); backdrop-filter: saturate(180%) blur(18px); border-bottom: 1px solid rgba(34, 38, 42, .07); }
 @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) { .kop { background: rgba(255, 255, 255, .97); } }
 .kop-in { display: flex; align-items: center; gap: 2rem; min-height: 3.6rem; }
-.woordmerk { display: inline-flex; align-items: baseline; gap: .5rem; white-space: nowrap; color: var(--tekst); }
+/* Logo: beeldmerk, naam en "Alles over Renolit folie"; daarnaast het logo van Renolit */
+.woordmerk { display: inline-flex; align-items: center; gap: .6rem; white-space: nowrap; color: var(--tekst); }
 .woordmerk:hover { text-decoration: none; }
-.woordmerk b { font-size: 1.1875rem; font-weight: 600; letter-spacing: -.025em; }
-.woordmerk small { font-size: .75rem; font-weight: 500; color: var(--tekst-3); letter-spacing: 0; }
+.woordmerk-teken { width: 2.05rem; height: 2.05rem; flex: none; border-radius: 9px; }
+.woordmerk-tekst { display: flex; flex-direction: column; line-height: 1.05; }
+.woordmerk b { font-size: 1.15rem; font-weight: 700; letter-spacing: -.032em; }
+.woordmerk b span { color: var(--mint-inkt); }
+.woordmerk small { font-size: .6875rem; font-weight: 500; color: var(--tekst-3); letter-spacing: -.005em; margin-top: .18rem; }
+.kop-renolit { display: inline-flex; align-items: center; height: 2.2rem; padding-left: .95rem; margin-left: -.85rem; border-left: 1px solid var(--lijn); }
+.kop-renolit img { width: 2.15rem; height: 2.15rem; }
 .nav { display: flex; gap: 1.6rem; margin-left: auto; font-size: .875rem; }
-.nav a { color: var(--tekst-2); padding: .4rem 0; }
+.nav a { color: var(--tekst-2); padding: .4rem 0; white-space: nowrap; }
 .nav a:hover { color: var(--tekst); text-decoration: none; }
 .nav a[aria-current="page"] { color: var(--tekst); font-weight: 600; }
+/* Op een smaller scherm staat het menu op een eigen regel onder het logo */
+@media (max-width: 1100px) {
+  :root { --kop-h: 5.5rem; }
+  .kop-in { flex-wrap: wrap; gap: .1rem 1rem; min-height: 0; padding-block: .65rem .3rem; }
+  .kop .knop { margin-left: auto; }
+  .nav { order: 3; width: 100%; margin: 0; gap: 1.5rem; overflow-x: auto; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+}
 @media (max-width: 760px) {
   :root { --kop-h: 5.4rem; }
   .kop-in { flex-wrap: wrap; gap: .1rem 1rem; min-height: 0; padding-block: .7rem .3rem; }
   .woordmerk small { display: none; }
-  .woordmerk b { font-size: 1.125rem; }
+  .woordmerk b { font-size: 1.08rem; }
+  .woordmerk-teken { width: 1.8rem; height: 1.8rem; border-radius: 8px; }
+  .kop-renolit { height: 1.85rem; padding-left: .7rem; margin-left: -.55rem; }
+  .kop-renolit img { width: 1.85rem; height: 1.85rem; }
   .kop .knop { margin-left: auto; padding: .5rem .85rem; font-size: .8125rem; }
   .nav { order: 3; width: 100%; margin: 0; gap: 1.2rem; overflow-x: auto; font-size: .875rem; scrollbar-width: none; }
   .nav::-webkit-scrollbar { display: none; }
@@ -175,8 +192,8 @@ a:hover .pijl { transform: translateX(3px); }
 .stap p:last-child { margin-bottom: 0; }
 .stap-intro { align-items: center; }
 .stap-intro h1 {
-  font-size: clamp(3rem, 6.4vw, 5.5rem);
-  line-height: 1.02; letter-spacing: -.04em; font-weight: 700;
+  font-size: clamp(2.9rem, 5.7vw, 4.9rem);
+  line-height: 1.03; letter-spacing: -.04em; font-weight: 700;
   margin-bottom: 1.4rem;
 }
 .stap-intro h1 em { font-style: normal; color: var(--mint-inkt); }
@@ -260,7 +277,7 @@ a:hover .pijl { transform: translateX(3px); }
 
 /* ---------- secties op de homepage ---------- */
 .sectie { padding: clamp(4.5rem, 10vw, 8rem) 0; }
-.sectie-wit, #artikelen, #praktijk { background: var(--wit); }
+.sectie-wit, #artikelen, #vragen, .renolit-intro { background: var(--wit); }
 #artikelen .uitgelicht a, #artikelen .lijst { background: var(--papier); }
 .sectie-kop { text-align: center; max-width: 46rem; margin: 0 auto clamp(2.5rem, 5vw, 3.75rem); }
 .sectie-kop h2 { font-size: clamp(2.25rem, 5vw, 3.6rem); line-height: 1.06; letter-spacing: -.035em; font-weight: 700; }
@@ -308,34 +325,27 @@ a:hover .pijl { transform: translateX(3px); }
 .staal-vlak.nerf-d::before { opacity: .2; }
 .staal-vlak.nerf-l::before { opacity: .24; filter: invert(1); }
 
-/* Uit de praktijk */
-.praktijk { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(1.75rem, 3vw, 2.5rem) clamp(1rem, 2vw, 1.5rem); }
-.praktijk figure { margin: 0; grid-column: span 4; }
-.praktijk figure:nth-child(1) { grid-column: span 7; }
-.praktijk figure:nth-child(2) { grid-column: span 5; }
-.praktijk figure:nth-child(3), .praktijk figure:nth-child(4), .praktijk figure:nth-child(5) { grid-column: span 4; }
-.praktijk figure:nth-child(6) { grid-column: 3 / span 8; }
-.vn { display: grid; grid-template-columns: 1fr 1fr; aspect-ratio: 4 / 3; background: var(--grijs); position: relative; overflow: hidden; border-radius: var(--r); }
-.praktijk figure:nth-child(1) .vn, .praktijk figure:nth-child(6) .vn { aspect-ratio: 16 / 10; }
-.vn-half { position: relative; overflow: hidden; }
-.vn-half img { width: 100%; height: 100%; object-fit: cover; }
-.vn-half:first-child img { object-position: left center; }
-.vn-half:last-child img { object-position: right center; }
-.vn.zelfde .vn-half img { object-position: left center; }
-.vn-half span { position: absolute; left: .7rem; top: .7rem; font-size: .75rem; font-weight: 600; background: rgba(255, 255, 255, .92); color: var(--tekst); padding: .3rem .6rem; border-radius: 980px; }
-.vn::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--wit); }
-.vn.enkel { display: block; }
-.vn.enkel::after { display: none; }
-.vn.enkel img { width: 100%; height: 100%; object-fit: cover; }
 figcaption { font-size: .875rem; line-height: 1.45; color: var(--tekst-2); margin-top: .8rem; max-width: 36rem; }
 figcaption b { color: var(--tekst); font-weight: 600; }
-figcaption .fig { color: var(--mint-inkt); font-weight: 600; margin-right: .35rem; font-variant-numeric: tabular-nums; }
-@media (max-width: 760px) { .praktijk figure, .praktijk figure:nth-child(n) { grid-column: 1 / -1; } }
+
+/* Wat is Renolit folie? */
+.renolit-in { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+.renolit-in h2 { font-size: clamp(2.25rem, 4.6vw, 3.4rem); line-height: 1.05; letter-spacing: -.036em; font-weight: 700; margin-bottom: 1.1rem; }
+.renolit-in p { color: var(--tekst-2); max-width: 40rem; }
+.renolit-in .renolit-definitie { font-size: 1.3125rem; line-height: 1.45; color: var(--tekst); letter-spacing: -.016em; }
+.renolit-links { display: flex; flex-wrap: wrap; gap: .8rem 2rem; margin-top: 1.5rem; }
+.renolit-kaart { background: var(--papier); border-radius: var(--r-groot); padding: clamp(1.75rem, 3vw, 2.5rem); }
+.renolit-kaart img { width: 88px; height: 88px; margin-bottom: 1.4rem; }
+.renolit-kaart dl { margin: 0; }
+.renolit-kaart dl div { display: flex; justify-content: space-between; gap: 1rem; padding: .75rem 0; border-top: 1px solid var(--lijn); font-size: .9375rem; }
+.renolit-kaart dt { color: var(--tekst-2); }
+.renolit-kaart dd { margin: 0; font-weight: 600; text-align: right; }
+@media (max-width: 860px) { .renolit-in { grid-template-columns: minmax(0, 1fr); } }
 
 /* Vragen */
 .vragen { max-width: 52rem; }
 .vragen .sectie-kop { margin-bottom: clamp(2rem, 4vw, 3rem); }
-.vragen > div:last-child { background: var(--wit); border-radius: var(--r-groot); padding: .4rem clamp(1.25rem, 3vw, 2.25rem); }
+.vragen > div:last-child { background: var(--papier); border-radius: var(--r-groot); padding: .4rem clamp(1.25rem, 3vw, 2.25rem); }
 .vraag + .vraag { border-top: 1px solid var(--lijn); }
 .vraag summary {
   list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
@@ -378,7 +388,12 @@ figcaption .fig { color: var(--mint-inkt); font-weight: 600; margin-right: .35re
 .voet a { color: var(--tekst-2); }
 .voet a:hover { color: var(--tekst); }
 .voet .voet-klein { max-width: none; }
-.voet-klein { grid-column: 1 / -1; border-top: 1px solid var(--lijn); padding-top: 1.2rem; margin-top: .8rem; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; font-size: .75rem; color: var(--tekst-3); }
+.voet .woordmerk-teken { width: 1.75rem; height: 1.75rem; border-radius: 8px; }
+.voet-renolit { grid-column: 1 / -1; display: flex; gap: 1.25rem; align-items: center; padding-top: 1.4rem; margin-top: .4rem; border-top: 1px solid var(--lijn); }
+.voet-renolit img { width: 56px; height: 56px; flex: none; }
+.voet-renolit p { margin: 0; max-width: 48rem; }
+.voet-renolit p a { color: var(--tekst); font-weight: 600; }
+.voet-klein { grid-column: 1 / -1; border-top: 1px solid var(--lijn); padding-top: 1.2rem; margin-top: .2rem; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; font-size: .75rem; color: var(--tekst-3); }
 @media (max-width: 760px) { .voet-in { grid-template-columns: 1fr 1fr; } .voet-in > div:first-child { grid-column: 1 / -1; } }
 
 /* ---------- artikel ---------- */
@@ -587,3 +602,13 @@ html:not(.js) .staal-3d, html:not(.js) .kijker-tip { display: none; }
   .tegel-groot .kicker, .tegel-groot .lees-verder { justify-content: center; }
   .tegel-groot h3, .tegel-groot .tegel-tekst p:not(.kicker) { margin-inline: auto; }
 }
+.d-nr circle { fill: var(--mint-diep); }
+.d-nr text { font-family: var(--sans); font-size: 10.5px; font-weight: 700; fill: #fff; text-anchor: middle; }
+.spec-lagen { margin: 0; padding-left: 1.15rem; }
+.spec-lagen li { margin-bottom: .35rem; }
+.spec-lagen li::marker { color: var(--mint-inkt); font-weight: 600; }
+.spec-lagen b { font-weight: 600; }
+/* vragen in een lopende tekst */
+.vragen-blok { margin: 1.2rem 0 2rem; background: var(--wit); border-radius: var(--r-groot); padding: .3rem clamp(1.1rem, 3vw, 1.75rem); }
+.tekst .vraag summary { font-size: 1.0625rem; color: var(--tekst); }
+.tekst .vraag-antwoord p { font-size: 1rem; }

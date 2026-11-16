@@ -35,6 +35,7 @@ SITE = "https://www.houtnerffolie.nl"
 VANDAAG = date.today().isoformat()
 
 NAV = [
+    ("renolit", "/renolit-folie", "Renolit folie"),
     ("mogelijkheden", "/mogelijkheden", "Mogelijkheden"),
     ("specificaties", "/specificaties", "Specificaties"),
     ("kleuren", "/kleuren", "Kleuren"),
@@ -59,14 +60,11 @@ def naar_iwrap(onderdeel, pad=None):
     return f"{basis}?utm_source=houtnerffolie&utm_medium=referral&utm_content={onderdeel}"
 
 
-FAVICON = (
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E"
-    "%3Crect width='34' height='34' rx='8' fill='%232f5a50'/%3E"
-    "%3Cpath d='M3 10 Q11 6 17.5 9.2 T32 8.4' stroke='%23ffffff' stroke-width='2.1' fill='none' stroke-linecap='round'/%3E"
-    "%3Cpath d='M3 17 Q11 13 17.5 16.2 T32 15.4' stroke='%23a3cdc2' stroke-width='2.1' fill='none' stroke-linecap='round'/%3E"
-    "%3Cpath d='M3 24 Q11 20 17.5 23.2 T32 22.4' stroke='%23a3cdc2' stroke-width='2.1' fill='none' stroke-linecap='round' opacity='.6'/%3E"
-    "%3C/svg%3E"
-)
+# Pictogrammen als echte bestanden in de root, zodat Google ze kan ophalen:
+# favicon.svg (browsers), favicon.ico (48/32/16 px) en apple-touch-icon.png (180 px)
+ICONEN = ('<link rel="icon" href="/favicon.ico" sizes="48x48">\n'
+          '<link rel="icon" type="image/svg+xml" href="/favicon.svg">\n'
+          '<link rel="apple-touch-icon" href="/apple-touch-icon.png">')
 
 MAANDEN = ["januari", "februari", "maart", "april", "mei", "juni", "juli",
            "augustus", "september", "oktober", "november", "december"]
@@ -142,6 +140,47 @@ ORGANISATIE = {
     "name": IWRAP["naam"],
     "url": IWRAP["site"],
     "logo": {"@type": "ImageObject", "url": SITE + "/images/logo.png", "width": 512, "height": 512},
+    "knowsAbout": ["Renolit folie", "Houtnerffolie", "Kozijnfolie", "Kunststof kozijnen herstellen"],
+}
+
+# De fabrikant van de folie waar deze site over gaat
+RENOLIT = {
+    "@type": "Organization",
+    "@id": "https://www.renolit.com/#organisatie",
+    "name": "RENOLIT SE",
+    "alternateName": ["Renolit", "RENOLIT"],
+    "url": "https://www.renolit.com/",
+    "foundingDate": "1946",
+    "address": {"@type": "PostalAddress", "addressLocality": "Worms", "addressCountry": "DE"},
+    "sameAs": ["https://de.wikipedia.org/wiki/Renolit"],
+}
+RENOLIT_MERK = {"@type": "Brand", "name": "RENOLIT", "url": "https://www.renolit.com/"}
+
+# Het product van de specificatiepagina
+EXOFOL_PR = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": SITE + "/specificaties#product",
+    "name": "RENOLIT EXOFOL PR",
+    "alternateName": ["Renolit Exofol PR", "Renolit houtnerffolie", "Renolit reparatiefolie"],
+    "description": ("Zelfklevende houtnerffolie voor kunststof kozijnen, ramen en deuren, in dezelfde kwaliteit als "
+                    "RENOLIT EXOFOL PX: heldere acryl toplaag met uv-filters, gekleurde pvc-basisfolie zonder weekmakers "
+                    "met SolShield, en een zelfklevende acrylaatlijm."),
+    "category": "Kozijnfolie",
+    "url": SITE + "/specificaties",
+    "image": SITE + "/images/artikelen/wat-elke-laag-doet.webp",
+    "brand": RENOLIT_MERK,
+    "manufacturer": {"@id": "https://www.renolit.com/#organisatie"},
+    "material": "PMMA (acryl), pvc zonder weekmakers, acrylaatlijm",
+    "additionalProperty": [
+        {"@type": "PropertyValue", "name": "Toplaag", "value": "Helder acryl (PMMA) met uv-filters"},
+        {"@type": "PropertyValue", "name": "Kleurlaag", "value": "Pvc-basisfolie zonder weekmakers, met SolShield; bij houtdecors met een gedrukte houttekening"},
+        {"@type": "PropertyValue", "name": "Lijmlaag", "value": "Primer en zelfklevende acrylaatlijm"},
+        {"@type": "PropertyValue", "name": "Uv-bescherming", "value": "De acryllaag houdt meer dan 95 procent van het uv-licht tegen"},
+        {"@type": "PropertyValue", "name": "Verwerkingstemperatuur", "value": "18 tot 35 °C"},
+        {"@type": "PropertyValue", "name": "Garantie", "value": "Tien jaar fabrieksgarantie op de folie bij een gecertificeerde verwerker"},
+        {"@type": "PropertyValue", "name": "Weertest", "value": "RAL-GZ 716 en DIN EN 513"},
+    ],
 }
 
 
@@ -259,6 +298,15 @@ def kiezer_json(stalen):
 
 # ---------- vaste onderdelen --------------------------------------------------------
 
+# Het beeldmerk van de site: drie nerflijnen in het mintgroen van iWrap
+LOGO_TEKEN = ('<svg class="woordmerk-teken" viewBox="0 0 64 64" aria-hidden="true">'
+              '<rect width="64" height="64" rx="15" fill="#2f5a50"/>'
+              '<path d="M8 22 Q22 14 33 20 T56 18.5" stroke="#fff" stroke-width="3.6" fill="none" stroke-linecap="round"/>'
+              '<path d="M8 33.5 Q22 25.5 33 31.5 T56 30" stroke="#a3cdc2" stroke-width="3.6" fill="none" stroke-linecap="round"/>'
+              '<path d="M8 45 Q22 37 33 43 T56 41.5" stroke="#a3cdc2" stroke-width="3.6" fill="none" stroke-linecap="round" opacity=".55"/>'
+              '</svg>')
+
+
 def render_kop(actief):
     huidig = ' aria-current="page"'
     links = "".join(
@@ -267,7 +315,8 @@ def render_kop(actief):
     return f"""<a class="overslaan" href="#inhoud">Naar de inhoud</a>
 <header class="kop">
   <div class="wrap kop-in">
-    <a class="woordmerk" href="/" aria-label="Houtnerffolie, naar de homepage"><b>Houtnerffolie</b><small>over Renolit-folie</small></a>
+    <a class="woordmerk" href="/" aria-label="Houtnerffolie, alles over Renolit folie: naar de homepage">{LOGO_TEKEN}<span class="woordmerk-tekst"><b>Houtnerf<span>folie</span></b><small>Alles over Renolit folie</small></span></a>
+    <a class="kop-renolit" href="/renolit-folie" aria-label="Wat is Renolit folie?"><img src="/images/renolit-logo.svg" alt="RENOLIT" width="34" height="34"></a>
     <nav class="nav" aria-label="Hoofdmenu">{links}</nav>
     <a class="knop knop-klein knop-glans" href="{naar_iwrap('menu')}">Laten herstellen</a>
   </div>
@@ -296,12 +345,13 @@ def render_voet():
     return f"""<footer class="voet">
   <div class="wrap voet-in">
     <div>
-      <a class="woordmerk" href="/"><b>Houtnerffolie</b></a>
-      <p>Een kennisbank over Renolit houtnerffolie op kunststof kozijnen: hoe de folie is opgebouwd, welke kleuren er zijn en hoe je hem onderhoudt. Deze site verkoopt niets; wie het werk wil laten doen, verwijzen we door naar iWrap.</p>
+      <a class="woordmerk" href="/">{LOGO_TEKEN}<span class="woordmerk-tekst"><b>Houtnerf<span>folie</span></b></span></a>
+      <p>Alles over Renolit folie en houtnerffolie op kunststof kozijnen: hoe de folie is opgebouwd, welke kleuren er zijn, de specificaties en het onderhoud. Deze site verkoopt niets; wie het werk wil laten doen, verwijzen we door naar iWrap.</p>
     </div>
     <div>
       <h2>Onderwerpen</h2>
       <ul>
+        <li><a href="/renolit-folie">Wat is Renolit folie?</a></li>
         <li><a href="/#opbouw">De opbouw van de folie</a></li>
         <li><a href="/mogelijkheden">Mogelijkheden</a></li>
         <li><a href="/specificaties">Specificaties</a></li>
@@ -315,8 +365,13 @@ def render_voet():
       <ul>
         <li><a href="{naar_iwrap('footer', '/')}">iWrap</a></li>
         <li><a href="{naar_iwrap('footer')}">Offerte aanvragen</a></li>
+        <li><a href="https://www.renolit.com/" rel="noopener">RENOLIT</a></li>
         <li><a href="/feed.xml">Rss-feed</a></li>
       </ul>
+    </div>
+    <div class="voet-renolit">
+      <a href="https://www.renolit.com/" rel="noopener"><img src="/images/renolit-logo.svg" alt="RENOLIT" width="56" height="56" loading="lazy"></a>
+      <p>Deze site gaat over de kozijnfolie van <a href="https://www.renolit.com/" rel="noopener">RENOLIT</a>, de Duitse fabrikant van de EXOFOL-folies. RENOLIT en EXOFOL zijn merken van RENOLIT SE. Houtnerffolie.nl is een onafhankelijke kennisbank van iWrap, gecertificeerd verwerker van Renolit-folie, en geen website van RENOLIT zelf.</p>
     </div>
     <p class="voet-klein"><span>&copy; {jaar} houtnerffolie.nl &middot; onderdeel van iWrap</span><span>Geen cookies; bezoek wordt alleen anoniem geteld &middot; <a href="https://iwrap.nl/privacy">privacy</a></span></p>
   </div>
@@ -377,7 +432,7 @@ def render_head(meta, ver, jsonld, extra=""):
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">{artikel}
-<link rel="icon" type="image/svg+xml" href="{FAVICON}">
+{ICONEN}
 <link rel="alternate" type="application/rss+xml" title="Houtnerffolie: artikelen" href="/feed.xml">
 <link rel="stylesheet" href="/css/site.css?v={ver}">
 <script>document.documentElement.classList.add('js')</script>
@@ -526,6 +581,40 @@ def schrijf_sitemap(paginas):
     (ROOT / "sitemap.xml").write_text("\n".join(regels) + "\n", encoding="utf-8")
 
 
+def schrijf_llms(paginas, aantal_kleuren):
+    """llms.txt: een korte samenvatting van de site voor AI-zoekmachines en assistenten."""
+    def regel(m):
+        return f"- [{tekst_van(m.get('kop', m['title'])) if m.get('type') == 'artikel' else m['title']}]({SITE}{url_voor(m['slug'])}): {m['description']}"
+    volgorde = ["index", "renolit-folie", "specificaties", "kleuren", "mogelijkheden", "artikelen/index"]
+    vast = sorted((m for m in paginas if m.get("type") != "artikel" and not m.get("noindex")),
+                  key=lambda m: volgorde.index(m["slug"]) if m["slug"] in volgorde else 99)
+    art = [m for m in paginas if m.get("type") == "artikel"]
+    tekst = f"""# Houtnerffolie.nl
+
+> Onafhankelijke Nederlandse kennisbank over Renolit folie (RENOLIT EXOFOL) en houtnerffolie voor kunststof kozijnen, ramen en deuren. Gemaakt door iWrap, gecertificeerd verwerker van Renolit-folie. Geen website van RENOLIT zelf.
+
+Belangrijkste feiten:
+- Renolit folie is kunststof folie van de Duitse fabrikant RENOLIT SE (Worms, sinds 1946). De folies voor kozijnen heten RENOLIT EXOFOL.
+- Houtnerffolie is folie met een voelbare houtnerf, in effen kleuren (zoals crèmewit RAL 9001 en dennengroen RAL 6009) en in houtdecors.
+- De folie bestaat uit drie lagen: een heldere toplaag van acryl (PMMA) met uv-filters, een kleurlaag van pvc (zonder weekmakers, met SolShield, bij houtdecors met een gedrukte houttekening) en een lijmlaag (primer en zelfklevende acrylaatlijm).
+- Voor herstel van bestaande kozijnen gebruikt iWrap RENOLIT EXOFOL PR, de zelfklevende uitvoering in de kwaliteit van RENOLIT EXOFOL PX. Alleen gecertificeerde verwerkers kunnen deze folie bestellen.
+- Levensduur: de folie gaat vijftien tot vijfentwintig jaar mee, het kunststof profiel 50 tot 75 jaar. Tien jaar fabrieksgarantie op de folie en vijf jaar op de montage, bij een gecertificeerde verwerker.
+- Aanbrengen gebeurt tussen ongeveer 18 en 35 °C, daarom van maart tot november.
+- Op {SITE}/kleuren staan alle {aantal_kleuren} houtnerfkleuren van Renolit, met RAL-codes; elke kleur is daar in 3D op een kozijn te bekijken.
+
+## Pagina's
+{chr(10).join(regel(m) for m in vast)}
+
+## Artikelen
+{chr(10).join(regel(m) for m in art)}
+
+## Uitvoering
+- Herstel of een nieuwe kleur laten aanbrengen: https://iwrap.nl
+- De fabrikant: https://www.renolit.com
+"""
+    (ROOT / "llms.txt").write_text(tekst, encoding="utf-8")
+
+
 def schrijf_feed(artikelen):
     def rfc822(iso):
         j, m, d = (int(x) for x in iso.split("-"))
@@ -609,12 +698,25 @@ def bouw():
             actief = meta.get("actief", "")
             if slug == "index":
                 jsonld.append({"@context": "https://schema.org", "@type": "WebSite", "@id": SITE + "/#website",
-                               "name": "Houtnerffolie", "url": SITE + "/", "inLanguage": "nl-NL",
-                               "description": meta["description"], "publisher": ORGANISATIE})
+                               "name": "Houtnerffolie", "alternateName": "Houtnerffolie.nl, alles over Renolit folie",
+                               "url": SITE + "/", "inLanguage": "nl-NL",
+                               "description": meta["description"], "publisher": ORGANISATIE,
+                               "about": [{"@type": "Thing", "name": "Renolit folie"},
+                                         {"@type": "Thing", "name": "Houtnerffolie"}, RENOLIT]})
                 extra = THREE_HEAD + "\n"
                 scripts = '<script type="module" src="/js/folie3d.js"></script>'
             elif slug == "kleuren":
                 extra = IMPORTMAP + "\n"
+            if slug == "specificaties":
+                jsonld.append(EXOFOL_PR)
+            if slug == "renolit-folie":
+                jsonld.append({"@context": "https://schema.org", "@type": "Article", "@id": SITE + "/renolit-folie#artikel",
+                               "headline": tekst_van(meta.get("kop", meta["title"])), "description": meta["description"],
+                               "inLanguage": "nl-NL", "url": SITE + "/renolit-folie",
+                               "image": SITE + meta.get("ogImage", "/images/og/home.jpg"),
+                               "author": ORGANISATIE, "publisher": ORGANISATIE,
+                               "datePublished": meta.get("datum", VANDAAG), "dateModified": meta.get("bijgewerkt", meta.get("datum", VANDAAG)),
+                               "about": [RENOLIT, {"@id": SITE + "/specificaties#product"}, {"@type": "Thing", "name": "Houtnerffolie"}]})
             faq = vragen_ld(body)
             if faq:
                 jsonld.append(faq)
@@ -630,6 +732,7 @@ def bouw():
         gebouwd.append(meta)
 
     schrijf_sitemap(sorted(gebouwd, key=lambda m: (m["slug"] != "index", m["slug"])))
+    schrijf_llms(gebouwd, len(stalen))
     schrijf_feed(artikelen)
     print(f"{len(gebouwd)} pagina's gebouwd, waarvan {len(artikelen)} artikelen; "
           f"kleurenpagina met {len(kleuren)} kleuren en {len(decors)} decors")

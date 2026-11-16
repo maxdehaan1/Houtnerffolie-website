@@ -1,8 +1,10 @@
 # houtnerffolie.nl
 
-Kennisbank over Renolit houtnerffolie op kunststof kozijnen: hoe de folie is opgebouwd,
-welke kleuren er zijn, artikelen over kleur, decors en onderhoud, praktijkvoorbeelden en
-veelgestelde vragen.
+Kennisbank over Renolit folie (RENOLIT EXOFOL) en houtnerffolie op kunststof kozijnen: wat
+Renolit folie is, hoe de folie is opgebouwd, de specificaties, welke kleuren er zijn,
+artikelen over kleur, decors en onderhoud, en veelgestelde vragen. Renolit folie is waar
+alles om draait: de site moet gevonden worden op "Renolit folie" en "houtnerffolie", in
+Google en in AI-zoekmachines.
 
 **Positionering:** een kennisbron, geen tweede aanbieder. De site verkoopt niets en doet
 geen offertes; wie het werk wil laten uitvoeren, wordt doorverwezen naar iwrap.nl. Alle
@@ -26,9 +28,11 @@ beschrijving, deelafbeelding), gevolgd door de inhoud. Kop, menu, voet, structur
 het offerteblok van iWrap, de sitemap en de rss-feed maakt `build.py` zelf.
 
 ```
-src/pages/index.html            Homepage: de 3D-uitleg, artikelen, kleuren, praktijk, vragen
+src/pages/index.html            Homepage: de 3D-uitleg, wat is Renolit folie, tegels,
+                                artikelen, kleuren, vragen
+src/pages/renolit-folie.html    Wat is Renolit folie? De hoofdpagina voor dat zoekwoord
 src/pages/specificaties.html    De specificaties van de folie (Renolit Exofol PR)
-src/pages/mogelijkheden.html    Wat er kan met houtnerffolie
+src/pages/mogelijkheden.html    Wat er kan met Renolit folie
 src/pages/kleuren.html          Kleurenpagina (de stalen komen uit stalen.json); een klik op een
                                 staal toont de kleur in 3D op een kozijn
 src/pages/artikelen/index.html  Overzicht van alle artikelen
@@ -56,8 +60,8 @@ vermelding in sitemap en feed gaan vanzelf.
 
 ### Veelgestelde vragen
 
-De vragen staan als `<details class="vraag">`-blokken in `src/pages/index.html`. De
-structured data voor Google (FAQPage) maakt `build.py` uit die zichtbare tekst, dus die
+De vragen staan als `<details class="vraag">`-blokken in `src/pages/index.html` en
+`src/pages/renolit-folie.html`. De structured data voor Google (FAQPage) maakt `build.py` uit die zichtbare tekst, dus die
 kunnen niet meer uit elkaar lopen.
 
 ### Kleuren
@@ -80,10 +84,12 @@ hoofdstukken (rechtsboven in beeld aan te klikken):
 
 1. **Opbouw** (stap 1 tot 5): een stuk folie komt los van de onderdorpel van het raam en valt
    uiteen in de heldere toplaag (acryl, met de nerf erin), de kleurlaag en de lijmlaag, boven
-   het kale profiel. De lagen werpen schaduw op elkaar; de labels noemen per laag het
+   het kale profiel. Dat zijn dezelfde drie lagen (plus het profiel) als op de
+   specificatiepagina en op /renolit-folie: de primer en de acrylaatlijm vallen samen onder
+   de lijmlaag, de pvc-basisfolie en de drukinkt onder de kleurlaag. De lagen werpen schaduw op elkaar; de labels noemen per laag het
    materiaal en wat de laag doet.
 2. **Kleur** (stap 6): de bezoeker kiest eerst kozijn of raam en dan een kleur.
-3. **Levensduur** (stap 7 tot 9): de folie verweert zoals in de 3D-animatie op iwrap.nl
+3. **Vernieuwen** (stap 7 tot 9): de folie verweert zoals in de 3D-animatie op iwrap.nl
    (krijtig, gebarsten in eilandjes met opgekrulde randen), daarna gaat de oude folie eraf
    (eerst blijft er lijm achter, dan kaal kunststof) en komt er een nieuwe folie op. Het
    hoe en waarom van het werk zelf staat op iwrap.nl; hier staat alleen wat er met de folie
@@ -130,8 +136,7 @@ met bronnen onderaan). De laboratoriumwaarden uit het productblad van Exofol PR 
 treksterkte, weertestwaarden) staan er bewust niet op: dat blad zegt dat de inhoud niet
 gepubliceerd mag worden zonder schriftelijke toestemming van Renolit.
 
-**Verwering:** de verweerde folie in de 3D-uitleg en de praktijkvoorbeelden is folie van een
-oudere generatie. Zo staat het ook overal op de site; de folie van nu is veel sterker (geen
+**Verwering:** de verweerde folie in de 3D-uitleg is folie van een oudere generatie. Zo staat het ook overal op de site; de folie van nu is veel sterker (geen
 weekmakers, meer uv-filter, SolShield). Klanten moeten niet het idee krijgen dat nieuwe folie
 zo verweert.
 
@@ -148,9 +153,36 @@ zo verweert.
   alleen voor tekst. Alles staat als variabelen bovenin `css/site.css`.
 - **Letters:** het lettertype van het apparaat zelf: San Francisco op een Mac en iPhone,
   Segoe UI op Windows, Roboto op Android. Er wordt dus geen lettertype gedownload.
+- **Logo:** drie nerflijnen in een afgerond vierkant in `#2f5a50` (`images/logo.svg`, in de
+  kop als `LOGO_TEKEN` in `build.py`), met "Houtnerf**folie**" en daaronder "Alles over
+  Renolit folie". Rechts ervan, achter een dun streepje, het RENOLIT-logo
+  (`images/renolit-logo.svg`), dat naar /renolit-folie linkt. De pictogrammen
+  (`favicon.svg`, `favicon.ico`, `apple-touch-icon.png`) en `images/logo.png` (512 px, voor
+  Google) zijn van hetzelfde teken gemaakt.
 - **Beelden:** de artikelbeelden staan op `#eeece7`; de deelafbeeldingen (1200x630) hebben
-  links tekst op de achtergrondkleur met de mintgloed, rechts een beeld op `#eeece7`. De
-  beelden voor de tegels staan in `images/tegels/` (transparant).
+  links de kop en het woordmerk op de achtergrondkleur met de mintgloed, rechts een beeld op
+  `#eeece7`. De beelden voor de tegels staan in `images/tegels/` (transparant).
+
+## Vindbaarheid: Google en AI
+
+- **Zoekwoorden:** "Renolit folie" en "houtnerffolie". Ze staan in de titels en koppen van
+  de homepage, /renolit-folie, /specificaties, /kleuren en /mogelijkheden. /renolit-folie is
+  de hoofdpagina voor "Renolit folie" en "wat is Renolit folie"; alle pagina's linken ernaar
+  (menu, kop, voet).
+- **RENOLIT zelf:** het logo staat in de kop, in het blok "Wat is Renolit folie?" op de
+  homepage en in de voet, met links naar renolit.com en de productpagina's (bronnen). In de
+  voet staat dat RENOLIT en EXOFOL merken van RENOLIT SE zijn en dat dit een onafhankelijke
+  kennisbank van iWrap is, geen website van RENOLIT. Zo blijft het eerlijk en kan niemand
+  denken dat dit de officiële site van Renolit is.
+- **Structured data** (maakt `build.py`): WebSite (met `about`: Renolit folie), Organization
+  (iWrap, met `knowsAbout`), RENOLIT SE als organisatie, een Product voor Renolit Exofol PR
+  op de specificatiepagina, een Article voor /renolit-folie, BlogPosting voor de artikelen,
+  FAQPage uit de zichtbare vragen en overal een kruimelpad.
+- **AI-zoekmachines:** `llms.txt` (maakt `build.py`) vat de site in gewone tekst samen: de
+  belangrijkste feiten over Renolit folie en een lijst van alle pagina's. `robots.txt` laat
+  alle crawlers toe, behalve `/src/`; die map krijgt ook een `noindex` in `vercel.json`.
+- **Na een wijziging:** in Google Search Console de gewijzigde pagina's opnieuw laten
+  indexeren.
 
 ## Structuur
 
@@ -165,15 +197,19 @@ js/vendor/three-*/      three.js (MIT-licentie)
 images/artikelen/       Artikelbeelden (1600x1000)
 images/og/              Deelafbeeldingen (1200x630)
 images/stalen/          Staalfoto's (RENOLIT)
-images/projecten/       Praktijkvoorbeelden, alleen projecten met Renolit houtnerffolie
-                        (niet met facadefilm)
+images/logo.svg         Het beeldmerk van de site
+images/renolit-logo.svg Het logo van RENOLIT (kop, homepage, voet)
+favicon.svg, favicon.ico, apple-touch-icon.png   Pictogrammen
+llms.txt                Samenvatting voor AI-zoekmachines (gebouwd)
+robots.txt              Voor zoekmachines; verwijst naar de sitemap
 images/houtnerf-textuur.webp  De nerf, als laag over de stalen en in het 3D-model
 images/ral9001-textuur.jpg    Bron van het zelf opgebouwde crèmewit-staal
 vercel.json             Schone adressen (/kleuren in plaats van /kleuren.html), cache
 ```
 
-Gebouwd en meegecommit: `index.html`, `kleuren.html`, `404.html`, `artikelen/`,
-`sitemap.xml`, `feed.xml`. Vercel serveert de map zoals hij is; er draait daar geen build.
+Gebouwd en meegecommit: `index.html`, `renolit-folie.html`, `specificaties.html`,
+`mogelijkheden.html`, `kleuren.html`, `404.html`, `artikelen/`, `sitemap.xml`, `feed.xml`,
+`llms.txt`. Vercel serveert de map zoals hij is; er draait daar geen build.
 
 ## Aandachtspunten
 
@@ -197,12 +233,12 @@ Gebouwd en meegecommit: `index.html`, `kleuren.html`, `404.html`, `artikelen/`,
 - **Het Google-cijfer van iWrap** in het offerteblok is een reserve; een klein script haalt
   de live stand op bij `iwrap.nl/api/reviews` (tot de overstap:
   `iwrap-website.vercel.app/api/reviews`).
-- De praktijkvoorbeelden linken naar `iwrap.nl/voorbeelden`.
 
 ## Openstaand
 
-- Gebruik van RENOLIT-beeldmateriaal nog even afstemmen met de contactpersoon daar, en
-  vragen of de waarden uit het productblad van Exofol PR op de specificatiepagina mogen
+- Gebruik van het RENOLIT-logo en de staalfoto's nog even afstemmen met de contactpersoon
+  daar, en vragen of de waarden uit het productblad van Exofol PR op de specificatiepagina
+  mogen
 - Google Search Console koppelen en de sitemap aanmelden (staat in
   `../iwrap-project/LIVEGANG.md`, stap 5); na de overstap naar het nieuwe ontwerp ook de
   nieuwe adressen (`/artikelen/...`) laten indexeren

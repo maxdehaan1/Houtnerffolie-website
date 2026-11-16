@@ -759,9 +759,9 @@ export function start(sectie) {
   /* ----- labels bij de lagen ----- */
   const labelRenderer = new CSS2DRenderer({ element: sectie.querySelector('.folie-labels') || undefined });
   const labelTekst = [
-    ['1', 'Toplaag', 'acryl (PMMA): uv-filter en nerf'],
+    ['1', 'Toplaag', 'helder acryl (PMMA): uv-filter en nerf'],
     ['2', 'Kleurlaag', 'pvc met pigment of houtprint, kaatst zonnewarmte terug'],
-    ['3', 'Lijmlaag', 'acrylaatlijm, hecht bij 18 tot 35 °C'],
+    ['3', 'Lijmlaag', 'primer en acrylaatlijm, hecht bij 18 tot 35 °C'],
     ['4', 'Kunststof profiel', 'pvc, gaat 50 tot 75 jaar mee'],
   ];
   const labels = labelTekst.map(([nr, naam, uitleg]) => {
