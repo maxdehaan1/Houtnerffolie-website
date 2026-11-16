@@ -144,19 +144,23 @@ zo verweert.
 
 - **Opzet:** licht en modern, richting Apple, in de stijl van de nieuwe iwrap.nl: de
   achtergrond is `#f7f6f3` (dezelfde als iwrap.nl), met witte vlakken erop. Grote strakke
-  koppen, afgeronde vlakken zonder schaduw, ronde knoppen, een zachte mintgloed bovenaan
+  koppen, afgeronde vlakken zonder schaduw, ronde knoppen, een zachte gloed in eiken bovenaan
   elke pagina en achter het 3D-kozijn. Het menu blijft altijd zichtbaar (licht
   doorschijnend). Op de homepage staan onder de 3D-uitleg tegels naar Specificaties,
-  Mogelijkheden en Kleuren; het offerteblok is mint.
-- **Kleuren:** die van iWrap. Het accent is mint `#a3cdc2` (met de lichte tinten `#dbece7`
-  en `#eef6f3`): als markering achter de woorden met nadruk in grote koppen, als stip voor
-  de kleine kopjes, als knop (met donkere tekst), als rondje achter de pijltjes en als
-  onderstreping van links. Geen donkergroene tekst: dat vond Max niet mooi. Mint zelf haalt op
-  wit te weinig contrast om tekst te zijn, dus alle tekst is antraciet `#22262a` of grijs. Alles
-  staat als variabelen bovenin `css/site.css`.
+  Mogelijkheden en Kleuren; het offerteblok is eiken.
+- **Kleuren:** elke site van iWrap heeft een eigen leidende kleur op dezelfde lichte basis:
+  iwrap.nl mint `#a3cdc2`, kozijnwrap.nl hemelsblauw `#a9c8e4`, en deze site **eiken
+  `#dcb98d`** (`--accent`, met `--accent-zacht` `#f1e3d1` en `--accent-hover` `#d2ab7a`). Die
+  kleur komt terug als markering achter de woorden met nadruk in grote koppen, als stip voor
+  de kleine kopjes, als knop (met donkere tekst), als rondje achter de pijltjes, als
+  onderstreping van links, in het logo en in het offerteblok. Geen gekleurde tekst: de
+  leidende kleur haalt op wit te weinig contrast, en donkergroene tekst vond Max niet mooi.
+  Alle tekst is antraciet `#22262a` of grijs. Geen eikenkleurige vlakken als achtergrond
+  (dat leest als crème); de gloed bovenaan is bewust heel zacht. Alles staat als variabelen
+  bovenin `css/site.css`.
 - **Letters:** het lettertype van het apparaat zelf: San Francisco op een Mac en iPhone,
   Segoe UI op Windows, Roboto op Android. Er wordt dus geen lettertype gedownload.
-- **Logo:** de houtnerf vormt een H: een mint vlak met witte nerflijnen, waarin de staanders
+- **Logo:** de houtnerf vormt een H: een eikenkleurig vlak met witte nerflijnen, waarin de staanders
   en de dwarsbalk van de H glad blijven. Getekend in `build.py` (`beeldmerk()`, met de lijnen
   in `NERF_ZIJ` en `NERF_VAK`); elke build schrijft daaruit `images/logo.svg` en `favicon.svg`
   (een eenvoudige versie met alleen de H, die ook op 16 pixels leesbaar is). Naast het teken
@@ -165,8 +169,8 @@ zo verweert.
   (512 px, voor Google), `apple-touch-icon.png` en `favicon.ico` zijn van dezelfde tekening
   gemaakt; maak ze opnieuw als het teken verandert.
 - **Beelden:** de artikelbeelden staan op `#eeece7`; de deelafbeeldingen (1200x630) hebben
-  links de kop (met de mint markering) en het woordmerk op de achtergrondkleur met de
-  mintgloed, rechts een beeld op `#eeece7`. De beelden voor de tegels staan in `images/tegels/` (transparant).
+  links de kop (met de markering in eiken) en het woordmerk op de achtergrondkleur met een
+  zachte gloed, rechts een beeld op `#eeece7`. De beelden voor de tegels staan in `images/tegels/` (transparant).
 
 ## Vindbaarheid: Google en AI
 

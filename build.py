@@ -303,9 +303,9 @@ def kiezer_json(stalen):
 
 # ---------- vaste onderdelen --------------------------------------------------------
 
-# Het beeldmerk van de site: de houtnerf vormt een H, in het mint van iWrap. De staanders en
+# Het beeldmerk van de site: de houtnerf vormt een H, in eiken (de leidende kleur). De staanders en
 # de dwarsbalk van de H zijn glad; eromheen loopt de nerf, als witte (uitgesneden) lijnen.
-MINT = "#a3cdc2"
+EIKEN = "#dcb98d"
 NERF_ZIJ = [  # langs de zijkanten: twee nerflijnen per kant (de eerste twee horen bij de H)
     "M11.4 -2 C8.8 15 9.6 27 8.6 38 S9.8 56 11.8 66",
     "M52.6 -2 C55.2 11 54.2 24 55.6 35.5 S54 55 52.4 66",
@@ -333,7 +333,7 @@ def beeldmerk(id_, klasse="woordmerk-teken", eenvoudig=False, rond=13, extra=' a
     k = f' class="{klasse}"' if klasse else ""
     return (f'<svg{k} viewBox="0 0 64 64"{extra}>'
             f'<clipPath id="{id_}"><rect width="64" height="64" rx="{rond}"/></clipPath>'
-            f'<rect width="64" height="64" rx="{rond}" fill="{MINT}"/>'
+            f'<rect width="64" height="64" rx="{rond}" fill="{EIKEN}"/>'
             f'<g clip-path="url(#{id_})" fill="none" stroke="#fff" stroke-width="{dikte}" '
             f'stroke-linecap="round">{paden}</g></svg>')
 
