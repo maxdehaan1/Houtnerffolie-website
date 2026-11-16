@@ -1,0 +1,50 @@
+<!--
+{
+  "slug": "kleuren",
+  "title": "Alle houtnerfkleuren van Renolit Exofol, met RAL-codes",
+  "description": "Alle Renolit Exofol reparatiefolies met houtnerf: effen kleuren met RAL-code en houtdecors, gesorteerd op kleur, met de zes kleuren die het vaakst gekozen worden.",
+  "ogTitle": "Alle houtnerfkleuren van Renolit Exofol",
+  "ogImage": "/images/og/kleuren.jpg",
+  "actief": "kleuren",
+  "bodyClass": "kleurenpagina",
+  "siteScript": true,
+  "kruimel": [["Kleuren", "/kleuren"]]
+}
+-->
+<header class="pagina-kop">
+  <div class="wrap">
+    <nav class="kruimel" aria-label="Kruimelpad"><ol><li><a href="/">Home</a></li><li aria-current="page">Kleuren</li></ol></nav>
+    <p class="kicker">Kleuren en decors</p>
+    <h1>Alle {{aantal-totaal}} houtnerfkleuren</h1>
+    <p>Het volledige assortiment Renolit Exofol reparatiefolie met houtnerf: {{aantal-kleuren}} effen kleuren en {{aantal-decors}} houtdecors, gesorteerd op kleur. Een scherm geeft kleur nooit precies weer; voor een definitieve keuze is een echt staal doorslaggevend.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="zoek" role="search">
+    <label class="verborgen" for="zoek">Zoek op naam, RAL-code of artikelnummer</label>
+    <input id="zoek" type="search" placeholder="Zoek op naam of RAL-code, bijv. 7016" autocomplete="off">
+    <p class="meta" id="zoek-telling" aria-live="polite">{{aantal-totaal}} stalen</p>
+  </div>
+  <p class="meta" id="zoek-leeg" hidden>Geen kleur of decor gevonden. Probeer een RAL-code zonder letters, bijvoorbeeld 9001.</p>
+
+  <section class="kleurgroep" data-groep="populair" aria-labelledby="populair-kop">
+    <h2 id="populair-kop">Veelgekozen</h2>
+    <p>De kleuren waar in de praktijk het vaakst voor wordt gekozen. Ze staan hieronder ook gewoon tussen het volledige assortiment. Meer over deze zes in <a href="/artikelen/populaire-kozijnkleuren">De zes kleuren die het vaakst gekozen worden</a>.</p>
+    <ul class="stalen stalen-populair">{{stalen-populair}}</ul>
+  </section>
+
+  <section class="kleurgroep" data-groep="effen" id="effen" aria-labelledby="effen-kop">
+    <h2 id="effen-kop">Effen kleuren</h2>
+    <p>Alle kleuren hieronder hebben een houtnerfstructuur: effen wil hier dus niet vlak zeggen. Gladde en matte uitvoeringen staan bewust niet in dit overzicht. Waar de kleur overeenkomt met een RAL-kleur staat de RAL-code erbij, gevolgd door het artikelnummer van Renolit als dat afwijkt.</p>
+    <ul class="stalen">{{stalen-kleuren}}</ul>
+  </section>
+
+  <section class="kleurgroep" data-groep="decors" id="decors" aria-labelledby="decors-kop">
+    <h2 id="decors-kop">Houtdecors</h2>
+    <p>Bij een houtdecor is een houttekening op de kleurlaag gedrukt, met een nerf in de toplaag die erbij past. Van eiken in alle tinten tot noten, kers en mahonie. Meer daarover in <a href="/artikelen/houtdecors">Houtdecors op een kunststof kozijn</a>.</p>
+    <ul class="stalen">{{stalen-decors}}</ul>
+  </section>
+
+  <p class="bron-noot">Staalafbeeldingen: RENOLIT. Het assortiment kan wijzigen; de actuele collectie staat bij Renolit zelf. Van {{aantal-zonder}} stalen is geen afbeelding beschikbaar. Lees ook <a href="/artikelen/kleur-kiezen-met-een-staal">waarom een staal meer zegt dan een scherm</a>.</p>
+</div>
