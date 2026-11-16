@@ -97,6 +97,9 @@ hoofdstukken (rechtsboven in beeld aan te klikken):
 
 Details:
 
+- **De laag met uitleg:** bij elke stap over één laag schuift die laag naar de kijker toe (voor
+  de andere langs), worden de andere lagen bleek en schuift de camera half mee. De maten staan in
+  `NADRUK` bovenin het script.
 - **Glas:** dubbel glas met een afstandhouder, twee ruiten die de lucht, bomen en gevels
   aan de overkant weerspiegelen (iets bol, zoals echte isolatieruiten), en daarachter een
   kamer met diepte. De weerspiegeling is een getekende omgeving in `lucht()`, de kamer zit
@@ -149,8 +152,9 @@ zo verweert.
   norm). Onder de intro staat de kwaliteit in het kort (`.bewijs`). Elke claim komt uit de
   bronnen op de specificatiepagina; houd dat zo.
 - **Opzet:** licht en rustig, richting Apple, op de basis van iwrap.nl: overal dezelfde
-  achtergrond `#f7f6f3`, inhoud op witte vlakken (radius 28px), geen schaduwen, geen wisselende
-  achtergrondbanden. Grote strakke koppen in één maatvoering (`--fs-h2` voor sectiekoppen), het
+  achtergrond `#f7f6f3` met een zachte waas van blauw en goud over de hele site (`body::before`,
+  vast in beeld), inhoud op licht doorschijnende witte vlakken (`--vlak`) die met een heel zachte
+  schaduw zweven (`--schaduw`, bij aanwijzen `--schaduw-op`). Geen wisselende achtergrondbanden. Grote strakke koppen in één maatvoering (`--fs-h2` voor sectiekoppen), het
   menu altijd zichtbaar (licht doorschijnend). Het offerteblok is een wit vlak met een dunne
   gouden rand. Geen donkere vlakken en geen crème achtergronden (vindt Max AI-achtig).
 - **Kleuren:** elke site van iWrap heeft een eigen leidende kleur op dezelfde lichte basis:
@@ -163,8 +167,8 @@ zo verweert.
   `--goud-tekst` (verloop voor de woorden met nadruk in grote koppen). Knoppen zijn donkerblauw
   met een gouden glans; lopende tekst is antraciet `#22262a` of grijs. Geen derde kleur: goud
   en donkerblauw op gebroken wit is een compleet palet, en het 3D-beeld brengt zelf al kleur.
-- **Vaste onderdelen:** kleine kopjes in gouden kapitalen met een haarlijn ervoor (bij
-  gecentreerde kopjes aan beide kanten); nummers in goud met een haarlijn erachter; links met
+- **Vaste onderdelen:** kleine kopjes in goud, in gewone zinsopbouw zoals bij Apple (kapitalen
+  met haarlijnen oogden als een sjabloon); nummers in goud met een stipje erachter; links met
   een pijltje in een dun gouden rondje; vragen met een plus in een dun gouden rondje; woorden
   met nadruk (`<em>`) in grote koppen in goud. Alles staat als variabelen en regels in
   `css/site.css`.

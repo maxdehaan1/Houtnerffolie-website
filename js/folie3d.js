@@ -202,18 +202,19 @@ class Laag {
   }
 
   // dikte in mm, z = hoe ver de laag van het profiel af staat, dx = verschuiving langs de
-  // dorpel, pel = 0..1 hoe ver het afpellen is, til = hoe hoog het losse stuk komt.
-  static positie(u, v, nu, nv, f, buiten, dikte, z, dx, pel, til) {
+  // dorpel, pel = 0..1 hoe ver het afpellen is, til = hoe hoog het losse stuk komt,
+  // dy = verschuiving naar de voorkant (naar de kijker toe, voor de laag waar de uitleg over gaat).
+  static positie(u, v, nu, nv, f, buiten, dikte, z, dx, pel, til, dy = 0) {
     const af = FOLIE_AF + (buiten ? dikte : 0);
     const g = Math.min(1, Math.max(0, (pel - (1 - f) * 0.55) / 0.45));   // afpellen begint rechts
     const k = g * g * (3 - 2 * g);
-    return [STUK[0] + f * (STUK[1] - STUK[0]) + dx, -B + u + nu * af, -(v + nv * af) + til * k + z];
+    return [STUK[0] + f * (STUK[1] - STUK[0]) + dx, -B + u + nu * af + dy, -(v + nv * af) + til * k + z];
   }
 
-  zet(dikte, z, dx, pel, til) {
+  zet(dikte, z, dx, pel, til, dy = 0) {
     const pos = this.geo.attributes.position.array, uv = this.geo.attributes.uv.array;
     for (let i = 0; i < this.s.length; i++) {
-      const q = Laag.positie(this.u[i], this.v[i], this.nu[i], this.nv[i], this.s[i], this.buiten[i], dikte, z, dx, pel, til);
+      const q = Laag.positie(this.u[i], this.v[i], this.nu[i], this.nv[i], this.s[i], this.buiten[i], dikte, z, dx, pel, til, dy);
       pos[i * 3] = q[0]; pos[i * 3 + 1] = q[1]; pos[i * 3 + 2] = q[2];
       uv[i * 2] = (STUK[0] + this.s[i] * (STUK[1] - STUK[0])) / UV[0];
     }
@@ -600,6 +601,8 @@ const TIMING = { oud: [0.45, 0.85], eraf: [0.1, 0.92], erop: [0.1, 0.92] };
 const KIJK = { ...BASIS, rotY: -0.42, zicht: 1720, breed: 1320, sx: 0, dy: 0.02, mx: 0, sy: 0.02 };
 const LAGEN = ['lijm', 'kleur', 'top'];
 const TUSSEN = 40, SCHUIF = 22;      // afstand tussen de lagen, en hoe ver ze opzij schuiven
+// de laag waar de uitleg over gaat: zo ver naar voren (mm), omhoog en opzij, en zo veel lichter worden de andere
+const NADRUK = { voor: 78, op: 12, opzij: 12, vaag: 0.45 };
 
 /* ---------- de scène -------------------------------------------------------------- */
 
@@ -658,7 +661,7 @@ export function start(sectie) {
     topVlak: new THREE.MeshPhysicalMaterial({ color: 0xf2f8f9, roughness: 0.3, transparent: true, opacity: 0.14, depthWrite: false }),
     topRand: new THREE.MeshPhysicalMaterial({ color: 0xe6f6f6, emissive: 0x9ed3d2, emissiveIntensity: 0.32, roughness: 0.2, transparent: true, opacity: 0.8, depthWrite: false }),
     topSpiegel: spiegel({ roughness: 0.12, ior: 1.49, envMap: studio, envMapIntensity: 1.5, bumpScale: 0.6 }),
-    kleur: new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.58, clearcoat: 0.3, clearcoatRoughness: 0.32, bumpScale: 0.7 }),
+    kleur: new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.58, clearcoat: 0.3, clearcoatRoughness: 0.32, bumpScale: 0.7, transparent: true }),
     lijm: new THREE.MeshPhysicalMaterial({ color: new THREE.Color('#c99232'), roughness: 0.32, transparent: true, opacity: 0.8, depthWrite: false, sheen: 0.3, sheenColor: 0xffe7b0 }),
   };
 
@@ -921,17 +924,26 @@ export function start(sectie) {
       const laag = lagen[naam];
       for (const m of laag.meshes) m.visible = los;
       if (!los) return;
-      const extra = s['n' + (2 - i)] * 12;           // de laag met nadruk komt iets verder naar voren
-      laag.zet(dikte, tussen * (i + 1) + dikte * i + extra, SCHUIF * s.uit * (i + 1), s.pel, s.til);
+      // de laag waar de uitleg over gaat, schuift naar de kijker toe (voor de andere langs) en iets omhoog
+      const n = s['n' + (2 - i)];
+      laag.zet(dikte, tussen * (i + 1) + dikte * i + NADRUK.op * n, SCHUIF * s.uit * (i + 1) + NADRUK.opzij * n, s.pel, s.til, -NADRUK.voor * n);
     });
-    pvc.emissive.setScalar(0.05 * s.n3);
+    pvc.emissive.setScalar(0.06 * s.n3);
+    // de lagen waar het nu niet over gaat, worden bleek (lichter, niet doorzichtig: dat wordt
+    // boven het donkere raam modderig); de toplaag is al doorzichtig en wordt alleen vager
+    const bleek = k => s.nadrukIets * (1 - s['n' + k]);
+    const vaag = k => 1 - NADRUK.vaag * bleek(k);
+    mat.kleur.opacity = 1 - 0.18 * bleek(1);
+    mat.kleur.emissive.setScalar(0.42 * bleek(1));
+    mat.lijm.opacity = 0.8 - 0.25 * bleek(2);
+    mat.lijm.emissive.setRGB(0.5 * bleek(2), 0.46 * bleek(2), 0.38 * bleek(2));
     // Zolang de lagen nog op elkaar liggen, ziet het losse stuk eruit als gewone folie; de
     // heldere toplaag (met de nerf) wordt pas zichtbaar als de lagen uit elkaar gaan.
     const apart = glad(0, 0.5, s.uit);
-    mat.topVlak.opacity = 0.14 * apart;
-    mat.topRand.opacity = 0.8 * apart;
+    mat.topVlak.opacity = 0.14 * apart * vaag(0);
+    mat.topRand.opacity = 0.8 * apart * vaag(0);
     mat.topRand.emissiveIntensity = 0.32 + 0.35 * s.n0;
-    mat.topSpiegel.envMapIntensity = (1.5 + 0.8 * s.n0) * apart;
+    mat.topSpiegel.envMapIntensity = (1.5 + 0.8 * s.n0) * apart * vaag(0);
     mat.kleur.bumpScale = 0.7 * (1 - apart);
     mat.kleur.clearcoat = 0.02 + 0.28 * (1 - apart);
     mat.topSpiegel.envMapRotation.y = 0.9 * Math.sin(tijd * 0.75);
@@ -954,9 +966,9 @@ export function start(sectie) {
       const laagIndex = 2 - i;                       // label 1 = toplaag
       let x, y, z;
       if (i < 3) {
-        x = STUK[1] + SCHUIF * s.uit * (laagIndex + 1) + 6;
-        y = -B + 40;
-        z = tussen * (laagIndex + 1) + dikte * laagIndex + s.til + s['n' + i] * 12 + 3;
+        x = STUK[1] + SCHUIF * s.uit * (laagIndex + 1) + 6 + NADRUK.opzij * s['n' + i];
+        y = -B + 40 - NADRUK.voor * s['n' + i];
+        z = tussen * (laagIndex + 1) + dikte * laagIndex + s.til + s['n' + i] * NADRUK.op + 3;
       } else {
         x = STUK[1] + 34; y = -B + 40; z = -2;
       }
@@ -969,7 +981,15 @@ export function start(sectie) {
 
     // camera
     midden.set(0, 0, -35); kozijn.localToWorld(midden);
-    stukMidden.set((STUK[0] + STUK[1]) / 2 + 30 * s.uit, -B + 36, 0.5 * s.til + 52 * s.uit); kozijn.localToWorld(stukMidden);
+    // de camera schuift half mee naar de laag waar de uitleg over gaat
+    let nx = 0, ny = 0, nz = 0;
+    for (let k = 0; k < 3; k++) {                 // k = laag: 0 lijm, 1 kleur, 2 top
+      const w = s['n' + (2 - k)];
+      nx += w * (SCHUIF * s.uit * (k + 1) + NADRUK.opzij - 30 * s.uit);
+      ny -= w * NADRUK.voor;
+      nz += w * (tussen * (k + 1) + dikte * k + NADRUK.op + 0.5 * s.til - 52 * s.uit);
+    }
+    stukMidden.set((STUK[0] + STUK[1]) / 2 + 30 * s.uit + 0.5 * nx, -B + 36 + 0.5 * ny, 0.5 * s.til + 52 * s.uit + 0.5 * nz); kozijn.localToWorld(stukMidden);
     hoekMidden.set(A - 175, -B + 135, -30); kozijn.localToWorld(hoekMidden);
     const doel = tmp.copy(midden).multiplyScalar(Math.max(0, 1 - s.focus - s.hoek))
       .addScaledVector(stukMidden, s.focus).addScaledVector(hoekMidden, s.hoek);
