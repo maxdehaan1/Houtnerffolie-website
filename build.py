@@ -303,11 +303,11 @@ def kiezer_json(stalen):
 
 # ---------- vaste onderdelen --------------------------------------------------------
 
-# Het beeldmerk van de site: de houtnerf vormt een H, in zonnegeel (de leidende kleur). De staanders en
-# de dwarsbalk van de H zijn glad; eromheen loopt de nerf, in een dieper goudbruin, zodat het
-# teken oogt als licht hout (wit was op geel niet te zien).
-ACCENT = "#f1d27e"  # zonnegeel
-NERF_KLEUR = "#a87a26"
+# Het beeldmerk van de site: de houtnerf vormt een H, in goud (de leidende kleur), met een verloop
+# als bladgoud. De staanders en de dwarsbalk van de H zijn glad; eromheen loopt de nerf, in een
+# dieper goud, alsof hij erin gegraveerd is.
+GOUD_VERLOOP = [("0", "#efdcae"), (".38", "#d2b06c"), (".62", "#a98142"), ("1", "#e3c993")]
+NERF_KLEUR = "#7a5724"
 NERF_ZIJ = [  # langs de zijkanten: twee nerflijnen per kant (de eerste twee horen bij de H)
     "M11.4 -2 C8.8 15 9.6 27 8.6 38 S9.8 56 11.8 66",
     "M52.6 -2 C55.2 11 54.2 24 55.6 35.5 S54 55 52.4 66",
@@ -332,10 +332,12 @@ def beeldmerk(id_, klasse="woordmerk-teken", eenvoudig=False, rond=13, extra=' a
     else:
         lijnen, dikte = NERF_ZIJ + NERF_VAK, 2.3
     paden = "".join(f'<path d="{d}"/>' for d in lijnen)
+    stops = "".join(f'<stop offset="{o}" stop-color="{c}"/>' for o, c in GOUD_VERLOOP)
     k = f' class="{klasse}"' if klasse else ""
     return (f'<svg{k} viewBox="0 0 64 64"{extra}>'
-            f'<clipPath id="{id_}"><rect width="64" height="64" rx="{rond}"/></clipPath>'
-            f'<rect width="64" height="64" rx="{rond}" fill="{ACCENT}"/>'
+            f'<defs><linearGradient id="{id_}-g" x1="0" y1="0" x2="1" y2="1">{stops}</linearGradient>'
+            f'<clipPath id="{id_}"><rect width="64" height="64" rx="{rond}"/></clipPath></defs>'
+            f'<rect width="64" height="64" rx="{rond}" fill="url(#{id_}-g)"/>'
             f'<g clip-path="url(#{id_})" fill="none" stroke="{NERF_KLEUR}" stroke-width="{dikte}" '
             f'stroke-linecap="round">{paden}</g></svg>')
 
@@ -369,8 +371,8 @@ def render_uitvoering(onderdeel="cta"):
   <div class="wrap">
     <div>
       <p class="kicker">Laten uitvoeren</p>
-      <h2 id="uitvoering-kop">Nieuwe folie op je kozijnen?</h2>
-      <p>Deze site legt uit hoe de folie werkt. Het werk zelf doet iWrap, het bedrijf achter deze site: herstel van kunststof kozijnen, draairamen, schuifpuien en deuren, door heel Nederland. Tien jaar fabrieksgarantie op de folie, vijf jaar op de montage.</p>
+      <h2 id="uitvoering-kop">Deze folie op <em>jouw kozijnen?</em></h2>
+      <p>Deze site legt uit hoe de folie werkt. Het werk zelf doet iWrap, het bedrijf achter deze site en gecertificeerd verwerker van Renolit folie: herstel van kunststof kozijnen, draairamen, schuifpuien en deuren, door heel Nederland. Tien jaar fabrieksgarantie op de folie, vijf jaar op de montage.</p>
     </div>
     <div>
       <p>Stuur een paar foto's, dan krijg je een vaste prijs.</p>

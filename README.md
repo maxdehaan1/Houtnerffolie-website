@@ -142,38 +142,42 @@ zo verweert.
 
 ## Huisstijl
 
-- **Opzet:** licht en modern, richting Apple, in de stijl van de nieuwe iwrap.nl: de
-  achtergrond is `#f7f6f3` (dezelfde als iwrap.nl), met witte vlakken erop. Grote strakke
-  koppen, afgeronde vlakken zonder schaduw, ronde knoppen, een zachte gele gloed bovenaan
-  elke pagina en achter het 3D-kozijn. Het menu blijft altijd zichtbaar (licht
-  doorschijnend). Op de homepage staan onder de 3D-uitleg tegels naar Specificaties,
-  Mogelijkheden en Kleuren; het offerteblok is zonnegeel.
+- **Boodschap: kwaliteit.** Renolit folie uit het hoogste segment (Max, november 2026: "de
+  boodschap moet kwaliteitsfolie zijn"). Daarom een verfijnde, lichte stijl met goud als enige
+  accentkleur, en op de homepage direct na de 3D-uitleg het blok "Het hoogste segment" met zes
+  onderbouwde punten (uv-filter, garantie, levensduur, geen weekmakers, SolShield, ruim boven de
+  norm). Onder de intro staat de kwaliteit in het kort (`.bewijs`). Elke claim komt uit de
+  bronnen op de specificatiepagina; houd dat zo.
+- **Opzet:** licht en rustig, richting Apple, op de basis van iwrap.nl: overal dezelfde
+  achtergrond `#f7f6f3`, inhoud op witte vlakken (radius 28px), geen schaduwen, geen wisselende
+  achtergrondbanden. Grote strakke koppen in één maatvoering (`--fs-h2` voor sectiekoppen), het
+  menu altijd zichtbaar (licht doorschijnend). Het offerteblok is een wit vlak met een dunne
+  gouden rand. Geen donkere vlakken en geen crème achtergronden (vindt Max AI-achtig).
 - **Kleuren:** elke site van iWrap heeft een eigen leidende kleur op dezelfde lichte basis:
-  iwrap.nl mint `#a3cdc2`, kozijnwrap.nl hemelsblauw `#a9c8e4`, en deze site **zonnegeel
-  `#f1d27e`** (`--accent`, met `--accent-zacht` `#f9edcb`, `--accent-hover` `#ebc667`, en
-  `--accent-lijn` `#e3b746` voor dunne lijnen, stippen en opsommingstekens, want zonnegeel
-  zelf is daar te licht). Die
-  kleur komt terug als markering achter de woorden met nadruk in grote koppen, als stip voor
-  de kleine kopjes, als knop (met donkere tekst), als rondje achter de pijltjes, als
-  onderstreping van links, in het logo en in het offerteblok. Geen gekleurde tekst: de
-  leidende kleur haalt op wit te weinig contrast, en donkergroene tekst vond Max niet mooi.
-  Alle tekst is antraciet `#22262a` of grijs. Geen gele vlakken als achtergrond
-  (dat leest als crème); de gloed bovenaan is bewust heel zacht. Alles staat als variabelen
-  bovenin `css/site.css`.
+  iwrap.nl mint `#a3cdc2`, kozijnwrap.nl hemelsblauw `#a9c8e4`, en deze site **goud**:
+  `--goud` `#b38b4d` (haarlijnen, stippen, sterren), `--goud-inkt` `#876430` (goud als tekst:
+  haalt AA op wit en papier), `--goud-lijn` `#d1b885` (randen, onderstrepingen), `--goud-was`
+  `#f6efe0` (kleine vlakjes), `--goud-verloop` (bladgoud, voor het logo en actieve nummers) en
+  `--goud-tekst` (verloop voor de woorden met nadruk in grote koppen). Knoppen zijn antraciet
+  met een gouden glans; de rest van de tekst is antraciet `#22262a` of grijs.
+- **Vaste onderdelen:** kleine kopjes in gouden kapitalen met een haarlijn ervoor (bij
+  gecentreerde kopjes aan beide kanten); nummers in goud met een haarlijn erachter; links met
+  een pijltje in een dun gouden rondje; vragen met een plus in een dun gouden rondje; woorden
+  met nadruk (`<em>`) in grote koppen in goud. Alles staat als variabelen en regels in
+  `css/site.css`.
 - **Letters:** het lettertype van het apparaat zelf: San Francisco op een Mac en iPhone,
   Segoe UI op Windows, Roboto op Android. Er wordt dus geen lettertype gedownload.
-- **Logo:** de houtnerf vormt een H: een zonnegeel vlak met goudbruine nerflijnen (`#a87a26`; wit
-  viel op geel weg), zodat het teken oogt als licht hout. De staanders
-  en de dwarsbalk van de H blijven glad. Getekend in `build.py` (`beeldmerk()`, met de lijnen
-  in `NERF_ZIJ` en `NERF_VAK`); elke build schrijft daaruit `images/logo.svg` en `favicon.svg`
-  (een eenvoudige versie met alleen de H, die ook op 16 pixels leesbaar is). Naast het teken
-  "Houtnerffolie" en daaronder "Alles over Renolit folie", en achter een dun streepje het
-  RENOLIT-logo (`images/renolit-logo.svg`), dat naar /renolit-folie linkt. `images/logo.png`
-  (512 px, voor Google), `apple-touch-icon.png` en `favicon.ico` zijn van dezelfde tekening
-  gemaakt; maak ze opnieuw als het teken verandert.
+- **Logo:** de houtnerf vormt een H, als bladgoud met een gegraveerde nerf (`#7a5724`). De
+  staanders en de dwarsbalk van de H blijven glad. Getekend in `build.py` (`beeldmerk()`, met de
+  lijnen in `NERF_ZIJ` en `NERF_VAK` en het verloop in `GOUD_VERLOOP`); elke build schrijft
+  daaruit `images/logo.svg` en `favicon.svg` (een eenvoudige versie met alleen de H, die ook op
+  16 pixels leesbaar is). Naast het teken "Houtnerffolie" en daaronder "Alles over Renolit
+  folie", en achter een dun streepje het RENOLIT-logo (`images/renolit-logo.svg`), dat naar
+  /renolit-folie linkt. `images/logo.png` (512 px, voor Google), `apple-touch-icon.png` en
+  `favicon.ico` zijn van dezelfde tekening gemaakt; maak ze opnieuw als het teken verandert.
 - **Beelden:** de artikelbeelden staan op `#eeece7`; de deelafbeeldingen (1200x630) hebben
-  links de kop (met de gele markering) en het woordmerk op de achtergrondkleur met een
-  zachte gloed, rechts een beeld op `#eeece7`. De beelden voor de tegels staan in `images/tegels/` (transparant).
+  links het gouden kopje, de kop (met de woorden met nadruk in goud) en het woordmerk, rechts
+  een beeld op `#eeece7`. De beelden voor de tegels staan in `images/tegels/` (transparant).
 
 ## Vindbaarheid: Google en AI
 
