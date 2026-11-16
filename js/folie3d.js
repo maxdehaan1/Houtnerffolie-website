@@ -579,7 +579,7 @@ material.clearcoat *= vwCc;
 // zicht = zichtbare hoogte in mm, focus = naar het losse stuk, hoek = naar de hoek rechtsonder,
 // sx/dy = verschuiving van het beeld op een breed scherm, mx/sy = op een smal scherm,
 // oud = verwering, eraf = de oude folie gaat eraf, erop = de nieuwe folie gaat erop.
-const BASIS = { rotY: -0.5, kant: 0, focus: 0, hoek: 0, zicht: 2050, breed: 1250, az: 0, el: 0.1, til: 0, pel: 0, uit: 0, schaduw: 1, rust: 1, labels: 0, sx: 0.04, sy: -0.13, mx: 0, dy: 0.05, nadruk: -1, oud: 0, eraf: 0, erop: 0 };
+const BASIS = { rotY: -0.5, kant: 0, focus: 0, hoek: 0, zicht: 2050, breed: 1250, az: 0, el: 0.1, til: 0, pel: 0, uit: 0, schaduw: 1, rust: 1, labels: 0, sx: 0.04, sy: -0.13, mx: 0, dy: 0.05, nadruk: -1, oud: 0, eraf: 0, erop: 0, mzoom: 1 };
 const LOS = { rotY: -0.06, kant: 1.48, focus: 1, zicht: 500, breed: 470, az: -0.5, el: 0.6, til: 36, pel: 1, uit: 1, schaduw: 0, rust: 0, labels: 1, sx: -0.13, sy: 0.1, mx: -0.27, dy: -0.06 };
 const STANDEN = [
   BASIS,
@@ -588,10 +588,10 @@ const STANDEN = [
   { ...BASIS, ...LOS, nadruk: 1 },
   { ...BASIS, ...LOS, nadruk: 2 },
   { ...BASIS, ...LOS, zicht: 560, breed: 520, uit: 1.3, nadruk: 3 },
-  { ...BASIS, rotY: -0.42, breed: 1150, el: 0.08, sy: 0.2, dy: 0.03 },
+  { ...BASIS, rotY: -0.42, breed: 1150, el: 0.08, sy: 0.3, dy: 0.03, mzoom: 1.5 },
   { ...BASIS, rotY: -0.78, hoek: 1, zicht: 470, breed: 600, az: 0.1, el: 0.16, rust: 0, sx: 0.0, dy: 0.0, mx: 0, sy: 0.12, oud: 1 },
   { ...BASIS, rotY: -0.62, hoek: 0.5, zicht: 1250, breed: 1000, az: 0.04, el: 0.12, rust: 0, sx: 0.02, dy: 0.02, mx: 0, sy: 0.14, oud: 1, eraf: 1 },
-  { ...BASIS, rotY: -0.42, breed: 1150, el: 0.08, sy: 0.2, dy: 0.03, oud: 1, eraf: 1, erop: 1 },
+  { ...BASIS, rotY: -0.42, breed: 1150, el: 0.08, sy: 0.22, dy: 0.03, oud: 1, eraf: 1, erop: 1, mzoom: 1.2 },
 ];
 // Wanneer binnen een overgang iets verandert (standaard tussen 20% en 80%).
 const TIMING = { oud: [0.45, 0.85], eraf: [0.1, 0.92], erop: [0.1, 0.92] };
@@ -746,9 +746,9 @@ export function start(sectie) {
   // zachte schaduw onder het kozijn
   const sc = canvas(256, 256), sg = sc.getContext('2d');
   const grad = sg.createRadialGradient(128, 128, 0, 128, 128, 128);
-  grad.addColorStop(0, 'rgba(40,32,20,0.55)');
-  grad.addColorStop(0.55, 'rgba(40,32,20,0.18)');
-  grad.addColorStop(1, 'rgba(40,32,20,0)');
+  grad.addColorStop(0, 'rgba(28,34,38,0.42)');
+  grad.addColorStop(0.55, 'rgba(28,34,38,0.13)');
+  grad.addColorStop(1, 'rgba(28,34,38,0)');
   sg.fillStyle = grad; sg.fillRect(0, 0, 256, 256);
   const schaduw = new THREE.Mesh(new THREE.PlaneGeometry(1700, 520),
     new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(sc), transparent: true, depthWrite: false }));
@@ -973,7 +973,7 @@ export function start(sectie) {
     const doel = tmp.copy(midden).multiplyScalar(Math.max(0, 1 - s.focus - s.hoek))
       .addScaledVector(stukMidden, s.focus).addScaledVector(hoekMidden, s.hoek);
     const fov = THREE.MathUtils.degToRad(camera.fov);
-    const zichtH = Math.max(s.zicht, s.breed / camera.aspect);
+    const zichtH = Math.max(s.zicht, s.breed / camera.aspect) * (smal ? s.mzoom : 1);
     const afstand = (zichtH / 2) / Math.tan(fov / 2);
     camera.position.set(
       doel.x + afstand * Math.sin(s.az) * Math.cos(s.el),

@@ -61,17 +61,17 @@ def naar_iwrap(onderdeel, pad=None):
 
 FAVICON = (
     "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E"
-    "%3Crect width='34' height='34' rx='7' fill='%2327352a'/%3E"
-    "%3Cpath d='M3 10 Q11 6 17.5 9.2 T32 8.4' stroke='%23e9e0d2' stroke-width='2.1' fill='none' stroke-linecap='round'/%3E"
-    "%3Cpath d='M3 17 Q11 13 17.5 16.2 T32 15.4' stroke='%23e9e0d2' stroke-width='2.1' fill='none' stroke-linecap='round' opacity='.7'/%3E"
-    "%3Cpath d='M3 24 Q11 20 17.5 23.2 T32 22.4' stroke='%23e9e0d2' stroke-width='2.1' fill='none' stroke-linecap='round' opacity='.45'/%3E"
+    "%3Crect width='34' height='34' rx='8' fill='%232f5a50'/%3E"
+    "%3Cpath d='M3 10 Q11 6 17.5 9.2 T32 8.4' stroke='%23ffffff' stroke-width='2.1' fill='none' stroke-linecap='round'/%3E"
+    "%3Cpath d='M3 17 Q11 13 17.5 16.2 T32 15.4' stroke='%23a3cdc2' stroke-width='2.1' fill='none' stroke-linecap='round'/%3E"
+    "%3Cpath d='M3 24 Q11 20 17.5 23.2 T32 22.4' stroke='%23a3cdc2' stroke-width='2.1' fill='none' stroke-linecap='round' opacity='.6'/%3E"
     "%3C/svg%3E"
 )
 
 MAANDEN = ["januari", "februari", "maart", "april", "mei", "juni", "juli",
            "augustus", "september", "oktober", "november", "december"]
 
-PIJL = '<span class="pijl" aria-hidden="true">&rarr;</span>'
+PIJL = '<span class="pijl" aria-hidden="true">&rsaquo;</span>'
 PIJL_UIT = ('<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 2.5h6v6M9.5 2.5 2.5 9.5" '
             'fill="none" stroke="currentColor" stroke-width="1.4"/></svg>')
 
@@ -361,7 +361,7 @@ def render_head(meta, ver, jsonld, extra=""):
 <meta name="description" content="{escape(meta["description"])}">
 <link rel="canonical" href="{url}">
 <meta name="robots" content="{robots}">
-<meta name="theme-color" content="#f4f0e7">
+<meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="{og_type}">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:site_name" content="Houtnerffolie">
@@ -374,8 +374,6 @@ def render_head(meta, ver, jsonld, extra=""):
 <meta name="twitter:card" content="summary_large_image">{artikel}
 <link rel="icon" type="image/svg+xml" href="{FAVICON}">
 <link rel="alternate" type="application/rss+xml" title="Houtnerffolie: artikelen" href="/feed.xml">
-<link rel="preload" href="/fonts/newsreader-latin-662a6e2a.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/fonts.css?v={ver}">
 <link rel="stylesheet" href="/css/site.css?v={ver}">
 <script>document.documentElement.classList.add('js')</script>
 {extra}{"".join(ld(x) for x in jsonld)}
@@ -464,7 +462,7 @@ def render_artikel(meta, body, artikelen, ver):
 </article>
 <section class="sectie" aria-labelledby="verder-kop">
   <div class="wrap verder">
-    <h2 class="kicker" id="verder-kop" style="margin-top:1.2rem">Verder lezen</h2>
+    <h2 id="verder-kop">Verder lezen</h2>
     <ul class="lijst">{verder}</ul>
   </div>
 </section>
@@ -556,7 +554,7 @@ def schrijf_feed(artikelen):
 # ---------- bouwen ------------------------------------------------------------------
 
 def bouw():
-    ver = versie("css/site.css", "css/fonts.css", "js/folie3d.js", "js/site.js")
+    ver = versie("css/site.css", "js/folie3d.js", "js/site.js")
     stalen, kleuren, decors, populair = laad_stalen()
 
     bronnen = sorted(SRC.rglob("*.html"))

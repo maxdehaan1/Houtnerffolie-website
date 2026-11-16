@@ -136,12 +136,16 @@ zo verweert.
 
 ## Huisstijl
 
-- **Opzet:** als een vakblad. Papier, inkt en één accentkleur, lijnen in plaats van
-  kaders en schaduwen. Bewust geen glimmende "app"-uitstraling.
-- **Letters:** Newsreader voor koppen en lopende tekst, Schibsted Grotesk voor labels,
-  knoppen en bijschriften. Beide zelf gehost in `fonts/` (`css/fonts.css`).
-- **Kleuren:** papier `#f4f0e7`, inkt `#1b1d1a`, accent dennengroen `#26392d` (RAL 6009),
-  hout `#8b5a2b` voor kleine accenten. Alles staat als variabelen bovenin `css/site.css`.
+- **Opzet:** licht en rustig, richting Apple: wit en lichtgrijs (`#f5f6f7`), grote strakke
+  koppen, veel witruimte, afgeronde vlakken zonder schaduw, ronde knoppen. Geen crème
+  achtergronden.
+- **Kleuren:** die van iWrap. Mint `#a3cdc2` met de lichte tinten `#dbece7` en `#eef6f3`,
+  mintgroen `#3f7468` voor links en accenten, `#2f5a50` voor knoppen. Antraciet `#1d2125`
+  alleen voor tekst. Alles staat als variabelen bovenin `css/site.css`.
+- **Letters:** het lettertype van het apparaat zelf: San Francisco op een Mac en iPhone,
+  Segoe UI op Windows, Roboto op Android. Er wordt dus geen lettertype gedownload.
+- **Beelden:** de artikelbeelden staan op lichtgrijs `#f2f4f5`; de deelafbeeldingen
+  (1200x630) hebben links witte tekstruimte en rechts een beeld op lichtgrijs.
 
 ## Structuur
 
@@ -150,7 +154,6 @@ build.py                Bouwt de site uit src/pages/ en stalen.json
 src/pages/              De bronnen (hier pas je teksten aan)
 stalen.json             Alle stalen
 css/site.css            Alle styling
-css/fonts.css           De zelf gehoste lettertypes
 js/folie3d.js           De 3D-uitleg op de homepage
 js/site.js              Zoeken op de kleurenpagina
 js/vendor/three-*/      three.js (MIT-licentie)
