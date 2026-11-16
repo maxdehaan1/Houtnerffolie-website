@@ -595,12 +595,15 @@ const STANDEN = [
 ];
 // Wanneer binnen een overgang iets verandert (standaard tussen 20% en 80%).
 const TIMING = { oud: [0.45, 0.85], eraf: [0.1, 0.92], erop: [0.1, 0.92] };
+// De kijker op de kleurenpagina: het kozijn rechtop, met een rustige beweging en zelf te draaien.
+const KIJK = { ...BASIS, rotY: -0.42, zicht: 1720, breed: 1320, sx: 0, dy: 0.02, mx: 0, sy: 0.02 };
 const LAGEN = ['lijm', 'kleur', 'top'];
 const TUSSEN = 40, SCHUIF = 22;      // afstand tussen de lagen, en hoe ver ze opzij schuiven
 
 /* ---------- de scène -------------------------------------------------------------- */
 
-function start(sectie) {
+export function start(sectie) {
+  const kijker = sectie.classList.contains('kijker');
   const podium = sectie.querySelector('.folie-podium');
   const doek = sectie.querySelector('.folie-doek');
   const kleurenData = JSON.parse(document.getElementById('folie-kleuren')?.textContent || '[]');
@@ -754,10 +757,10 @@ function start(sectie) {
   scene.add(schaduw);
 
   /* ----- labels bij de lagen ----- */
-  const labelRenderer = new CSS2DRenderer({ element: sectie.querySelector('.folie-labels') });
+  const labelRenderer = new CSS2DRenderer({ element: sectie.querySelector('.folie-labels') || undefined });
   const labelTekst = [
     ['1', 'Toplaag', 'acryl (PMMA): uv-filter en nerf'],
-    ['2', 'Kleurlaag', 'pvc met pigment of houtprint'],
+    ['2', 'Kleurlaag', 'pvc met pigment of houtprint, kaatst zonnewarmte terug'],
     ['3', 'Lijmlaag', 'acrylaatlijm, hecht bij 18 tot 35 °C'],
     ['4', 'Kunststof profiel', 'pvc, gaat 50 tot 75 jaar mee'],
   ];
@@ -883,7 +886,22 @@ function start(sectie) {
     return uit;
   }
 
-  let stand = doelStand(voortgang());
+  // in de kijker draai je het kozijn door te slepen
+  let sleep = 0;
+  const kijkDoel = () => Object.assign(doelStand(0), KIJK, { rotY: KIJK.rotY + sleep });
+  if (kijker) {
+    let vanX = null, vanSleep = 0;
+    doek.addEventListener('pointerdown', e => { vanX = e.clientX; vanSleep = sleep; doek.setPointerCapture?.(e.pointerId); });
+    doek.addEventListener('pointermove', e => {
+      if (vanX === null) return;
+      sleep = Math.max(-1.1, Math.min(1.1, vanSleep + (e.clientX - vanX) * 0.006));
+      vraagBeeld();
+    });
+    const los = () => { vanX = null; };
+    doek.addEventListener('pointerup', los);
+    doek.addEventListener('pointercancel', los);
+  }
+  let stand = kijker ? kijkDoel() : doelStand(voortgang());
   const tmp = new THREE.Vector3(), midden = new THREE.Vector3(), stukMidden = new THREE.Vector3(), hoekMidden = new THREE.Vector3();
   const oog = new THREE.Vector3(), zonRichting = new THREE.Vector3();
 
@@ -990,7 +1008,7 @@ function start(sectie) {
     if (!zichtbaar || document.hidden || (lokaal && window.__folie?.pauze)) { loopt = false; return; }
     const dt = Math.min(0.05, (nu - vorige) / 1000);
     vorige = nu;
-    const doel = doelStand(voortgang());
+    const doel = kijker ? kijkDoel() : doelStand(voortgang());
     const k = rustig.matches ? 1 : 1 - Math.exp(-dt * 5.5);
     let beweging = 0;
     for (const key in doel) { const d = doel[key] - stand[key]; stand[key] += d * k; beweging += Math.abs(d); }
@@ -1016,7 +1034,7 @@ function start(sectie) {
   }
   markeer();
   new IntersectionObserver(([e]) => { zichtbaar = e.isIntersecting; if (zichtbaar) vraagBeeld(); }, { rootMargin: '100px' }).observe(sectie);
-  window.addEventListener('scroll', () => { vraagBeeld(); markeer(); }, { passive: true });
+  if (!kijker) window.addEventListener('scroll', () => { vraagBeeld(); markeer(); }, { passive: true });
   window.addEventListener('resize', kader);
   document.addEventListener('visibilitychange', vraagBeeld);
   new ResizeObserver(kader).observe(podium);
@@ -1029,7 +1047,7 @@ function start(sectie) {
 
   /* ----- opstarten ----- */
   const vind = slug => kleurenData.find(x => x.slug === slug);
-  laadBeeld('/images/houtnerf-textuur.webp').then(async img => {
+  const klaar = laadBeeld('/images/houtnerf-textuur.webp').then(async img => {
     nerf = img;
     // reliëf: groeven waar de nerf loopt
     const cb = canvas(512, 512), gb = cb.getContext('2d');
@@ -1053,7 +1071,8 @@ function start(sectie) {
     pasToe(stand, 0);
     sectie.classList.add('folie-3d');
     vraagBeeld();
-  }).catch(fout => { console.error(fout); sectie.classList.add('folie-geen3d'); });
+  }).catch(fout => { console.error(fout); sectie.classList.add('folie-geen3d'); throw fout; });
+  klaar.catch(() => {});
 
   /* ----- alleen lokaal: beelden opslaan voor de site ----- */
   if (lokaal) {
@@ -1082,6 +1101,11 @@ function start(sectie) {
       renderer, glas: [glasVoor, glasAchter], binnen: binnenMat, scene,
     };
   }
+
+  // voor de kijker op de kleurenpagina
+  return {
+    async zetKleur(deel, slug) { await klaar; await zetKleur(deel, vind(slug)); },
+  };
 }
 
 /* ---------- opstarten ------------------------------------------------------------- */

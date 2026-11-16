@@ -35,10 +35,10 @@ SITE = "https://www.houtnerffolie.nl"
 VANDAAG = date.today().isoformat()
 
 NAV = [
-    ("artikelen", "/artikelen", "Artikelen"),
+    ("mogelijkheden", "/mogelijkheden", "Mogelijkheden"),
+    ("specificaties", "/specificaties", "Specificaties"),
     ("kleuren", "/kleuren", "Kleuren"),
-    ("opbouw", "/#opbouw", "Opbouw"),
-    ("vragen", "/#vragen", "Vragen"),
+    ("artikelen", "/artikelen", "Artikelen"),
 ]
 
 # iWrap voert het werk uit; deze site verwijst door. Alle links krijgen
@@ -197,7 +197,7 @@ def staal_vlak(staal, groot=False):
             f'width="{maat}" height="{maat}" loading="lazy" decoding="async"></div>')
 
 
-def staal_item(staal, zoek=True):
+def staal_item(staal, zoek=True, knop=False):
     label = staal_label(staal)
     attrs = ' class="is-populair"' if staal.get("populair") and zoek else ""
     if zoek:
@@ -205,7 +205,13 @@ def staal_item(staal, zoek=True):
                                          "populair veelgekozen" if staal.get("populair") else "",
                                          "decor hout" if staal["soort"] == "decor" else "effen"]))
         attrs += f' data-zoek="{escape(woorden.lower())}"'
-    return (f'<li{attrs}>{staal_vlak(staal)}<b>{escape(staal["naam"])}</b>'
+    vlak = staal_vlak(staal)
+    if knop:
+        # op de kleurenpagina opent een klik op het staal de kleur op een kozijn in 3D
+        vlak = (f'<button type="button" class="staal-knop" data-slug="{staal["slug"]}" '
+                f'aria-label="Bekijk {escape(staal["naam"].split(" / ")[0])} op een kozijn">{vlak}'
+                f'<span class="staal-3d" aria-hidden="true">3D</span></button>')
+    return (f'<li{attrs}>{vlak}<b>{escape(staal["naam"])}</b>'
             f'<span>{escape(label)}</span></li>')
 
 
@@ -224,6 +230,16 @@ def laad_stalen():
     decors = sorted((s for s in stalen if s["soort"] == "decor"), key=sorteersleutel)
     populair = sorted((s for s in stalen if s.get("populair")), key=lambda s: POPULAIR_VOLGORDE.index(s["ral"]))
     return stalen, kleuren, decors, populair
+
+
+def alle_kleuren_json(stalen):
+    """Alle stalen voor de 3D-weergave op de kleurenpagina."""
+    data = [{
+        "slug": s["slug"], "naam": s["naam"], "ral": s["ral"], "code": s.get("code"),
+        "hex": KLEUR_3D.get(s["slug"], s["hex"] or "#888888"),
+        "soort": s["soort"], "bestand": "/" + s["bestand"] if s["bestand"] else None,
+    } for s in stalen]
+    return json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
 
 def kiezer_json(stalen):
@@ -282,6 +298,8 @@ def render_voet():
       <h2>Onderwerpen</h2>
       <ul>
         <li><a href="/#opbouw">De opbouw van de folie</a></li>
+        <li><a href="/mogelijkheden">Mogelijkheden</a></li>
+        <li><a href="/specificaties">Specificaties</a></li>
         <li><a href="/kleuren">Alle kleuren</a></li>
         <li><a href="/artikelen">Artikelen</a></li>
         <li><a href="/#vragen">Veelgestelde vragen</a></li>
@@ -317,7 +335,8 @@ REVIEWS_SCRIPT = """<script>
 
 ANALYTICS = '<script defer src="/_vercel/insights/script.js"></script>'
 
-THREE_HEAD = """<script type="importmap">{"imports":{"three":"/js/vendor/three-0.187.0/three.module.js","three/addons/":"/js/vendor/three-0.187.0/addons/"}}</script>
+IMPORTMAP = """<script type="importmap">{"imports":{"three":"/js/vendor/three-0.187.0/three.module.js","three/addons/":"/js/vendor/three-0.187.0/addons/"}}</script>"""
+THREE_HEAD = IMPORTMAP + """
 <link rel="modulepreload" href="/js/vendor/three-0.187.0/three.core.js">
 <link rel="modulepreload" href="/js/vendor/three-0.187.0/three.module.js">
 <link rel="modulepreload" href="/js/folie3d.js">"""
@@ -565,9 +584,10 @@ def bouw():
                 "{{archief}}": render_archief(artikelen),
                 "{{kleurstrook}}": '<ul class="kleurstrook">' + "".join(staal_item(s, zoek=False) for s in populair) + "</ul>",
                 "{{folie-kleuren}}": kiezer_json(stalen),
-                "{{stalen-populair}}": "".join(staal_item(s, zoek=False) for s in populair),
-                "{{stalen-kleuren}}": "".join(staal_item(s) for s in kleuren),
-                "{{stalen-decors}}": "".join(staal_item(s) for s in decors),
+                "{{stalen-populair}}": "".join(staal_item(s, zoek=False, knop=True) for s in populair),
+                "{{stalen-kleuren}}": "".join(staal_item(s, knop=True) for s in kleuren),
+                "{{stalen-decors}}": "".join(staal_item(s, knop=True) for s in decors),
+                "{{folie-kleuren-alle}}": alle_kleuren_json(stalen),
                 "{{aantal-totaal}}": str(len(stalen)),
                 "{{aantal-kleuren}}": str(len(kleuren)),
                 "{{aantal-decors}}": str(len(decors)),
@@ -588,6 +608,8 @@ def bouw():
                                "description": meta["description"], "publisher": ORGANISATIE})
                 extra = THREE_HEAD + "\n"
                 scripts = '<script type="module" src="/js/folie3d.js"></script>'
+            elif slug == "kleuren":
+                extra = IMPORTMAP + "\n"
             faq = vragen_ld(body)
             if faq:
                 jsonld.append(faq)

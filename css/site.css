@@ -83,7 +83,7 @@ button { font: inherit; color: inherit; }
   .woordmerk small { display: none; }
   .woordmerk b { font-size: 1.45rem; }
   .kop .knop { margin-left: auto; padding: .55rem .75rem; font-size: .8125rem; }
-  .nav { order: 3; width: 100%; margin: 0; gap: 1.4rem; overflow-x: auto; font-size: .875rem; scrollbar-width: none; }
+  .nav { order: 3; width: 100%; margin: 0; gap: 1.15rem; overflow-x: auto; font-size: .875rem; scrollbar-width: none; }
   .nav::-webkit-scrollbar { display: none; }
 }
 
@@ -131,8 +131,8 @@ a:hover .pijl { transform: translateX(3px); }
 .folie-labels { position: absolute; inset: 0; pointer-events: none; }
 @media (min-width: 760px) {
   /* Op een breed scherm staat het beeld rechts van de tekst, met een zachte rand */
-  .folie-doek, .folie-labels { left: 36%; width: 64%; }
-  .folie-doek { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24%); mask-image: linear-gradient(90deg, transparent 0, #000 24%); }
+  .folie .folie-doek, .folie .folie-labels { left: 36%; width: 64%; }
+  .folie .folie-doek { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24%); mask-image: linear-gradient(90deg, transparent 0, #000 24%); }
 }
 .folie-schaal {
   position: absolute; right: var(--rand); bottom: 1.4rem; margin: 0; max-width: 21rem; text-align: right;
@@ -445,3 +445,71 @@ figcaption .fig { color: var(--hout); font-weight: 600; margin-right: .35rem; fo
 @media (max-width: 760px) { .stalen { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stalen-populair { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .bron-noot { font: 400 .8125rem/1.5 var(--sans); color: var(--inkt-3); max-width: 44rem; }
 [hidden] { display: none !important; }
+
+/* ---------- specificaties ---------- */
+.spec { padding-bottom: clamp(2rem, 5vw, 4rem); }
+.spec-in { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.doorsnede { margin: 0; position: sticky; top: 2rem; }
+.doorsnede svg { display: block; width: 100%; max-width: 30rem; height: auto; }
+.doorsnede figcaption { font: 400 .8125rem/1.45 var(--sans); color: var(--inkt-3); margin-top: .9rem; max-width: 26rem; }
+.d-naam { font: 600 13px var(--sans); fill: var(--inkt); }
+.d-uitleg { font: 400 12px var(--sans); fill: var(--inkt-2); }
+.d-klein { font: 600 11px var(--sans); }
+.spec-kop { font: 600 .75rem/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--inkt-3); margin: 0; padding-bottom: .55rem; border-bottom: 1px solid var(--inkt); }
+.spec-tabel { margin: 0 0 2.4rem; }
+.spec-tabel th { width: 11.5rem; padding-right: 1.2rem; border-bottom-color: var(--lijn); }
+.spec-tabel td a { white-space: nowrap; }
+.spec-tekst { padding-top: 1rem; }
+@media (max-width: 759px) {
+  .spec-in { grid-template-columns: minmax(0, 1fr); }
+  .doorsnede { position: static; }
+  .spec-tabel th { width: 7.6rem; padding-right: .8rem; }
+}
+
+/* ---------- mogelijkheden ---------- */
+.mogelijk { padding-bottom: clamp(3rem, 7vw, 6rem); }
+.mogelijk-lijst { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(2rem, 5vw, 4.5rem); border-top: 1px solid var(--inkt); }
+.mogelijk-lijst li { padding: 1.7rem 0 2rem; border-bottom: 1px solid var(--lijn); }
+.mogelijk-lijst .nr { font: 600 .8125rem/1 var(--sans); color: var(--hout); letter-spacing: .04em; }
+.mogelijk-lijst h2 { font-size: clamp(1.45rem, 2.4vw, 1.85rem); line-height: 1.15; letter-spacing: -.012em; margin: .65rem 0 .7rem; }
+.mogelijk-lijst p { color: var(--inkt-2); font-size: 1.0625rem; max-width: 34rem; margin: 0; }
+.mogelijk-niet { max-width: 46rem; margin-top: 3rem; }
+.mogelijk-niet ul { margin: 0; padding-left: 1.1rem; }
+.mogelijk-niet li { margin-bottom: .5rem; }
+.mogelijk-verder { display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; margin-top: 2.5rem; }
+@media (max-width: 759px) { .mogelijk-lijst { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- kleurenpagina: een staal in 3D op een kozijn ---------- */
+.staal-knop { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; position: relative; color: inherit; font: inherit; }
+.staal-knop:focus-visible { outline: 2px solid var(--inkt); outline-offset: 3px; }
+.staal-knop .staal-vlak { transition: box-shadow .15s; }
+.staal-knop:hover .staal-vlak { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .06), 0 0 0 1px var(--inkt); }
+.stalen .staal-3d, .kleurstrook .staal-3d { position: absolute; right: .45rem; bottom: .45rem; display: block; font: 600 .625rem/1 var(--sans); letter-spacing: .08em; padding: .32rem .4rem; background: var(--papier); color: var(--inkt); opacity: 0; transition: opacity .15s; }
+.staal-knop:hover .staal-3d, .staal-knop:focus-visible .staal-3d { opacity: 1; }
+@media (hover: none) { .stalen .staal-3d { opacity: .92; } }
+html:not(.js) .staal-3d, html:not(.js) .kijker-tip { display: none; }
+.kijker-tip { margin: -.6rem 0 1.6rem; }
+
+.kijker-dialoog { border: 0; padding: 0; margin: auto; background: var(--papier); color: var(--inkt); width: min(68rem, calc(100vw - 2rem)); max-width: none; max-height: calc(100dvh - 2rem); overflow: auto; box-shadow: 0 0 0 1px var(--lijn); }
+.kijker-dialoog::backdrop { background: rgba(27, 29, 26, .5); }
+.kijker-in { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); position: relative; }
+.kijker { position: relative; background: var(--papier-2); }
+.kijker .folie-podium { position: relative; top: auto; height: min(72vh, 40rem); }
+.kijker .folie-doek { position: absolute; inset: 0; width: 100%; height: 100%; cursor: grab; touch-action: pan-y; }
+.kijker .folie-doek:active { cursor: grabbing; }
+.kijker-hint { position: absolute; left: 1rem; bottom: .8rem; margin: 0; font: 500 .75rem/1 var(--sans); color: var(--inkt-3); }
+.kijker-paneel { padding: 2.4rem 2.2rem 2.2rem; align-self: center; }
+.kijker-paneel .kicker { margin-bottom: .8rem; }
+.kijker-paneel h2 { font-size: clamp(1.9rem, 3vw, 2.6rem); line-height: 1.05; letter-spacing: -.018em; margin: 0 0 .4rem; }
+.kijker-code { font: 400 .9375rem/1.4 var(--sans); color: var(--inkt-3); margin: 0 0 1.2rem; }
+.kijker-uitleg { font: 400 .9375rem/1.45 var(--sans); color: var(--inkt-2); margin: 1rem 0 0; }
+.kijker-sluit { position: absolute; top: .8rem; right: .8rem; width: 2.6rem; height: 2.6rem; border: 0; padding: 0; background: var(--papier); color: var(--inkt); cursor: pointer; display: grid; place-items: center; box-shadow: inset 0 0 0 1px var(--lijn); }
+.kijker-sluit svg { width: .9rem; height: .9rem; }
+.kijker-fout .kijker-hint::after { content: " · 3D werkt niet in deze browser"; }
+@media (max-width: 759px) {
+  .kijker-dialoog { width: 100vw; height: 100dvh; max-height: 100dvh; margin: 0; }
+  .kijker-in { grid-template-columns: minmax(0, 1fr); }
+  .kijker .folie-podium { height: 54dvh; }
+  .kijker-paneel { padding: 1.3rem 1.2rem 1.6rem; }
+  .kijker-paneel .kiezer-deel button { padding: .55rem .8rem; }
+}

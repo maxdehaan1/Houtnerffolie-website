@@ -27,6 +27,7 @@
     <p class="meta" id="zoek-telling" aria-live="polite">{{aantal-totaal}} stalen</p>
   </div>
   <p class="meta" id="zoek-leeg" hidden>Geen kleur of decor gevonden. Probeer een RAL-code zonder letters, bijvoorbeeld 9001.</p>
+  <p class="meta kijker-tip">Klik op een staal om de kleur in 3D op een kozijn te zien.</p>
 
   <section class="kleurgroep" data-groep="populair" aria-labelledby="populair-kop">
     <h2 id="populair-kop">Veelgekozen</h2>
@@ -48,3 +49,26 @@
 
   <p class="bron-noot">Staalafbeeldingen: RENOLIT. Het assortiment kan wijzigen; de actuele collectie staat bij Renolit zelf. Van {{aantal-zonder}} stalen is geen afbeelding beschikbaar. Lees ook <a href="/artikelen/kleur-kiezen-met-een-staal">waarom een staal meer zegt dan een scherm</a>.</p>
 </div>
+
+<dialog class="kijker-dialoog" id="kijker" aria-labelledby="kijker-naam">
+  <div class="kijker-in">
+    <div class="kijker" data-kozijn="ice-cream-b-46835" data-raam="dark-green-6125">
+      <div class="folie-podium"><canvas class="folie-doek" aria-hidden="true"></canvas></div>
+      <p class="kijker-hint" aria-hidden="true">Sleep om het kozijn te draaien</p>
+    </div>
+    <div class="kijker-paneel">
+      <p class="kicker">Op een kozijn</p>
+      <h2 id="kijker-naam">Kleur</h2>
+      <p class="kijker-code" id="kijker-code"></p>
+      <div class="kiezer-deel" role="group" aria-label="Waar komt de kleur?">
+        <button type="button" data-op="beide" aria-pressed="true">Kozijn en raam</button>
+        <button type="button" data-op="kozijn" aria-pressed="false">Kozijn</button>
+        <button type="button" data-op="raam" aria-pressed="false">Raam</button>
+      </div>
+      <p class="kijker-uitleg" id="kijker-uitleg" aria-live="polite"></p>
+      <p class="kiezer-noot">Een scherm geeft kleur nooit precies weer. Vergelijk voor een definitieve keuze een echt staal, buiten en bij daglicht.</p>
+    </div>
+    <button type="button" class="kijker-sluit" aria-label="Sluiten"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2 12 12M12 2 2 12" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></button>
+  </div>
+  <script type="application/json" id="folie-kleuren">{{folie-kleuren-alle}}</script>
+</dialog>

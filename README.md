@@ -27,7 +27,10 @@ het offerteblok van iWrap, de sitemap en de rss-feed maakt `build.py` zelf.
 
 ```
 src/pages/index.html            Homepage: de 3D-uitleg, artikelen, kleuren, praktijk, vragen
-src/pages/kleuren.html          Kleurenpagina (de stalen komen uit stalen.json)
+src/pages/specificaties.html    De specificaties van de folie (Renolit Exofol PR)
+src/pages/mogelijkheden.html    Wat er kan met houtnerffolie
+src/pages/kleuren.html          Kleurenpagina (de stalen komen uit stalen.json); een klik op een
+                                staal toont de kleur in 3D op een kozijn
 src/pages/artikelen/index.html  Overzicht van alle artikelen
 src/pages/artikelen/*.html      De artikelen zelf
 src/pages/404.html              Pagina niet gevonden
@@ -112,6 +115,25 @@ renders uit hetzelfde model. Op een lokale server (`localhost`) heeft het script
 hulpfunctie `window.__folie.opname(pad, breedte, hoogte, stand, { kozijn, raam })` om nieuwe
 renders op te slaan; online doet die niets.
 
+## Specificaties: welke folie
+
+De specificatiepagina beschrijft één folie: **Renolit Exofol PR**, de zelfklevende reparatiefolie
+in dezelfde kwaliteit als Renolit Exofol PX. Renolit maakt reparatiefolie in vier kwaliteiten
+(MR, PR, FR en PFR). FR is de hoogste, maar bestaat maar in een kleine groep kleuren; de
+klassieke houtnerfkleuren (crèmewit, wit, dennengroen, staalblauw, Irish Oak) zijn het hoogst
+leverbaar in PR. Gecontroleerd in de eShop van Renolit in november 2026: van de 94 kleuren op
+de kleurenpagina zijn er 48 in PR leverbaar.
+
+Op de pagina staan alleen gegevens die Renolit openbaar publiceert (productpagina's en flyers,
+met bronnen onderaan). De laboratoriumwaarden uit het productblad van Exofol PR (dikte,
+treksterkte, weertestwaarden) staan er bewust niet op: dat blad zegt dat de inhoud niet
+gepubliceerd mag worden zonder schriftelijke toestemming van Renolit.
+
+**Verwering:** de verweerde folie in de 3D-uitleg en de praktijkvoorbeelden is folie van een
+oudere generatie. Zo staat het ook overal op de site; de folie van nu is veel sterker (geen
+weekmakers, meer uv-filter, SolShield). Klanten moeten niet het idee krijgen dat nieuwe folie
+zo verweert.
+
 ## Huisstijl
 
 - **Opzet:** als een vakblad. Papier, inkt en één accentkleur, lijnen in plaats van
@@ -171,7 +193,10 @@ Gebouwd en meegecommit: `index.html`, `kleuren.html`, `404.html`, `artikelen/`,
 
 ## Openstaand
 
-- Gebruik van RENOLIT-beeldmateriaal nog even afstemmen met de contactpersoon daar
+- Gebruik van RENOLIT-beeldmateriaal nog even afstemmen met de contactpersoon daar, en
+  vragen of de waarden uit het productblad van Exofol PR op de specificatiepagina mogen
+- Garantie op Exofol PR navragen: de sites noemen tien jaar fabrieksgarantie; Renolit geeft
+  op de fabrieksversie (Exofol PX) tot vijftien jaar in Noord- en Midden-Europa
 - Google Search Console koppelen en de sitemap aanmelden (staat in
   `../iwrap-project/LIVEGANG.md`, stap 5); na de overstap naar het nieuwe ontwerp ook de
   nieuwe adressen (`/artikelen/...`) laten indexeren
