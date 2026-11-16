@@ -95,7 +95,12 @@ def datum_nl(iso):
     return f"{d} {MAANDEN[m - 1]} {j}"
 
 
+INLINE_TAG = r"</?(?:a|strong|em|b|i|span|abbr|code|small|sup|sub)\b[^>]*>"
+
+
 def tekst_van(html):
+    # inline-tags (links, nadruk) zonder spatie weghalen, anders komt er "iWrap ." te staan
+    html = re.sub(INLINE_TAG, "", html)
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html)).strip()
 
 
