@@ -76,9 +76,8 @@ PIJL_UIT = ('<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 2.5h6v6M9
             'fill="none" stroke="currentColor" stroke-width="1.4"/></svg>')
 
 # De kleuren in de 3D-uitleg op de homepage (volgorde = volgorde in de kiezer)
-KIEZER = ["golden-oak", "ice-cream-b-46835", "white-9152", "anthracite-grey-7016",
-          "black-grey-7021", "dark-green-6125", "steel-blue-5150", "irish-oak",
-          "walnut-v", "mahogony"]
+KIEZER = ["ice-cream-b-46835", "dark-green-6125", "white-9152", "anthracite-grey-7016", "black-grey-7021",
+          "steel-blue-5150", "golden-oak", "irish-oak", "walnut-v", "mahogony"]
 # Kleurwaarde voor het 3D-kozijn. De hex in stalen.json is het gemiddelde van de
 # staalfoto; voor de RAL-kleuren ligt de referentiewaarde dichter bij het echte
 # kozijn (de foto's zijn vaak donkerder en verzadigder).
@@ -575,6 +574,7 @@ def bouw():
                 "{{aantal-zonder}}": str(sum(1 for s in stalen if not s["bestand"])),
                 "{{aantal-artikelen}}": str(len(artikelen)),
                 "{{offerte}}": naar_iwrap("tekst"),
+                "{{iwrap-werkwijze}}": naar_iwrap("uitleg", "/werkwijze"),
             }
             for k, v in vervang.items():
                 body = body.replace(k, v)

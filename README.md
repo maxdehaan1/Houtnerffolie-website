@@ -71,23 +71,46 @@ het zelf opgebouwde crèmewit (`eigen_staal`) hebben hun nerf al in de foto.
 
 ## De 3D-uitleg op de homepage
 
-`js/folie3d.js` tekent een kunststof kozijn met folie. Bij het scrollen komt een stuk folie
-van de onderdorpel los en valt het uiteen in toplaag, kleurlaag en lijmlaag; aan het eind
-kan de bezoeker van kleur wisselen.
+`js/folie3d.js` tekent een crèmewit kunststof kozijn (RAL 9001) met een dennengroen draairaam
+(RAL 6009), de combinatie die je in Nederland het vaakst ziet. De uitleg heeft drie
+hoofdstukken (rechtsboven in beeld aan te klikken):
 
+1. **Opbouw** (stap 1 tot 5): een stuk folie komt los van de onderdorpel van het raam en valt
+   uiteen in de heldere toplaag (acryl, met de nerf erin), de kleurlaag en de lijmlaag, boven
+   het kale profiel. De lagen werpen schaduw op elkaar; de labels noemen per laag het
+   materiaal en wat de laag doet.
+2. **Kleur** (stap 6): de bezoeker kiest eerst kozijn of raam en dan een kleur.
+3. **Levensduur** (stap 7 tot 9): de folie verweert zoals in de 3D-animatie op iwrap.nl
+   (krijtig, gebarsten in eilandjes met opgekrulde randen), daarna gaat de oude folie eraf
+   (eerst blijft er lijm achter, dan kaal kunststof) en komt er een nieuwe folie op. Het
+   hoe en waarom van het werk zelf staat op iwrap.nl; hier staat alleen wat er met de folie
+   gebeurt, met een link naar de werkwijze van iWrap.
+
+Details:
+
+- **Glas:** dubbel glas met een afstandhouder, twee ruiten die de lucht, bomen en gevels
+  aan de overkant weerspiegelen (iets bol, zoals echte isolatieruiten), en daarachter een
+  kamer met diepte. De weerspiegeling is een getekende omgeving in `lucht()`, de kamer zit
+  in `binnenMateriaal()`.
+- **Standen:** bovenin het script (`STANDEN`); `TIMING` bepaalt wanneer binnen een overgang
+  iets gebeurt (de verwering komt pas als de camera er is). Het aantal standen is gelijk aan
+  het aantal stappen in `src/pages/index.html`.
+- **Kleuren:** de beginkleuren staan in `src/pages/index.html` (`data-kozijn` en `data-raam`
+  op de sectie), de kleuren in de kiezer in `build.py` (`KIEZER`). Voor de RAL-kleuren
+  gebruikt het model een referentiekleur (`KLEUR_3D`), omdat de gemiddelde kleur van de
+  staalfoto vaak te donker is.
+- **Verwering en herstel:** in de shader `VERWEER_MAP` (overgenomen uit `oudeFolie` in de
+  3D-animatie van iwrap.nl). Het herstel loopt vanaf de hoek rechtsonder over het kozijn.
 - Gebouwd met three.js 0.187.0, zelf gehost in `js/vendor/three-0.187.0/` (geen verzoek
   naar een externe server).
-- De standen van de uitleg staan bovenin het script (`STANDEN`); de kleuren in de kiezer
-  in `build.py` (`KIEZER`). Voor de RAL-kleuren gebruikt het 3D-model een
-  referentiekleur (`KLEUR_3D`), omdat de gemiddelde kleur van de staalfoto vaak te donker is.
 - Zonder WebGL of JavaScript blijft `images/folie-kozijn.webp` staan en is alle tekst
-  gewoon leesbaar.
-- Het beeld draait alleen als het in beeld is; bij "beweging beperken" in het
-  besturingssysteem staat de rustbeweging uit.
+  gewoon leesbaar. Het beeld draait alleen als het in beeld is; bij "beweging beperken" in
+  het besturingssysteem staat de rustbeweging uit.
 
-De artikelbeelden en deelafbeeldingen zijn renders uit hetzelfde model. Op een lokale
-server (`localhost`) heeft het script een hulpfunctie `window.__folie.opname(...)` om
-nieuwe renders op te slaan; online doet die niets.
+De startafbeelding, het artikelbeeld van "Wat elke laag doet" en de deelafbeeldingen zijn
+renders uit hetzelfde model. Op een lokale server (`localhost`) heeft het script een
+hulpfunctie `window.__folie.opname(pad, breedte, hoogte, stand, { kozijn, raam })` om nieuwe
+renders op te slaan; online doet die niets.
 
 ## Huisstijl
 

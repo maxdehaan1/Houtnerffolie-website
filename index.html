@@ -21,8 +21,8 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='7' fill='%2327352a'/%3E%3Cpath d='M3 10 Q11 6 17.5 9.2 T32 8.4' stroke='%23e9e0d2' stroke-width='2.1' fill='none' stroke-linecap='round'/%3E%3Cpath d='M3 17 Q11 13 17.5 16.2 T32 15.4' stroke='%23e9e0d2' stroke-width='2.1' fill='none' stroke-linecap='round' opacity='.7'/%3E%3Cpath d='M3 24 Q11 20 17.5 23.2 T32 22.4' stroke='%23e9e0d2' stroke-width='2.1' fill='none' stroke-linecap='round' opacity='.45'/%3E%3C/svg%3E">
 <link rel="alternate" type="application/rss+xml" title="Houtnerffolie: artikelen" href="/feed.xml">
 <link rel="preload" href="/fonts/newsreader-latin-662a6e2a.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/fonts.css?v=7fddad18">
-<link rel="stylesheet" href="/css/site.css?v=7fddad18">
+<link rel="stylesheet" href="/css/fonts.css?v=bbd1814e">
+<link rel="stylesheet" href="/css/site.css?v=bbd1814e">
 <script>document.documentElement.classList.add('js')</script>
 <script type="importmap">{"imports":{"three":"/js/vendor/three-0.187.0/three.module.js","three/addons/":"/js/vendor/three-0.187.0/addons/"}}</script>
 <link rel="modulepreload" href="/js/vendor/three-0.187.0/three.core.js">
@@ -40,23 +40,28 @@
   </div>
 </header>
 <main id="inhoud">
-<section class="folie" id="opbouw" data-folie aria-label="De opbouw van houtnerffolie">
-  <div class="folie-podium" aria-hidden="true">
+<section class="folie" id="opbouw" data-folie data-kozijn="ice-cream-b-46835" data-raam="dark-green-6125" aria-label="Houtnerffolie uitgelegd in 3D">
+  <div class="folie-podium">
     <img class="folie-poster" src="/images/folie-kozijn.webp" alt="" width="1000" height="1150" fetchpriority="high" decoding="async">
-    <canvas class="folie-doek"></canvas>
-    <div class="folie-labels"></div>
-    <p class="folie-schaal">Diktes zijn sterk overdreven. In het echt is de hele folie een paar tienden van een millimeter dik.</p>
+    <canvas class="folie-doek" aria-hidden="true"></canvas>
+    <div class="folie-labels" aria-hidden="true"></div>
+    <p class="folie-schaal" aria-hidden="true">Diktes zijn sterk overdreven. In het echt is de hele folie een paar tienden van een millimeter dik.</p>
+    <nav class="folie-hoofdstukken" aria-label="Hoofdstukken van de uitleg">
+      <a href="#stap-opbouw" data-van="0" data-tot="5">Opbouw</a>
+      <a href="#stap-kleur" data-van="6" data-tot="6">Kleur</a>
+      <a href="#stap-levensduur" data-van="7" data-tot="9">Levensduur</a>
+    </nav>
   </div>
   <div class="folie-stappen">
     <div class="stap stap-intro" data-stap="0">
       <div class="stap-in">
         <p class="kicker">Voor kunststof kozijnen</p>
         <h1>Houtnerffolie, <em>laag voor laag</em></h1>
-        <p class="dek">Op veel kunststof kozijnen zit geen verf, maar een folie van een paar tienden van een millimeter dik. Scroll verder: we halen hem voor je uit elkaar.</p>
+        <p class="dek">Op veel kunststof kozijnen zit geen verf, maar een folie van een paar tienden van een millimeter dik. Scroll verder: we halen hem uit elkaar, laten zien welke kleuren er zijn en wat de jaren ermee doen.</p>
         <p class="scroll-hint" aria-hidden="true"><i></i>Scroll om de folie te ontleden</p>
       </div>
     </div>
-    <div class="stap" data-stap="1">
+    <div class="stap" data-stap="1" id="stap-opbouw">
       <div class="stap-in">
         <p class="kicker"><span class="nr">01</span> Wat je ziet</p>
         <h2>Geen verf, maar folie</h2>
@@ -74,7 +79,7 @@
       <div class="stap-in">
         <p class="kicker"><span class="nr">03</span> Kleurlaag</p>
         <h2>Daaronder: de kleur</h2>
-        <p>Dan volgt een pvc-folie met de kleur. Bij een effen kleur, zoals crèmewit of antraciet, zit het pigment in het materiaal zelf. Bij een houtdecor is de houttekening erop gedrukt. Zo kan dezelfde opbouw er strak en modern uitzien, of als eikenhout.</p>
+        <p>Dan volgt een pvc-folie met de kleur. Bij een effen kleur, zoals het dennengroen hier of crèmewit, zit het pigment in het materiaal zelf. Bij een houtdecor is de houttekening erop gedrukt. Zo kan dezelfde opbouw er strak en modern uitzien, of als eikenhout.</p>
       </div>
     </div>
     <div class="stap" data-stap="4">
@@ -92,19 +97,46 @@
         <p><a class="lees-verder" href="/artikelen/wat-elke-laag-doet">Meer over elke laag <span class="pijl" aria-hidden="true">&rarr;</span></a></p>
       </div>
     </div>
-    <div class="stap" data-stap="6">
+    <div class="stap" data-stap="6" id="stap-kleur">
       <div class="stap-in">
         <p class="kicker"><span class="nr">06</span> Kleur</p>
-        <h2>Probeer een andere kleur</h2>
-        <p>Elke kleur in het assortiment heeft dezelfde opbouw. Kies een van de kleuren die het vaakst gekozen worden, of een houtdecor.</p>
+        <h2>Kozijn en raam, elk een eigen kleur</h2>
+        <p>Crèmewit met een groen raam is de combinatie die je in Nederland het vaakst ziet. Omdat elke kleur dezelfde opbouw heeft, kunnen kozijn en raam elk een andere kleur krijgen. Probeer het hier.</p>
+        <div class="kiezer-deel" role="group" aria-label="Kies het deel">
+          <button type="button" data-deel="kozijn" aria-pressed="true">Kozijn</button>
+          <button type="button" data-deel="raam" aria-pressed="false">Raam</button>
+        </div>
         <div class="kiezer" role="group" aria-label="Kleur van het kozijn"></div>
         <p class="kiezer-naam" aria-live="polite"></p>
         <p><a class="lees-verder" href="/kleuren">Alle 94 houtnerfkleuren <span class="pijl" aria-hidden="true">&rarr;</span></a></p>
         <p class="kiezer-noot">Een scherm geeft kleur nooit precies weer. Vergelijk voor een definitieve keuze een echt staal, buiten en bij daglicht.</p>
       </div>
     </div>
+    <div class="stap" data-stap="7" id="stap-levensduur">
+      <div class="stap-in">
+        <p class="kicker"><span class="nr">07</span> Na jaren buiten</p>
+        <h2>Als de toplaag op is</h2>
+        <p>Folie gaat vijftien tot vijfentwintig jaar mee. In die tijd breken zon en regen de acryllaag langzaam af. Eerst wordt de folie dof en krijtig, dan komen er haarscheurtjes, de randen krullen op en hier en daar laat een stukje los. Poetsen helpt dan niet meer: de bescherming is weg.</p>
+        <p>Het kunststof profiel eronder is dan meestal nog prima in orde.</p>
+      </div>
+    </div>
+    <div class="stap" data-stap="8">
+      <div class="stap-in">
+        <p class="kicker"><span class="nr">08</span> Vernieuwen</p>
+        <h2>De oude folie gaat eraf</h2>
+        <p>Folie is te vernieuwen zonder het kozijn te vervangen. Met warmte laat de oude folie los, daarna gaan de lijmresten eraf en wordt het profiel ontvet. Wat overblijft is schoon, kaal kunststof: dezelfde ondergrond als toen het kozijn nieuw was.</p>
+      </div>
+    </div>
+    <div class="stap" data-stap="9">
+      <div class="stap-in">
+        <p class="kicker"><span class="nr">09</span> Weer als nieuw</p>
+        <h2>Een nieuwe folie op hetzelfde profiel</h2>
+        <p>Daarna komt er een nieuwe folie op, in dezelfde kleur of in een andere. Dat duurt een tot twee dagen. Op de folie zit tien jaar fabrieksgarantie en op de montage vijf jaar, als een gecertificeerde verwerker het werk doet.</p>
+        <p><a class="lees-verder" href="https://iwrap.nl/werkwijze?utm_source=houtnerffolie&utm_medium=referral&utm_content=uitleg">Zo vernieuwt iWrap de folie <span class="pijl" aria-hidden="true">&rarr;</span></a></p>
+      </div>
+    </div>
   </div>
-  <script type="application/json" id="folie-kleuren">[{"slug":"golden-oak","naam":"Golden Oak","ral":null,"hex":"#694919","soort":"decor","bestand":"/images/stalen/golden-oak.webp"},{"slug":"ice-cream-b-46835","naam":"Crèmewit / Ice Cream B","ral":"9001","hex":"#e9e0d2","soort":"kleur","bestand":"/images/stalen/ice-cream-b-46835.webp"},{"slug":"white-9152","naam":"Wit / White","ral":"9010","hex":"#f1ede3","soort":"kleur","bestand":"/images/stalen/white-9152.webp"},{"slug":"anthracite-grey-7016","naam":"Antracietgrijs / Anthracite Grey","ral":"7016","hex":"#383e42","soort":"kleur","bestand":"/images/stalen/anthracite-grey-7016.webp"},{"slug":"black-grey-7021","naam":"Zwartgrijs / Black Grey","ral":"7021","hex":"#2b2e31","soort":"kleur","bestand":"/images/stalen/black-grey-7021.webp"},{"slug":"dark-green-6125","naam":"Dennengroen / Dark Green","ral":"6009","hex":"#2c3a2e","soort":"kleur","bestand":"/images/stalen/dark-green-6125.webp"},{"slug":"steel-blue-5150","naam":"Staalblauw / Steel Blue","ral":"5011","hex":"#222c3a","soort":"kleur","bestand":"/images/stalen/steel-blue-5150.webp"},{"slug":"irish-oak","naam":"Irish Oak","ral":null,"hex":"#a98a5c","soort":"decor","bestand":"/images/stalen/irish-oak.webp"},{"slug":"walnut-v","naam":"Walnut V","ral":null,"hex":"#443015","soort":"decor","bestand":"/images/stalen/walnut-v.webp"},{"slug":"mahogony","naam":"Mahogony","ral":null,"hex":"#32150d","soort":"decor","bestand":"/images/stalen/mahogony.webp"}]</script>
+  <script type="application/json" id="folie-kleuren">[{"slug":"ice-cream-b-46835","naam":"Crèmewit / Ice Cream B","ral":"9001","hex":"#e9e0d2","soort":"kleur","bestand":"/images/stalen/ice-cream-b-46835.webp"},{"slug":"dark-green-6125","naam":"Dennengroen / Dark Green","ral":"6009","hex":"#2c3a2e","soort":"kleur","bestand":"/images/stalen/dark-green-6125.webp"},{"slug":"white-9152","naam":"Wit / White","ral":"9010","hex":"#f1ede3","soort":"kleur","bestand":"/images/stalen/white-9152.webp"},{"slug":"anthracite-grey-7016","naam":"Antracietgrijs / Anthracite Grey","ral":"7016","hex":"#383e42","soort":"kleur","bestand":"/images/stalen/anthracite-grey-7016.webp"},{"slug":"black-grey-7021","naam":"Zwartgrijs / Black Grey","ral":"7021","hex":"#2b2e31","soort":"kleur","bestand":"/images/stalen/black-grey-7021.webp"},{"slug":"steel-blue-5150","naam":"Staalblauw / Steel Blue","ral":"5011","hex":"#222c3a","soort":"kleur","bestand":"/images/stalen/steel-blue-5150.webp"},{"slug":"golden-oak","naam":"Golden Oak","ral":null,"hex":"#694919","soort":"decor","bestand":"/images/stalen/golden-oak.webp"},{"slug":"irish-oak","naam":"Irish Oak","ral":null,"hex":"#a98a5c","soort":"decor","bestand":"/images/stalen/irish-oak.webp"},{"slug":"walnut-v","naam":"Walnut V","ral":null,"hex":"#443015","soort":"decor","bestand":"/images/stalen/walnut-v.webp"},{"slug":"mahogony","naam":"Mahogony","ral":null,"hex":"#32150d","soort":"decor","bestand":"/images/stalen/mahogony.webp"}]</script>
 </section>
 
 <section class="sectie" id="artikelen" aria-labelledby="artikelen-kop">
