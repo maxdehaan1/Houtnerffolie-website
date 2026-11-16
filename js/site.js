@@ -37,7 +37,7 @@
   var data = document.getElementById('folie-kleuren');
   if (!dialoog || !data || typeof dialoog.showModal !== 'function') return;
   var kleuren = JSON.parse(data.textContent || '[]');
-  var standaard = { kozijn: 'ice-cream-b-46835', raam: 'dark-green-6125' };
+  var standaard = { kozijn: 'ice-cream-b-46835', raam: 'steel-blue-5150' };
   var naam = document.getElementById('kijker-naam');
   var code = document.getElementById('kijker-code');
   var uitleg = document.getElementById('kijker-uitleg');

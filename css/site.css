@@ -1,12 +1,13 @@
 /* houtnerffolie.nl — huisstijl
 
    De boodschap is kwaliteit: Renolit folie uit het hoogste segment. Daarom licht, rustig en
-   verfijnd, met goud als enige accentkleur. De basis is die van iwrap.nl (gebroken wit papier
+   verfijnd, in goud en diep donkerblauw. De basis is die van iwrap.nl (gebroken wit papier
    met witte vlakken erop); elke site van iWrap heeft een eigen leidende kleur (iwrap.nl mint,
-   kozijnwrap.nl hemelsblauw, deze site goud). Goud komt terug in de kleine kopjes (kapitalen
-   met een haarlijn), de woorden met nadruk in grote koppen, nummers, haarlijnen, de sterren en
-   het logo. Knoppen zijn antraciet. Overal dezelfde achtergrond, inhoud op witte vlakken, geen
-   schaduwen. Het lettertype is dat van het apparaat zelf: San Francisco op Apple, Segoe UI op
+   kozijnwrap.nl hemelsblauw, deze site goud met donkerblauw). Donkerblauw is voor wat leidt en
+   wat je aanklikt: koppen, knoppen, links en de gekozen stand van een schakelaar. Goud is voor
+   de details: kleine kopjes (kapitalen met een haarlijn), woorden met nadruk in grote koppen,
+   nummers, haarlijnen, de sterren en het logo. Geen grote donkere vlakken. Overal dezelfde
+   achtergrond, inhoud op witte vlakken, geen schaduwen. Het lettertype is dat van het apparaat zelf: San Francisco op Apple, Segoe UI op
    Windows, Roboto op Android. */
 
 :root {
@@ -22,6 +23,8 @@
   --tekst-3: #8a8f94;
   --kop-h: 3.6rem;
   --gloed: radial-gradient(75% 85% at 50% 0%, rgba(211, 187, 140, .16), rgba(211, 187, 140, 0) 72%);
+  --navy: #13294b;           /* diep donkerblauw: koppen, knoppen, links, gekozen standen */
+  --navy-hover: #1f3d6b;
   --goud: #b38b4d;           /* goud: de leidende kleur van houtnerffolie.nl */
   --goud-inkt: #876430;      /* goud als tekst (kleine kopjes, nummers): haalt AA op wit en papier */
   --goud-lijn: #d1b885;      /* haarlijnen, randen, onderstrepingen */
@@ -55,15 +58,15 @@ body {
 }
 img, svg, video, canvas { max-width: 100%; display: block; }
 img { height: auto; }
-a { color: var(--tekst); text-decoration: none; }
+a { color: var(--navy); text-decoration: none; }
 a:hover { text-decoration: underline; text-decoration-color: var(--goud-lijn); text-underline-offset: .2em; text-decoration-thickness: 1.5px; }
-:focus-visible { outline: 2px solid var(--tekst); outline-offset: 3px; border-radius: 4px; }
+:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; border-radius: 4px; }
 ::selection { background: var(--goud-was); color: var(--tekst); }
-h1, h2, h3, h4 { font-weight: 600; margin: 0; text-wrap: balance; letter-spacing: -.022em; }
+h1, h2, h3, h4 { font-weight: 600; margin: 0; text-wrap: balance; letter-spacing: -.022em; color: var(--navy); }
 p { margin: 0 0 1em; }
 button { font: inherit; color: inherit; }
 .verborgen { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.overslaan { position: absolute; left: 1rem; top: -4rem; z-index: 100; background: var(--tekst); color: var(--wit); padding: .6rem .9rem; border-radius: 980px; font-size: .875rem; font-weight: 600; }
+.overslaan { position: absolute; left: 1rem; top: -4rem; z-index: 100; background: var(--navy); color: var(--wit); padding: .6rem .9rem; border-radius: 980px; font-size: .875rem; font-weight: 600; }
 .overslaan:focus { top: 1rem; text-decoration: none; }
 [hidden] { display: none !important; }
 
@@ -105,14 +108,14 @@ button { font: inherit; color: inherit; }
 .woordmerk:hover { text-decoration: none; }
 .woordmerk-teken { width: 2.15rem; height: 2.15rem; flex: none; }
 .woordmerk-tekst { display: flex; flex-direction: column; line-height: 1.05; }
-.woordmerk b { font-size: 1.15rem; font-weight: 700; letter-spacing: -.032em; }
+.woordmerk b { font-size: 1.15rem; font-weight: 700; letter-spacing: -.032em; color: var(--navy); }
 .woordmerk small { font-size: .6875rem; font-weight: 500; color: var(--goud-inkt); letter-spacing: -.005em; margin-top: .18rem; }
 .kop-renolit { display: inline-flex; align-items: center; height: 2.2rem; padding-left: .95rem; margin-left: -.85rem; border-left: 1px solid var(--lijn); }
 .kop-renolit img { width: 2.15rem; height: 2.15rem; }
 .nav { display: flex; gap: 1.6rem; margin-left: auto; font-size: .875rem; }
 .nav a { color: var(--tekst-2); padding: .4rem 0; white-space: nowrap; }
 .nav a:hover { color: var(--tekst); text-decoration: none; }
-.nav a[aria-current="page"] { color: var(--tekst); font-weight: 600; }
+.nav a[aria-current="page"] { color: var(--navy); font-weight: 600; }
 /* Op een smaller scherm staat het menu op een eigen regel onder het logo */
 @media (max-width: 1100px) {
   :root { --kop-h: 5.5rem; }
@@ -134,18 +137,18 @@ button { font: inherit; color: inherit; }
   .nav::-webkit-scrollbar { display: none; }
 }
 
-/* Knoppen: rond en antraciet, met een gouden glans */
+/* Knoppen: rond en donkerblauw, met een gouden glans */
 .knop {
   display: inline-flex; align-items: center; gap: .5rem;
   font-size: 1rem; font-weight: 500; line-height: 1; letter-spacing: -.01em;
-  background: var(--tekst); color: var(--wit);
+  background: var(--navy); color: var(--wit);
   padding: .9rem 1.4rem;
   border-radius: 980px;
   position: relative; overflow: hidden; isolation: isolate;
   transition: background-color .2s;
   white-space: nowrap;
 }
-.knop:hover { background: #363c42; text-decoration: none; }
+.knop:hover { background: var(--navy-hover); text-decoration: none; }
 .knop svg { width: .8em; height: .8em; flex: none; }
 .knop-klein { padding: .6rem 1rem; font-size: .875rem; }
 /* De knop naar iWrap glanst om de paar seconden even op */
@@ -158,7 +161,7 @@ button { font: inherit; color: inherit; }
 @media (prefers-reduced-motion: reduce) { .knop-glans::after { animation: none; display: none; } }
 
 /* Links met een pijltje: donkere tekst, het pijltje in een dun gouden rondje */
-.lees-verder { font-size: 1.0625rem; font-weight: 500; display: inline-flex; gap: .6rem; align-items: center; color: var(--tekst); }
+.lees-verder { font-size: 1.0625rem; font-weight: 500; display: inline-flex; gap: .6rem; align-items: center; color: var(--navy); }
 a.lees-verder:hover { text-decoration: none; }
 .pijl {
   display: inline-block; flex: none; width: 1.55rem; height: 1.55rem; border-radius: 50%;
@@ -205,7 +208,7 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
 }
 .folie-hoofdstukken a { color: var(--tekst-2); padding: .4rem .85rem; border-radius: 980px; transition: background .2s, color .2s; }
 .folie-hoofdstukken a:hover { color: var(--tekst); text-decoration: none; }
-.folie-hoofdstukken a[aria-current="step"] { background: var(--wit); color: var(--tekst); font-weight: 600; box-shadow: 0 0 0 1px rgba(0, 0, 0, .04); }
+.folie-hoofdstukken a[aria-current="step"] { background: var(--navy); color: var(--wit); font-weight: 600; }
 .folie-geen3d .folie-hoofdstukken, html:not(.js) .folie-hoofdstukken { display: none; }
 .stap {
   min-height: 100vh; min-height: 100svh;
@@ -261,14 +264,14 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
   position: relative; transition: transform .15s;
 }
 .kiezer-knop:hover { transform: scale(1.07); }
-.kiezer-knop[aria-pressed="true"]::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; box-shadow: 0 0 0 2px var(--tekst); }
+.kiezer-knop[aria-pressed="true"]::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; box-shadow: 0 0 0 2px var(--navy); }
 .kiezer-naam { font-size: .9375rem; line-height: 1.35; color: var(--tekst-2); min-height: 1.3em; margin: 0 0 1.1rem; display: flex; flex-wrap: wrap; gap: .25rem 1.2rem; }
 .kiezer-naam b { color: var(--tekst); font-weight: 600; margin-right: .3rem; }
 /* Schakelaar: eerst het deel kiezen */
 .kiezer-deel { display: inline-flex; gap: .15rem; margin: 1.3rem 0 0; padding: .2rem; border-radius: 980px; background: var(--grijs-2); }
 .kiezer-deel button { font-size: .875rem; font-weight: 500; padding: .5rem 1.05rem; border: 0; border-radius: 980px; background: none; color: var(--tekst-2); cursor: pointer; transition: background .15s, color .15s; }
 .kiezer-deel button:hover { color: var(--tekst); }
-.kiezer-deel button[aria-pressed="true"] { background: var(--wit); color: var(--tekst); font-weight: 600; box-shadow: 0 0 0 1px rgba(0, 0, 0, .04); }
+.kiezer-deel button[aria-pressed="true"] { background: var(--navy); color: var(--wit); font-weight: 600; }
 .folie-geen3d .kiezer-deel, html:not(.js) .kiezer-deel { display: none; }
 .folie-geen3d .kiezer, html:not(.js) .kiezer, .folie-geen3d .kiezer-naam { display: none; }
 .kiezer-noot { font-size: .8125rem !important; line-height: 1.45 !important; color: var(--tekst-3) !important; margin-top: 1.1rem; }
@@ -372,7 +375,7 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 .vragen > div:last-child { background: var(--wit); border-radius: var(--r-groot); padding: .4rem clamp(1.25rem, 3vw, 2.25rem); }
 .vraag + .vraag { border-top: 1px solid var(--lijn); }
 .vraag summary {
-  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; color: var(--navy);
   padding: 1.35rem 0; font-size: 1.1875rem; font-weight: 600; line-height: 1.3; letter-spacing: -.02em;
 }
 .vraag summary::-webkit-details-marker { display: none; }
@@ -456,7 +459,7 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 .tekst figure { margin: 2.4rem 0; }
 .tekst figure img { width: 100%; background: var(--grijs); border-radius: var(--r); }
 .kader { background: var(--grijs); border-radius: var(--r); padding: 1.5rem 1.6rem; margin: 2rem 0; font-size: 1.0625rem; }
-.kader h2, .kader h3 { font-size: 1rem !important; font-weight: 600 !important; letter-spacing: -.01em !important; color: var(--tekst); margin: 0 0 .7rem !important; }
+.kader h2, .kader h3 { font-size: 1rem !important; font-weight: 600 !important; letter-spacing: -.01em !important; color: var(--navy); margin: 0 0 .7rem !important; }
 .kader p:last-child, .kader ul:last-child { margin-bottom: 0; }
 .tabel { width: 100%; border-collapse: collapse; margin: 1.6rem 0 2rem; font-size: .9375rem; line-height: 1.45; letter-spacing: -.008em; }
 .tabel th, .tabel td { text-align: left; padding: .8rem .8rem .8rem 0; border-bottom: 1px solid var(--lijn); vertical-align: top; }
@@ -538,7 +541,7 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 .d-naam { font-family: var(--sans); font-size: 13px; font-weight: 600; fill: var(--tekst); }
 .d-uitleg { font-family: var(--sans); font-size: 12px; font-weight: 400; fill: var(--tekst-2); }
 .d-klein { font-family: var(--sans); font-size: 11px; font-weight: 600; }
-.spec-kop { font-size: 1.375rem; font-weight: 700; letter-spacing: -.028em; color: var(--tekst); margin: 0; padding: 0 0 .7rem; border-bottom: 1px solid var(--lijn-2); }
+.spec-kop { font-size: 1.375rem; font-weight: 700; letter-spacing: -.028em; color: var(--navy); margin: 0; padding: 0 0 .7rem; border-bottom: 1px solid var(--lijn-2); }
 .spec-tabel { margin: 0 0 2.6rem; }
 .spec-tabel th { width: 11.5rem; padding-right: 1.2rem; color: var(--tekst-2); font-weight: 500; }
 .spec-tabel td { color: var(--tekst); }
@@ -630,7 +633,7 @@ html:not(.js) .staal-3d, html:not(.js) .kijker-tip { display: none; }
 .spec-lagen b { font-weight: 600; }
 /* vragen in een lopende tekst */
 .vragen-blok { margin: 1.2rem 0 2rem; background: var(--wit); border-radius: var(--r-groot); padding: .3rem clamp(1.1rem, 3vw, 1.75rem); }
-.tekst .vraag summary { font-size: 1.0625rem; color: var(--tekst); }
+.tekst .vraag summary { font-size: 1.0625rem; color: var(--navy); }
 .tekst .vraag-antwoord p { font-size: 1rem; }
 
 /* ---------- kwaliteit ---------- */
@@ -656,4 +659,9 @@ html:not(.js) .staal-3d, html:not(.js) .kijker-tip { display: none; }
 @media (max-width: 600px) {
   .kicker, .stap p.kicker, .sectie-kop p.kicker, .pagina-kop p.kicker, .renolit-in p.kicker, .uitvoering p.kicker { letter-spacing: .1em; gap: .6rem; }
   .kicker::before, .sectie-kop .kicker::after, .pagina-kop .kicker::after { width: 1.2rem; }
+}
+/* Op een kleiner scherm (tablet, kleine laptop) zijn de labels bij de lagen smaller, zodat ze in beeld blijven */
+@media (min-width: 760px) and (max-width: 1240px) {
+  .folie-label { font-size: .75rem; }
+  .folie-label small { max-width: 8.5rem; font-size: .6875rem; }
 }

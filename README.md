@@ -78,12 +78,12 @@ het zelf opgebouwde crèmewit (`eigen_staal`) hebben hun nerf al in de foto.
 
 ## De 3D-uitleg op de homepage
 
-`js/folie3d.js` tekent een crèmewit kunststof kozijn (RAL 9001) met een dennengroen draairaam
-(RAL 6009), de combinatie die je in Nederland het vaakst ziet. De uitleg heeft drie
+`js/folie3d.js` tekent een crèmewit kunststof kozijn (RAL 9001) met een staalblauw draairaam
+(RAL 5011): het blauw sluit aan op het donkerblauw van de huisstijl (Max, november 2026). De uitleg heeft drie
 hoofdstukken (rechtsboven in beeld aan te klikken):
 
-1. **Opbouw** (stap 1 tot 5): een stuk folie komt los van de onderdorpel van het raam en valt
-   uiteen in de heldere toplaag (acryl, met de nerf erin), de kleurlaag en de lijmlaag, boven
+1. **Opbouw** (stap 1 tot 5): een stuk folie komt los van de crèmewitte onderdorpel van het
+   kozijn (niet van het raam) en valt uiteen in de heldere toplaag (acryl, met de nerf erin), de kleurlaag en de lijmlaag, boven
    het kale profiel. Dat zijn dezelfde drie lagen (plus het profiel) als op de
    specificatiepagina en op /renolit-folie: de primer en de acrylaatlijm vallen samen onder
    de lijmlaag, de pvc-basisfolie en de drukinkt onder de kleurlaag. De lagen werpen schaduw op elkaar; de labels noemen per laag het
@@ -105,7 +105,7 @@ Details:
   iets gebeurt (de verwering komt pas als de camera er is). Het aantal standen is gelijk aan
   het aantal stappen in `src/pages/index.html`.
 - **Kleuren:** de beginkleuren staan in `src/pages/index.html` (`data-kozijn` en `data-raam`
-  op de sectie), de kleuren in de kiezer in `build.py` (`KIEZER`). Voor de RAL-kleuren
+  op de sectie; ook op de kleurenpagina en in `js/site.js`), de kleuren in de kiezer in `build.py` (`KIEZER`). Voor de RAL-kleuren
   gebruikt het model een referentiekleur (`KLEUR_3D`), omdat de gemiddelde kleur van de
   staalfoto vaak te donker is.
 - **Verwering en herstel:** in de shader `VERWEER_MAP` (overgenomen uit `oudeFolie` in de
@@ -154,12 +154,15 @@ zo verweert.
   menu altijd zichtbaar (licht doorschijnend). Het offerteblok is een wit vlak met een dunne
   gouden rand. Geen donkere vlakken en geen crème achtergronden (vindt Max AI-achtig).
 - **Kleuren:** elke site van iWrap heeft een eigen leidende kleur op dezelfde lichte basis:
-  iwrap.nl mint `#a3cdc2`, kozijnwrap.nl hemelsblauw `#a9c8e4`, en deze site **goud**:
+  iwrap.nl mint `#a3cdc2`, kozijnwrap.nl hemelsblauw `#a9c8e4`, en deze site **goud met diep
+  donkerblauw**. Donkerblauw `--navy` `#13294b` is voor wat leidt en wat je aanklikt: koppen,
+  knoppen, links en de gekozen stand van een schakelaar. Goud is voor de details:
   `--goud` `#b38b4d` (haarlijnen, stippen, sterren), `--goud-inkt` `#876430` (goud als tekst:
   haalt AA op wit en papier), `--goud-lijn` `#d1b885` (randen, onderstrepingen), `--goud-was`
   `#f6efe0` (kleine vlakjes), `--goud-verloop` (bladgoud, voor het logo en actieve nummers) en
-  `--goud-tekst` (verloop voor de woorden met nadruk in grote koppen). Knoppen zijn antraciet
-  met een gouden glans; de rest van de tekst is antraciet `#22262a` of grijs.
+  `--goud-tekst` (verloop voor de woorden met nadruk in grote koppen). Knoppen zijn donkerblauw
+  met een gouden glans; lopende tekst is antraciet `#22262a` of grijs. Geen derde kleur: goud
+  en donkerblauw op gebroken wit is een compleet palet, en het 3D-beeld brengt zelf al kleur.
 - **Vaste onderdelen:** kleine kopjes in gouden kapitalen met een haarlijn ervoor (bij
   gecentreerde kopjes aan beide kanten); nummers in goud met een haarlijn erachter; links met
   een pijltje in een dun gouden rondje; vragen met een plus in een dun gouden rondje; woorden

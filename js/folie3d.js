@@ -1,7 +1,8 @@
 /* houtnerffolie.nl — de 3D-uitleg bovenaan de homepage.
 
-   Een crèmewit kunststof kozijn met een dennengroen draairaam (RAL 6009) en dubbel glas.
-   Bij het scrollen komt een stuk folie van het raam los en valt het uiteen in zijn lagen.
+   Een crèmewit kunststof kozijn (RAL 9001) met een staalblauw draairaam (RAL 5011) en dubbel
+   glas. Bij het scrollen komt een stuk folie van de onderdorpel van het kozijn los en valt het
+   uiteen in zijn lagen.
    Daarna kiest de bezoeker zelf kleuren. Nog verder naar beneden verweert de folie, net
    als in de 3D-animatie op iwrap.nl (krijtig, gebarsten in eilandjes met opgekrulde randen),
    en tot slot gaat de oude folie eraf en komt er een nieuwe op.
@@ -22,7 +23,7 @@ const A = W / 2, B = H / 2;
 const RAAM_IN = 59;                  // buitenkant kozijn -> buitenkant raam
 const As = A - RAAM_IN, Bs = B - RAAM_IN;
 const GLAS_IN = 56;                  // buitenkant raam -> rand van het glas
-const STUK = [-As + 120, -As + 470]; // stuk onderdorpel van het raam waar de folie loskomt
+const STUK = [-A + 140, -A + 490];   // stuk onderdorpel van het kozijn waar de folie loskomt (rechts van het afwateringskapje)
 
 // Doorsneden als [u, v, straal]: u loopt van de buitenrand naar binnen (de dag in),
 // v van de voorkant van het kozijn naar achteren.
@@ -30,8 +31,8 @@ const KOZIJN = [[0, 0, 6], [68, 0, 4], [68, 16, 1.5], [57, 16, 0], [57, 70, 0], 
 const KOZIJN_FOLIE = [[0, 68, 0], [0, 0, 6], [68, 0, 4], [68, 14, 0]];
 const RAAM = [[0, 18, 2], [64, 18, 3], [64, 26, 1], [54, 26, 0], [54, 54, 0], [64, 54, 1], [64, 80, 2], [0, 80, 2]];
 const RAAM_FOLIE = [[0, 28, 0], [0, 18, 2], [64, 18, 3], [64, 24.5, 0]];
-const STUK_FOLIE = [[12, 18, 0], [64, 18, 3], [64, 24.5, 0]];   // het stuk dat loskomt
-const STUK_REST = [[0, 28, 0], [0, 18, 2], [12, 18, 0]];        // blijft langs de buitenrand zitten
+const STUK_FOLIE = [[12, 0, 0], [68, 0, 4], [68, 14, 0]];       // het stuk van de kozijnfolie dat loskomt
+const STUK_REST = [[0, 68, 0], [0, 0, 6], [12, 0, 0]];         // blijft langs de buitenrand zitten
 const RUBBER = [[60, 26, 0], [66.5, 26, 0.8], [66.5, 30, 0], [60, 30, 0]];
 const AANSLAG = [[64, 12, 0], [70.5, 12, 0.8], [70.5, 18, 0], [64, 18, 0]];   // rubber tussen kozijn en raam
 const AFSTAND = [[56.5, 34, 0], [69.5, 34, 0.6], [69.5, 50, 0.6], [56.5, 50, 0]];   // afstandhouder tussen de ruiten
@@ -153,7 +154,7 @@ function kozijnDeel(profiel, a, b, opt = {}) {
 }
 
 /* Eén laag van het losgekomen stuk folie: een dunne schaal die de vorm van de onderdorpel
-   van het raam volgt. De punten worden elk beeld opnieuw uitgerekend, zodat de laag kan
+   van het kozijn volgt. De punten worden elk beeld opnieuw uitgerekend, zodat de laag kan
    buigen (afpellen), dikker kan worden en kan verschuiven. Groep 0 zijn de vlakken, groep 1
    de randen (bij de heldere toplaag lichten die op, zoals bij echt acryl). */
 class Laag {
@@ -206,7 +207,7 @@ class Laag {
     const af = FOLIE_AF + (buiten ? dikte : 0);
     const g = Math.min(1, Math.max(0, (pel - (1 - f) * 0.55) / 0.45));   // afpellen begint rechts
     const k = g * g * (3 - 2 * g);
-    return [STUK[0] + f * (STUK[1] - STUK[0]) + dx, -Bs + u + nu * af, -(v + nv * af) + til * k + z];
+    return [STUK[0] + f * (STUK[1] - STUK[0]) + dx, -B + u + nu * af, -(v + nv * af) + til * k + z];
   }
 
   zet(dikte, z, dx, pel, til) {
@@ -580,14 +581,14 @@ material.clearcoat *= vwCc;
 // sx/dy = verschuiving van het beeld op een breed scherm, mx/sy = op een smal scherm,
 // oud = verwering, eraf = de oude folie gaat eraf, erop = de nieuwe folie gaat erop.
 const BASIS = { rotY: -0.5, kant: 0, focus: 0, hoek: 0, zicht: 2050, breed: 1250, az: 0, el: 0.1, til: 0, pel: 0, uit: 0, schaduw: 1, rust: 1, labels: 0, sx: 0.04, sy: -0.13, mx: 0, dy: 0.05, nadruk: -1, oud: 0, eraf: 0, erop: 0, mzoom: 1 };
-const LOS = { rotY: -0.06, kant: 1.48, focus: 1, zicht: 500, breed: 470, az: -0.5, el: 0.6, til: 36, pel: 1, uit: 1, schaduw: 0, rust: 0, labels: 1, sx: -0.13, sy: 0.1, mx: -0.27, dy: -0.06 };
+const LOS = { rotY: -0.06, kant: 1.48, focus: 1, zicht: 600, breed: 590, az: -0.5, el: 0.6, til: 36, pel: 1, uit: 1, schaduw: 0, rust: 0, labels: 1, sx: -0.18, sy: 0.1, mx: -0.27, dy: -0.06 };
 const STANDEN = [
   BASIS,
-  { ...BASIS, ...LOS, rotY: -0.1, kant: 1.42, zicht: 460, breed: 420, uit: 0, labels: 0 },
+  { ...BASIS, ...LOS, rotY: -0.1, kant: 1.42, zicht: 500, breed: 470, uit: 0, labels: 0, el: 0.4, til: 56 },   // lager kijken: crème op crème, dan zie je het loskomen beter
   { ...BASIS, ...LOS, nadruk: 0 },
   { ...BASIS, ...LOS, nadruk: 1 },
   { ...BASIS, ...LOS, nadruk: 2 },
-  { ...BASIS, ...LOS, zicht: 560, breed: 520, uit: 1.3, nadruk: 3 },
+  { ...BASIS, ...LOS, zicht: 660, breed: 650, uit: 1.3, nadruk: 3 },
   { ...BASIS, rotY: -0.42, breed: 1150, el: 0.08, sy: 0.3, dy: 0.03, mzoom: 1.5 },
   { ...BASIS, rotY: -0.78, hoek: 1, zicht: 470, breed: 600, az: 0.1, el: 0.16, rust: 0, sx: 0.0, dy: 0.0, mx: 0, sy: 0.12, oud: 1 },
   { ...BASIS, rotY: -0.62, hoek: 0.5, zicht: 1250, breed: 1000, az: 0.04, el: 0.12, rust: 0, sx: 0.02, dy: 0.02, mx: 0, sy: 0.14, oud: 1, eraf: 1 },
@@ -681,20 +682,20 @@ export function start(sectie) {
   voeg(kozijnDeel(pad(AANSLAG, true, 3), A, B), rubber);
   voeg(kozijnDeel(pad(AFSTAND, true, 2), As, Bs), afstandMat, false);
 
-  // folie: het kozijn heel, het raam met de onderdorpel in stukken zodat het middelste stuk los kan
-  voeg(kozijnDeel(pKozijnFolie, A, B, { af: FOLIE_AF, stap: 12 }), folie.kozijn);
+  // folie: het raam heel, het kozijn met de onderdorpel in stukken zodat het middelste stuk los kan
+  voeg(kozijnDeel(pRaamFolie, As, Bs, { af: FOLIE_AF, stap: 12 }), folie.raam);
   const bw = new Bouwer();
-  for (let k = 1; k < 4; k++) veeg(bw, pRaamFolie, As, Bs, k, { af: FOLIE_AF, stap: 12 });
-  veeg(bw, pRaamFolie, As, Bs, 0, { af: FOLIE_AF, tot: STUK[0], stap: 12 });
-  veeg(bw, pRaamFolie, As, Bs, 0, { af: FOLIE_AF, van: STUK[1], stap: 12 });
-  voeg(bw.geometrie(), folie.raam);
+  for (let k = 1; k < 4; k++) veeg(bw, pKozijnFolie, A, B, k, { af: FOLIE_AF, stap: 12 });
+  veeg(bw, pKozijnFolie, A, B, 0, { af: FOLIE_AF, tot: STUK[0], stap: 12 });
+  veeg(bw, pKozijnFolie, A, B, 0, { af: FOLIE_AF, van: STUK[1], stap: 12 });
+  voeg(bw.geometrie(), folie.kozijn);
   const pRest = pad(STUK_REST, false), sNaRest = pRest.s[pRest.s.length - 1];
   const bwStuk = new Bouwer();
-  veeg(bwStuk, pad(STUK_FOLIE, false), As, Bs, 0, { af: FOLIE_AF, van: STUK[0], tot: STUK[1], sExtra: sNaRest, stap: 12 });
-  const stukDicht = voeg(bwStuk.geometrie(), folie.raam);
+  veeg(bwStuk, pad(STUK_FOLIE, false), A, B, 0, { af: FOLIE_AF, van: STUK[0], tot: STUK[1], sExtra: sNaRest, stap: 12 });
+  const stukDicht = voeg(bwStuk.geometrie(), folie.kozijn);
   const bwRest = new Bouwer();
-  veeg(bwRest, pRest, As, Bs, 0, { af: FOLIE_AF, van: STUK[0], tot: STUK[1], stap: 12 });
-  voeg(bwRest.geometrie(), folie.raam);
+  veeg(bwRest, pRest, A, B, 0, { af: FOLIE_AF, van: STUK[0], tot: STUK[1], stap: 12 });
+  voeg(bwRest.geometrie(), folie.kozijn);
 
   // afwateringskapjes op de onderdorpel
   const dopGeo = new THREE.CapsuleGeometry(3.6, 20, 4, 10);
@@ -778,7 +779,7 @@ export function start(sectie) {
   let nerf = null;
   const cache = new Map();
   const kleur = { kozijn: null, raam: null };
-  const standaard = { kozijn: sectie.dataset.kozijn || 'ice-cream-b-46835', raam: sectie.dataset.raam || 'dark-green-6125' };
+  const standaard = { kozijn: sectie.dataset.kozijn || 'ice-cream-b-46835', raam: sectie.dataset.raam || 'steel-blue-5150' };
 
   async function maakKleur(k) {
     if (cache.has(k.slug)) return cache.get(k.slug);
@@ -811,7 +812,7 @@ export function start(sectie) {
     const m = folie[deel];
     m.map = tex; m.needsUpdate = true;
     m.roughness = helderheid(k.hex || '#777777') < 0.12 ? 0.5 : 0.56;
-    if (deel === 'raam') { mat.kleur.map = tex; mat.kleur.needsUpdate = true; }
+    if (deel === 'kozijn') { mat.kleur.map = tex; mat.kleur.needsUpdate = true; }
     if (deel === 'kozijn') dopMat.color.set(k.hex);
     vraagBeeld();
     sectie.dispatchEvent(new CustomEvent('folie:kleur', { detail: { ...kleur } }));
@@ -911,7 +912,7 @@ export function start(sectie) {
     draai.position.y = Math.sin(tijd * 0.7) * 7 * rust;
     draai.updateMatrixWorld(true);
 
-    // het stuk folie van het raam: dicht of los
+    // het stuk folie van het kozijn: dicht of los
     const los = s.til > 0.5 || s.uit > 0.01;
     stukDicht.visible = !los;
     const dikte = 0.12 + 2.6 * Math.min(1, s.uit);
@@ -954,10 +955,10 @@ export function start(sectie) {
       let x, y, z;
       if (i < 3) {
         x = STUK[1] + SCHUIF * s.uit * (laagIndex + 1) + 6;
-        y = -Bs + 40;
-        z = -18 + tussen * (laagIndex + 1) + dikte * laagIndex + s.til + s['n' + i] * 12 + 3;
+        y = -B + 40;
+        z = tussen * (laagIndex + 1) + dikte * laagIndex + s.til + s['n' + i] * 12 + 3;
       } else {
-        x = STUK[1] + 34; y = -Bs + 40; z = -20;
+        x = STUK[1] + 34; y = -B + 40; z = -2;
       }
       lb.obj.position.set(x, y, z);
       const zichtbaar = Math.max(0, Math.min(1, (s.labels - 0.25) / 0.75));
@@ -968,7 +969,7 @@ export function start(sectie) {
 
     // camera
     midden.set(0, 0, -35); kozijn.localToWorld(midden);
-    stukMidden.set((STUK[0] + STUK[1]) / 2 + 30 * s.uit, -Bs + 38, -18 + 0.5 * s.til + 52 * s.uit); kozijn.localToWorld(stukMidden);
+    stukMidden.set((STUK[0] + STUK[1]) / 2 + 30 * s.uit, -B + 36, 0.5 * s.til + 52 * s.uit); kozijn.localToWorld(stukMidden);
     hoekMidden.set(A - 175, -B + 135, -30); kozijn.localToWorld(hoekMidden);
     const doel = tmp.copy(midden).multiplyScalar(Math.max(0, 1 - s.focus - s.hoek))
       .addScaledVector(stukMidden, s.focus).addScaledVector(hoekMidden, s.hoek);
@@ -980,7 +981,9 @@ export function start(sectie) {
       doel.y + afstand * Math.sin(s.el),
       doel.z + afstand * Math.cos(s.az) * Math.cos(s.el));
     camera.lookAt(doel);
-    const sx = smal ? s.mx : s.sx, sy = smal ? s.sy : s.dy;
+    // op een smallere desktop schuift het beeld bij de lagen iets verder naar links, zodat de labels in beeld blijven
+    const krap = smal ? 0 : Math.min(1, Math.max(0, (820 - bw_) / 260)) * s.labels;
+    const sx = smal ? s.mx : s.sx - 0.06 * krap, sy = smal ? s.sy : s.dy;
     camera.setViewOffset(bw_, bh_, -sx * bw_, sy * bh_, bw_, bh_);
     camera.updateMatrixWorld();
 
