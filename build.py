@@ -477,6 +477,7 @@ def render_head(meta, ver, jsonld, extra=""):
 <meta name="twitter:card" content="summary_large_image">{artikel}
 {ICONEN}
 <link rel="alternate" type="application/rss+xml" title="Houtnerffolie: artikelen" href="/feed.xml">
+<link rel="preload" href="/fonts/montserrat-latin-83a31c81.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/site.css?v={ver}">
 <script>document.documentElement.classList.add('js')</script>
 {extra}{"".join(ld(x) for x in jsonld)}

@@ -172,8 +172,14 @@ zo verweert.
   een pijltje in een dun gouden rondje; vragen met een plus in een dun gouden rondje; woorden
   met nadruk (`<em>`) in grote koppen in goud. Alles staat als variabelen en regels in
   `css/site.css`.
-- **Letters:** het lettertype van het apparaat zelf: San Francisco op een Mac en iPhone,
-  Segoe UI op Windows, Roboto op Android. Er wordt dus geen lettertype gedownload.
+- **Letters:** koppen, menu, knoppen, kleine kopjes en de vragen in Montserrat, de letter van
+  het iWrap-logo (sinds 17 november 2026, net als op iwrap.nl en kozijnwrap.nl; `--kop`). De
+  lopende tekst is het lettertype van het apparaat zelf (`--sans`): San Francisco op een Mac en
+  iPhone, Segoe UI op Windows, Roboto op Android. Montserrat staat op de site zelf (`fonts/`,
+  dezelfde bestanden als op iwrap.nl: één variabel bestand, 35 kB) en wordt in de `<head>`
+  vooraf geladen; de terugval `Montserrat-terugval` (Arial op maat) zorgt dat er niets
+  verspringt. Op een smal scherm mogen lange woorden in koppen afbreken. De teksten in de
+  getekende doorsneden blijven in `--sans`.
 - **Logo:** de houtnerf vormt een H, als bladgoud met een gegraveerde nerf (`#7a5724`). De
   staanders en de dwarsbalk van de H blijven glad. Getekend in `build.py` (`beeldmerk()`, met de
   lijnen in `NERF_ZIJ` en `NERF_VAK` en het verloop in `GOUD_VERLOOP`); elke build schrijft
