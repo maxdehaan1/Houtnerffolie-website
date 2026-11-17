@@ -183,7 +183,7 @@ EXOFOL_PR = {
         {"@type": "PropertyValue", "name": "Lijmlaag", "value": "Primer en zelfklevende acrylaatlijm"},
         {"@type": "PropertyValue", "name": "Uv-bescherming", "value": "De acryllaag houdt meer dan 95 procent van het uv-licht tegen"},
         {"@type": "PropertyValue", "name": "Verwerkingstemperatuur", "value": "18 tot 35 °C"},
-        {"@type": "PropertyValue", "name": "Garantie", "value": "Tien jaar fabrieksgarantie op de folie bij een gecertificeerde verwerker"},
+        {"@type": "PropertyValue", "name": "Garantie", "value": "Tien jaar Renolit-garantie op de folie bij een gecertificeerde verwerker"},
         {"@type": "PropertyValue", "name": "Weertest", "value": "RAL-GZ 716 en DIN EN 513"},
     ],
 }
@@ -372,7 +372,7 @@ def render_uitvoering(onderdeel="cta"):
     <div>
       <p class="kicker">Laten uitvoeren</p>
       <h2 id="uitvoering-kop">Deze folie op <em>jouw kozijnen?</em></h2>
-      <p>Deze site legt uit hoe de folie werkt. Het werk zelf doet iWrap, het bedrijf achter deze site en gecertificeerd verwerker van Renolit folie: herstel van kunststof kozijnen, draairamen, schuifpuien en deuren, door heel Nederland. Tien jaar fabrieksgarantie op de folie, vijf jaar op de montage.</p>
+      <p>Deze site legt uit hoe de folie werkt. Het werk zelf doet iWrap, het bedrijf achter deze site en gecertificeerd verwerker van Renolit folie: herstel van kunststof kozijnen, draairamen, schuifpuien en deuren, door heel Nederland. Tien jaar Renolit-garantie op de folie, vijf jaar garantie op de uitvoering.</p>
     </div>
     <div>
       <p>Stuur een paar foto's, dan krijg je een vaste prijs.</p>
@@ -641,7 +641,7 @@ Belangrijkste feiten:
 - Houtnerffolie is folie met een voelbare houtnerf, in effen kleuren (zoals crèmewit RAL 9001 en dennengroen RAL 6009) en in houtdecors.
 - De folie bestaat uit drie lagen: een heldere toplaag van acryl (PMMA) met uv-filters, een kleurlaag van pvc (zonder weekmakers, met SolShield, bij houtdecors met een gedrukte houttekening) en een lijmlaag (primer en zelfklevende acrylaatlijm).
 - Voor herstel van bestaande kozijnen gebruikt iWrap RENOLIT EXOFOL PR, de zelfklevende uitvoering in de kwaliteit van RENOLIT EXOFOL PX. Alleen gecertificeerde verwerkers kunnen deze folie bestellen.
-- Levensduur: de folie gaat vijftien tot vijfentwintig jaar mee, het kunststof profiel 50 tot 75 jaar. Tien jaar fabrieksgarantie op de folie en vijf jaar op de montage, bij een gecertificeerde verwerker.
+- Levensduur: de folie gaat vijftien tot vijfentwintig jaar mee, het kunststof profiel 50 tot 75 jaar. Tien jaar Renolit-garantie op de folie en vijf jaar op de uitvoering, bij een gecertificeerde verwerker.
 - Aanbrengen gebeurt tussen ongeveer 18 en 35 °C, daarom van maart tot november.
 - Op {SITE}/kleuren staan alle {aantal_kleuren} houtnerfkleuren van Renolit, met RAL-codes; elke kleur is daar in 3D op een kozijn te bekijken.
 
