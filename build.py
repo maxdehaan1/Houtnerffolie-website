@@ -448,6 +448,9 @@ THREE_HEAD = IMPORTMAP + """
 def render_head(meta, ver, jsonld, extra=""):
     url = SITE + url_voor(meta["slug"])
     beeld = meta.get("ogImage", "/images/og-image.jpg")
+    # De inhoud als versie achter het adres: maakt tools/maak_og.py een nieuwe deelafbeelding, dan
+    # halen WhatsApp, LinkedIn en Facebook hem opnieuw op in plaats van hun oude kopie te tonen.
+    beeld += "?v=" + versie(beeld.lstrip("/"))
     og_type = meta.get("ogType", "website")
     artikel = ""
     if og_type == "article":

@@ -47,7 +47,10 @@ Kopieer een bestaand artikel in `src/pages/artikelen/` en pas het JSON-blok aan:
 - `kop` is de grote titel (een deel mag cursief met `<em>`), `title` en `description`
   zijn voor Google (titel liefst onder de 60 tekens, beschrijving onder de 160)
 - `intro` is de inleiding onder de titel
-- `beeld` (1600x1000) en `ogImage` (1200x630, voor delen op social media)
+- `beeld` (1600x1000) en `ogImage` (1200x630, voor delen op social media). De
+  deelafbeelding maak je met `python3 tools/maak_og.py <naam>`: zet eerst een beeld van
+  600x630 in `tools/og-beelden/<naam>.webp` (de rechterhelft); kopje en kop komen uit
+  `categorie` en `kop`
 - `volgorde` bepaalt de plek in de lijsten; `"uitgelicht": true` zet een artikel groot
   op de homepage
 - `verder` zijn de artikelen die onderaan als "Verder lezen" staan
@@ -189,8 +192,13 @@ zo verweert.
   /renolit-folie linkt. `images/logo.png` (512 px, voor Google), `apple-touch-icon.png` en
   `favicon.ico` zijn van dezelfde tekening gemaakt; maak ze opnieuw als het teken verandert.
 - **Beelden:** de artikelbeelden staan op `#eeece7`; de deelafbeeldingen (1200x630) hebben
-  links het gouden kopje, de kop (met de woorden met nadruk in goud) en het woordmerk, rechts
-  een beeld op `#eeece7`. De beelden voor de tegels staan in `images/tegels/` (transparant).
+  links het gouden kopje, de kop (in Montserrat, met de woorden met nadruk in goud) en het
+  woordmerk, rechts een beeld op `#eeece7`. Ze worden gemaakt met `tools/maak_og.py` (Chrome,
+  met `cdp.py` uit `iwrap-project/beweging/tools`), de rechterhelften staan in
+  `tools/og-beelden/`. De kop wordt zo groot als past, zonder kort woordje alleen op een
+  regel. `build.py` zet de inhoud als versie achter het adres (`?v=`), zodat WhatsApp en
+  Facebook een nieuwe afbeelding ook echt ophalen. De beelden voor de tegels staan in
+  `images/tegels/` (transparant).
 
 ## Vindbaarheid: Google en AI
 
@@ -224,7 +232,8 @@ js/folie3d.js           De 3D-uitleg op de homepage
 js/site.js              Zoeken op de kleurenpagina
 js/vendor/three-*/      three.js (MIT-licentie)
 images/artikelen/       Artikelbeelden (1600x1000)
-images/og/              Deelafbeeldingen (1200x630)
+images/og/              Deelafbeeldingen (1200x630), gemaakt met tools/maak_og.py
+tools/og-beelden/       De rechterhelften van de deelafbeeldingen (600x630)
 images/stalen/          Staalfoto's (RENOLIT)
 images/logo.svg         Het beeldmerk van de site
 images/renolit-logo.svg Het logo van RENOLIT (kop, homepage, voet)
