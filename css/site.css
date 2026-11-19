@@ -45,7 +45,20 @@
   --goud-was: #f6efe0;       /* heel licht goud, alleen voor kleine vlakken */
   --goud-verloop: linear-gradient(135deg, #efdcae 0%, #d2b06c 38%, #a98142 62%, #e3c993 100%);
   --goud-tekst: linear-gradient(100deg, #b8904e 0%, #8a6731 50%, #b08744 100%);
-  --fs-h2: clamp(2rem, 3.85vw, 3rem);
+  /* Eén reeks maten (compositieronde, 19 november 2026, net als iwrap.nl): op een breed scherm
+     h1 50, h2 37 en h3 20px; op een telefoon 34, 26 en 18px. Een titel in een kaart is 1.18rem, de
+     tekst eronder 1.02rem grijs. De inleiding onder een kop is 19,5px, die op een paginakop 20px. */
+  --h1: clamp(2.1rem, 1.45rem + 2.3vw, 3.1rem);
+  --h2: clamp(1.65rem, 1.25rem + 1.35vw, 2.3rem);
+  --h3: clamp(1.14rem, 1.06rem + .3vw, 1.28rem);
+  --kaart-titel: 1.18rem;
+  --kaart-tekst: 1.02rem;
+  --lede: clamp(1.1rem, 1.04rem + .25vw, 1.22rem);
+  --lede-kop: clamp(1.12rem, 1.05rem + .3vw, 1.25rem);
+  --fs-h2: var(--h2);
+  /* De sectie-eenheid: de ruimte tussen twee blokken, en onder de paginakop. 116px op een breed
+     scherm, 64px op een telefoon, net als op iwrap.nl. */
+  --sectie: clamp(64px, 8.5vw, 116px);
   --waas-goud: 214, 184, 122;  /* rgb, voor de waas op de achtergrond */
   --waas-blauw: 104, 138, 194;
   --vlak: rgba(255, 255, 255, .8);          /* licht doorschijnend: de waas kleurt er zacht doorheen */
@@ -248,17 +261,19 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
   padding: 5rem var(--rand);
 }
 .stap-in { max-width: 27rem; }
-.stap h2 { font-size: clamp(1.85rem, 3.1vw, 2.6rem); line-height: 1.1; letter-spacing: -.022em; font-weight: 700; margin-bottom: 1rem; }
+.stap h2 { font-size: var(--h2); line-height: 1.13; letter-spacing: -.022em; font-weight: 700; margin-bottom: 1rem; }
 .stap p { font-size: 1.0625rem; line-height: 1.55; color: var(--tekst-2); }
 .stap p:last-child { margin-bottom: 0; }
 .stap-intro { align-items: center; }
 .stap-intro h1 {
-  font-size: clamp(2.65rem, 5.2vw, 4.25rem);
-  line-height: 1.07; letter-spacing: -.03em; font-weight: 700;
-  margin-bottom: 1.4rem;
+  font-size: var(--h1);
+  line-height: 1.08; letter-spacing: -.028em; font-weight: 700;
+  margin-bottom: 1.2rem;
 }
-.stap-intro .stap-in { max-width: 30rem; }
-.dek { font-size: 1.3125rem; line-height: 1.45; color: var(--tekst-2); max-width: 27rem; letter-spacing: -.015em; }
+/* Breed genoeg voor "Renolit houtnerffolie," op één regel: eerst brak de kop op 1440px op een
+   los woord ("Renolit / houtnerffolie, / laag voor laag"). */
+.stap-intro .stap-in { max-width: 34rem; }
+.dek { font-size: var(--lede-kop); line-height: 1.5; color: var(--tekst-2); max-width: 28rem; letter-spacing: -.012em; }
 .scroll-hint { display: inline-flex; align-items: center; gap: .7rem; margin-top: 1.75rem; font-size: .875rem; color: var(--tekst-3); }
 .scroll-hint i { width: 1.25rem; height: 2rem; border-radius: 980px; box-shadow: inset 0 0 0 1.5px var(--lijn-2); position: relative; }
 .scroll-hint i::after { content: ""; position: absolute; left: 50%; top: .4rem; width: 3px; height: 6px; margin-left: -1.5px; border-radius: 3px; background: var(--goud); animation: zak 2s ease-in-out infinite; }
@@ -316,7 +331,7 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
   .stap p { font-size: 1rem; line-height: 1.5; }
   .stap-intro { align-items: flex-start; padding-top: 1.9rem; }
   .stap-intro .stap-in { background: none; box-shadow: none; padding: 0; }
-  .stap-intro h1 { font-size: clamp(2.3rem, 10.6vw, 3.2rem); margin-bottom: .9rem; }
+  .stap-intro h1 { margin-bottom: .9rem; }
   .dek { font-size: 1.0625rem; }
   .scroll-hint { margin-top: 1rem; }
   .folie-schaal { left: 1rem; right: auto; top: calc(var(--kop-h) + 3rem); bottom: auto; text-align: left; max-width: 17rem; background: rgba(255, 255, 255, .95); border-radius: 10px; padding: .4rem .6rem; font-size: .75rem; }
@@ -336,10 +351,15 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
 }
 
 /* ---------- secties op de homepage ---------- */
-.sectie { padding: clamp(4.5rem, 10vw, 8rem) 0; }
-.sectie-kop { text-align: center; max-width: 46rem; margin: 0 auto clamp(2.5rem, 5vw, 3.75rem); }
-.sectie-kop h2 { font-size: var(--fs-h2); line-height: 1.1; letter-spacing: -.026em; font-weight: 700; }
-.sectie-kop p { font-size: 1.25rem; line-height: 1.45; color: var(--tekst-2); margin: 1rem auto 0; max-width: 38rem; letter-spacing: -.015em; }
+/* Witruimte: één sectie-eenheid tussen twee blokken (compositieronde, 19 november 2026). Eerst
+   had elke sectie boven en onder 128px, dus stond er tussen twee secties 256px. Nu heeft een
+   sectie die op een sectie volgt geen ruimte erboven; de achtergrond is overal dezelfde. */
+.sectie { padding: var(--sectie) 0; }
+.sectie + .sectie, article + .sectie { padding-top: 0; }
+.sectie-kop { text-align: center; max-width: 46rem; margin: 0 auto clamp(2.25rem, 4.5vw, 3.4rem); }
+.sectie-kop h2 { font-size: var(--h2); line-height: 1.13; letter-spacing: -.022em; font-weight: 700; }
+/* De inleiding onder een kop: niet breder dan zo'n 75 tekens (34em). */
+.sectie-kop p { font-size: var(--lede); line-height: 1.55; color: var(--tekst-2); margin: 1rem auto 0; max-width: 34em; letter-spacing: -.012em; }
 .sectie-kop .lees-verder { margin-top: 1.1rem; }
 .sectie-kop .kicker { justify-content: center; }
 
@@ -352,16 +372,16 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
 .uitgelicht a:hover img { transform: scale(1.025); }
 .uitgelicht .kicker { padding: 1.6rem 1.9rem 0; margin-bottom: .55rem; font-size: .875rem; }
 .uitgelicht .kicker span + span { color: var(--tekst-3); font-weight: 500; }
-.uitgelicht h3 { font-size: clamp(1.55rem, 2.4vw, 2.05rem); line-height: 1.13; letter-spacing: -.022em; font-weight: 700; margin: 0 1.9rem .7rem; }
+.uitgelicht h3 { font-size: var(--h2); line-height: 1.13; letter-spacing: -.022em; font-weight: 700; margin: 0 1.9rem .7rem; }
 .uitgelicht h3 em { font-style: normal; }
-.uitgelicht p { color: var(--tekst-2); margin: 0 1.9rem 2rem; max-width: 34rem; }
+.uitgelicht p { font-size: var(--kaart-tekst); color: var(--tekst-2); margin: 0 1.9rem 2rem; max-width: 34em; }
 .lijst { list-style: none; margin: 0; padding: .6rem 1.6rem; background: var(--grijs); border-radius: var(--r-groot); }
 .lijst li + li { border-top: 1px solid var(--lijn); }
 .lijst a { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: .2rem 0; padding: 1.15rem 0; color: var(--tekst); }
 .lijst a:hover { text-decoration: none; }
 .lijst a:hover h3 { text-decoration: underline; text-decoration-color: var(--goud-lijn); text-decoration-thickness: 1.5px; text-underline-offset: .18em; }
 .lijst .nr { font-family: var(--kop); font-size: .75rem; font-weight: 700; line-height: 2.1; letter-spacing: .08em; color: var(--goud-inkt); font-variant-numeric: tabular-nums; }
-.lijst h3 { font-size: 1.1rem; line-height: 1.28; letter-spacing: -.012em; font-weight: 600; transition: color .15s; }
+.lijst h3 { font-size: var(--kaart-titel); line-height: 1.28; letter-spacing: -.012em; font-weight: 600; transition: color .15s; }
 .lijst h3 em { font-style: normal; }
 .lijst .meta { grid-column: 2; margin-top: .3rem; }
 @media (max-width: 860px) { .artikelen { grid-template-columns: 1fr; } }
@@ -388,9 +408,9 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 
 /* Wat is Renolit folie? */
 .renolit-in { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
-.renolit-in h2 { font-size: var(--fs-h2); line-height: 1.1; letter-spacing: -.026em; font-weight: 700; margin-bottom: 1.1rem; }
-.renolit-in p { color: var(--tekst-2); max-width: 40rem; }
-.renolit-in .renolit-definitie { font-size: 1.3125rem; line-height: 1.45; color: var(--tekst); letter-spacing: -.016em; }
+.renolit-in h2 { font-size: var(--h2); line-height: 1.13; letter-spacing: -.022em; font-weight: 700; margin-bottom: 1.1rem; }
+.renolit-in p { color: var(--tekst-2); max-width: 36em; }
+.renolit-in .renolit-definitie { font-size: var(--lede); line-height: 1.55; color: var(--tekst); letter-spacing: -.012em; max-width: 34em; }
 .renolit-links { display: flex; flex-wrap: wrap; gap: .8rem 2rem; margin-top: 1.5rem; }
 .renolit-kaart { background: var(--wit); border-radius: var(--r-groot); padding: clamp(1.75rem, 3vw, 2.5rem); }
 .renolit-kaart img { width: 72px; height: 72px; margin-bottom: 1.4rem; }
@@ -418,7 +438,9 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 @media (max-width: 760px) { .vraag-antwoord { padding-right: 0; } .vraag summary { font-size: 1rem; } }
 
 /* Doorverwijzing naar iWrap: een wit vlak met een dunne gouden rand */
-.uitvoering { padding: clamp(1rem, 3vw, 2rem) 0 clamp(3rem, 6vw, 5rem); }
+/* Het blok naar iWrap staat één sectie-eenheid onder de inhoud (die eindigt zelf met die ruimte) en
+   één eenheid boven de voet. */
+.uitvoering { padding: 0 0 var(--sectie); }
 .uitvoering .wrap > div:first-child, .uitvoering .wrap > div:last-child { position: relative; }
 .uitvoering .wrap {
   display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 1.5rem clamp(2rem, 6vw, 5rem); align-items: end;
@@ -427,9 +449,12 @@ figcaption b { color: var(--tekst); font-weight: 600; }
   padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 4rem);
   max-width: calc(var(--breed) - 2 * var(--rand));
 }
-.uitvoering h2 { font-size: var(--fs-h2); line-height: 1.1; letter-spacing: -.026em; font-weight: 700; margin-bottom: 1rem; }
+.uitvoering h2 { font-size: var(--h2); line-height: 1.13; letter-spacing: -.022em; font-weight: 700; margin-bottom: 1rem; }
 .uitvoering p { color: var(--tekst-2); max-width: 34rem; }
-.reviews { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .3rem .5rem; margin-top: 1.1rem; font-size: .875rem; line-height: 1.4; color: var(--tekst-2); }
+.uitvoering .wrap > div > :last-child { margin-bottom: 0; }
+/* Het reviewcijfer loopt als gewone tekst door, zodat hij netjes afbreekt (eerst brak hij als losse
+   stukjes: "4,9 uit 84" / "Google-reviews · ..."). */
+.reviews { display: inline-block; margin-top: 1.1rem; font-size: .875rem; line-height: 1.5; color: var(--tekst-2); text-wrap: balance; }
 .reviews:hover { color: var(--tekst); text-decoration: none; }
 .sterren { color: var(--goud); letter-spacing: .06em; }
 .reviews b { color: var(--tekst); font-weight: 600; }
@@ -464,20 +489,30 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 .kruimel ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem; }
 .kruimel li + li::before { content: "›"; margin-right: .35rem; color: var(--tekst-3); }
 .kruimel a { color: var(--tekst-2); }
-.artikel-kop { padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(1.75rem, 4vw, 2.75rem); background: var(--gloed); }
+/* Onder de kop van een artikel precies één sectie-eenheid tot de foto, net als onder elke paginakop. */
+.artikel-kop { padding: clamp(2.5rem, 6vw, 4.5rem) 0 var(--sectie); background: var(--gloed); }
 .artikel-kop .wrap > * { max-width: 50rem; }
-.artikel-kop h1 { font-size: clamp(2.25rem, 5.1vw, 3.9rem); line-height: 1.08; letter-spacing: -.03em; font-weight: 700; margin-bottom: 1.25rem; }
-.standfirst { font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.4; color: var(--tekst-2); max-width: 42rem; margin-bottom: 1.4rem; letter-spacing: -.018em; }
+.artikel-kop .wrap > :last-child { margin-bottom: 0; }
+/* 18em: dan breekt elke artikelkop in twee gelijke regels, zonder los woord ("Houtnerffolie /
+   schoonmaken zonder de / ..."). De inleiding houdt de maat van een inleiding (34em). */
+.artikel-kop .wrap > h1 { max-width: 18em; }
+.artikel-kop .wrap > .standfirst { max-width: 34em; }
+.artikel-kop h1 { font-size: var(--h1); line-height: 1.08; letter-spacing: -.028em; font-weight: 700; margin-bottom: 1.1rem; }
+.standfirst { font-size: var(--lede-kop); line-height: 1.55; color: var(--tekst-2); max-width: 34em; margin-bottom: 1.4rem; letter-spacing: -.012em; }
 .byline { display: flex; flex-wrap: wrap; gap: .4rem 0; align-items: center; max-width: 42rem; }
 .artikel-beeld { margin: 0 auto clamp(2.5rem, 5vw, 4rem); max-width: var(--breed); padding-inline: var(--rand); }
 .artikel-beeld img { width: 100%; background: var(--grijs); border-radius: var(--r-groot); }
 .artikel-beeld figcaption { max-width: 44rem; }
 
-.tekst { max-width: var(--lees); margin-inline: auto; padding-inline: var(--rand); box-sizing: content-box; padding-bottom: 2rem; font-size: 1.125rem; line-height: 1.6; letter-spacing: -.014em; }
+/* De tekstkolom eindigt met één sectie-eenheid ruimte; wat erna komt (verder lezen, het blok naar
+   iWrap) voegt zelf niets toe. */
+.tekst { max-width: var(--lees); margin-inline: auto; padding-inline: var(--rand); box-sizing: content-box; padding-bottom: var(--sectie); font-size: 1.125rem; line-height: 1.6; letter-spacing: -.014em; }
+.tekst > :first-child { margin-top: 0; }
+.tekst > :last-child { margin-bottom: 0; }
 .tekst > p:first-of-type { font-size: 1.25rem; line-height: 1.55; color: var(--tekst); }
 .tekst p { color: #30363b; }
-.tekst h2 { font-size: clamp(1.48rem, 2.4vw, 1.85rem); line-height: 1.18; letter-spacing: -.022em; font-weight: 700; margin: 2.6rem 0 .8rem; }
-.tekst h3 { font-size: 1.1rem; font-weight: 600; margin: 2rem 0 .5rem; }
+.tekst h2 { font-size: var(--h2); line-height: 1.13; letter-spacing: -.022em; font-weight: 700; margin: 2.4em 0 .55em; }
+.tekst h3 { font-size: var(--h3); line-height: 1.28; font-weight: 600; margin: 2rem 0 .5rem; }
 .tekst ul, .tekst ol { padding-left: 1.25rem; margin: 0 0 1.2em; color: #30363b; }
 .tekst li { margin-bottom: .45em; padding-left: .25rem; }
 .tekst li::marker { color: var(--tekst-3); }
@@ -509,38 +544,55 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 .stalenrij span { display: block; font-size: .75rem; line-height: 1.3; color: var(--tekst-3); }
 .bronnen { border-top: 1px solid var(--lijn); margin-top: 3rem; padding-top: 1.2rem; font-size: .8125rem; line-height: 1.5; color: var(--tekst-3); letter-spacing: -.005em; }
 .bronnen h2 { font-size: .8125rem !important; font-weight: 600 !important; letter-spacing: 0 !important; margin: 0 0 .5rem !important; color: var(--tekst-2); }
-.bronnen ol { padding-left: 1.1rem; margin: 0; color: var(--tekst-3); }
+.bronnen ol { padding-left: 1.1rem; margin: 0; color: var(--tekst-3); max-width: 44em; }
+.bronnen li:last-child { margin-bottom: 0; }
 .bronnen li::marker { color: var(--tekst-3); }
 .bronnen a, .tekst .bronnen a { color: var(--tekst-2); text-decoration: underline; text-decoration-color: var(--lijn-2); text-decoration-thickness: 1px; }
 
-.verder { margin-top: 1rem; padding-top: clamp(2.5rem, 5vw, 4rem); padding-bottom: clamp(3rem, 6vw, 5rem); }
-.verder h2 { font-size: clamp(1.48rem, 2.4vw, 1.85rem); letter-spacing: -.022em; font-weight: 700; margin-bottom: 1.25rem; }
+/* Verder lezen: de sectie eromheen zorgt voor de ruimte (één eenheid onder de tekst). */
+.verder h2 { font-size: var(--h2); line-height: 1.13; letter-spacing: -.022em; font-weight: 700; margin-bottom: clamp(1.4rem, 2.5vw, 1.9rem); }
 .verder .lijst { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding: 0; background: none; }
 .verder .lijst li { border: 0; background: var(--grijs); border-radius: var(--r); padding: 0 1.3rem; }
 .verder .lijst li + li { border-top: 0; }
+/* De titels zijn te lang voor één regel; met subgrid staan de regels eronder in een rij toch gelijk. */
+@media (min-width: 861px) {
+  .verder .lijst { grid-template-rows: auto; }
+  .verder .lijst li { display: grid; grid-row: span 2; grid-template-rows: subgrid; }
+  .verder .lijst a { grid-row: span 2; grid-template-rows: subgrid; align-content: start; }
+  .verder .lijst .meta { align-self: start; }
+}
 @media (max-width: 860px) { .verder .lijst { grid-template-columns: 1fr; } }
 
 /* Overzicht van alle artikelen */
 .archief { list-style: none; margin: 0; padding: 0; }
 .archief li + li { border-top: 1px solid var(--lijn); }
+/* De eerste en laatste rij zonder eigen ruimte erboven of eronder: de paginakop en het blok
+   eronder houden precies één sectie-eenheid. */
+.archief li:first-child a { padding-top: 0; }
+.archief li:last-child a { padding-bottom: 0; }
 .archief a { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 7fr) minmax(0, 2.5fr); gap: 1rem 2.5rem; padding: 1.75rem 0; align-items: center; color: var(--tekst); }
 .archief a:hover { text-decoration: none; }
 .archief figure { margin: 0; aspect-ratio: 4 / 3; background: var(--grijs); overflow: hidden; border-radius: var(--r); }
 .archief figure img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
 .archief a:hover figure img { transform: scale(1.03); }
-.archief h2 { font-size: clamp(1.35rem, 2.2vw, 1.75rem); line-height: 1.15; letter-spacing: -.022em; font-weight: 700; margin: 0 0 .55rem; transition: color .15s; }
+/* Een rij in het overzicht is een kaart zonder vlak: de titel in de maat van een h3, de tekst eronder
+   in de maat van een kaart (compositieronde). */
+.archief h2 { font-size: var(--h3); line-height: 1.28; letter-spacing: -.014em; font-weight: 700; margin: 0 0 .45rem; transition: color .15s; }
 .archief h2 em { font-style: normal; }
 .archief a:hover h2 { text-decoration: underline; text-decoration-color: var(--goud-lijn); text-decoration-thickness: 2px; text-underline-offset: .16em; }
-.archief p { color: var(--tekst-2); margin: 0; }
+.archief p { font-size: var(--kaart-tekst); color: var(--tekst-2); margin: 0; max-width: 36em; }
 .archief .meta { text-align: right; }
 @media (max-width: 760px) { .archief a { grid-template-columns: 1fr; } .archief .meta { text-align: left; order: -1; } }
 
 /* Paginakop voor overzichtspagina's: gecentreerd */
-.pagina-kop { padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(2.5rem, 5vw, 3.5rem); text-align: center; background: var(--gloed); }
+/* Onder de paginakop precies één sectie-eenheid tot de inhoud (compositieronde): de kop houdt die
+   ruimte zelf onderin, wat eronder staat begint zonder eigen ruimte. */
+.pagina-kop { padding: clamp(3rem, 7vw, 5.5rem) 0 var(--sectie); text-align: center; background: var(--gloed); }
 .pagina-kop .kruimel ol { justify-content: center; }
 .pagina-kop .kicker { justify-content: center; }
-.pagina-kop h1 { font-size: clamp(2.5rem, 5.8vw, 4.55rem); line-height: 1.07; letter-spacing: -.032em; font-weight: 700; margin-bottom: 1.1rem; }
-.pagina-kop p { font-size: 1.3125rem; line-height: 1.45; color: var(--tekst-2); max-width: 42rem; margin-inline: auto; letter-spacing: -.016em; }
+.pagina-kop h1 { font-size: var(--h1); line-height: 1.08; letter-spacing: -.028em; font-weight: 700; margin-bottom: 1rem; }
+.pagina-kop p { font-size: var(--lede-kop); line-height: 1.55; color: var(--tekst-2); max-width: 34em; margin-inline: auto; letter-spacing: -.012em; }
+.pagina-kop .wrap > :last-child { margin-bottom: 0; }
 
 /* ---------- kleurenpagina ---------- */
 .zoek { display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap; margin: 0 0 1.4rem; }
@@ -553,9 +605,11 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 .zoek input:focus { outline: none; background: var(--wit); box-shadow: inset 0 0 0 1.5px var(--goud); }
 .zoek .meta { margin: 0; }
 .kijker-tip, #zoek-leeg { text-align: center; }
-.kleurgroep { margin-bottom: clamp(3.5rem, 7vw, 5rem); }
-.kleurgroep > h2 { font-size: clamp(1.65rem, 2.95vw, 2.2rem); letter-spacing: -.025em; line-height: 1.13; font-weight: 700; margin-bottom: .5rem; }
-.kleurgroep > p { color: var(--tekst-2); max-width: 42rem; margin-bottom: 1.6rem; }
+/* Elke kleurgroep is een sectie: één eenheid ertussen; de bronvermelding hoort bij de laatste groep. */
+.kleurgroep { margin-bottom: var(--sectie); }
+.kleurgroep:has(+ .bron-noot) { margin-bottom: clamp(2rem, 4vw, 3rem); }
+.kleurgroep > h2 { font-size: var(--h2); letter-spacing: -.022em; line-height: 1.13; font-weight: 700; margin-bottom: .6rem; }
+.kleurgroep > p { color: var(--tekst-2); max-width: 36em; margin-bottom: 1.6rem; }
 .stalen { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: 1.6rem 1rem; }
 .stalen li { margin: 0; }
 .stalen .staal-vlak { aspect-ratio: 1; border-radius: var(--r); }
@@ -566,10 +620,13 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 .stalen-populair { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 .stalen-populair .staal-vlak { aspect-ratio: 3 / 4; }
 @media (max-width: 760px) { .stalen { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stalen-populair { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.bron-noot { font-size: .8125rem; line-height: 1.5; color: var(--tekst-3); max-width: 44rem; }
+.bron-noot { font-size: .8125rem; line-height: 1.5; color: var(--tekst-3); max-width: 44em; }
+main > .wrap > .bron-noot:last-child { margin-bottom: 0; }
+/* De overzichtspagina's (kleuren, artikelen) eindigen met één sectie-eenheid. */
+main > .wrap { padding-bottom: var(--sectie); }
 
 /* ---------- specificaties ---------- */
-.spec { padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+.spec { padding-bottom: var(--sectie); }
 .spec-in { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
 .doorsnede { margin: 0; position: sticky; top: 2rem; background: var(--grijs); border-radius: var(--r-groot); padding: clamp(1.25rem, 3vw, 2rem); }
 .doorsnede svg { display: block; width: 100%; max-width: 30rem; height: auto; margin-inline: auto; }
@@ -577,12 +634,13 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 .d-naam { font-family: var(--sans); font-size: 13px; font-weight: 600; fill: var(--tekst); }
 .d-uitleg { font-family: var(--sans); font-size: 12px; font-weight: 400; fill: var(--tekst-2); }
 .d-klein { font-family: var(--sans); font-size: 11px; font-weight: 600; }
-.spec-kop { font-family: var(--kop); font-size: 1.27rem; font-weight: 700; letter-spacing: -.02em; color: var(--navy); margin: 0; padding: 0 0 .7rem; border-bottom: 1px solid var(--lijn-2); }
+.spec-kop { font-family: var(--kop); font-size: var(--h3); font-weight: 700; letter-spacing: -.016em; color: var(--navy); margin: 0; padding: 0 0 .7rem; border-bottom: 1px solid var(--lijn-2); }
 .spec-tabel { margin: 0 0 2.6rem; }
+.spec-tabellen > :last-child { margin-bottom: 0; }
 .spec-tabel th { width: 11.5rem; padding-right: 1.2rem; color: var(--tekst-2); font-weight: 500; }
 .spec-tabel td { color: var(--tekst); }
 .spec-tabel td a { white-space: nowrap; }
-.spec-tekst { padding-top: 1rem; }
+.spec-tekst { padding-top: 0; }
 @media (max-width: 759px) {
   .spec-in { grid-template-columns: minmax(0, 1fr); }
   .doorsnede { position: static; }
@@ -590,15 +648,22 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 }
 
 /* ---------- mogelijkheden ---------- */
-.mogelijk { padding-bottom: clamp(3rem, 7vw, 6rem); }
+/* Zes kaarten in twee kolommen: de titel in de maat van een kaart, zodat alle titels in een rij op
+   één regel staan (eerst 29px, en dan braken er twee op twee regels). */
 .mogelijk-lijst { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
 .mogelijk-lijst li { padding: clamp(1.6rem, 3vw, 2.4rem); background: var(--grijs); border-radius: var(--r-groot); }
-.mogelijk-lijst h2 { font-size: clamp(1.38rem, 2.3vw, 1.8rem); line-height: 1.15; letter-spacing: -.024em; font-weight: 700; margin: .55rem 0 .7rem; }
-.mogelijk-lijst p { color: var(--tekst-2); max-width: 34rem; margin: 0; }
+.mogelijk-lijst h2 { font-size: var(--kaart-titel); line-height: 1.28; letter-spacing: -.012em; font-weight: 700; margin: .7rem 0 .5rem; }
+.mogelijk-lijst p { font-size: var(--kaart-tekst); color: var(--tekst-2); max-width: 36em; margin: 0; }
 .mogelijk-niet { max-width: none; margin-top: 1.25rem; background: var(--wit); box-shadow: inset 0 0 0 1px var(--lijn); border-radius: var(--r-groot); padding: clamp(1.6rem, 3vw, 2.4rem); }
 .mogelijk-niet ul { margin: 0; padding-left: 1.15rem; color: var(--tekst-2); }
 .mogelijk-niet li { margin-bottom: .5rem; }
 .mogelijk-niet li::marker { color: var(--goud); }
+/* Wat niet kan: de drie punten naast elkaar, zodat een regel niet over de hele breedte loopt
+   (eerst 137 tekens per regel). */
+@media (min-width: 900px) {
+  .mogelijk-niet ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem clamp(2rem, 4vw, 3.25rem); }
+  .mogelijk-niet li { margin-bottom: 0; }
+}
 .mogelijk-verder { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 2.5rem; margin-top: 2.75rem; }
 @media (max-width: 759px) { .mogelijk-lijst { grid-template-columns: minmax(0, 1fr); } }
 
@@ -623,7 +688,7 @@ html:not(.js) .staal-3d, html:not(.js) .kijker-tip { display: none; }
 .kijker-hint { position: absolute; left: 1.1rem; bottom: .9rem; margin: 0; font-size: .75rem; color: var(--tekst-3); }
 .kijker-paneel { padding: 2.6rem 2.4rem 2.4rem; align-self: center; }
 .kijker-paneel .kicker { margin-bottom: .6rem; }
-.kijker-paneel h2 { font-size: clamp(1.85rem, 2.95vw, 2.5rem); line-height: 1.09; letter-spacing: -.026em; font-weight: 700; margin: 0 0 .35rem; }
+.kijker-paneel h2 { font-size: var(--h2); line-height: 1.13; letter-spacing: -.022em; font-weight: 700; margin: 0 0 .35rem; }
 .kijker-code { font-size: .9375rem; line-height: 1.4; color: var(--tekst-3); margin: 0 0 1.1rem; }
 .kijker-uitleg { font-size: .9375rem; line-height: 1.45; color: var(--tekst-2); margin: 1rem 0 0; }
 .kijker-sluit { position: absolute; top: .9rem; right: .9rem; width: 2.25rem; height: 2.25rem; border: 0; padding: 0; border-radius: 50%; background: var(--grijs-2); color: var(--tekst-2); cursor: pointer; display: grid; place-items: center; transition: background .15s; }
@@ -644,17 +709,23 @@ html:not(.js) .staal-3d, html:not(.js) .kijker-tip { display: none; }
 .tegel:hover { text-decoration: none; transform: translateY(-3px); }
 .tegel-tekst { padding: clamp(1.75rem, 3.5vw, 2.75rem) clamp(1.5rem, 3.5vw, 2.75rem) 0; }
 .tegel .kicker { margin-bottom: .8rem; }
-.tegel h3 { font-size: clamp(1.48rem, 2.4vw, 1.98rem); font-weight: 700; letter-spacing: -.025em; line-height: 1.12; margin: 0 0 .7rem; max-width: 18ch; }
-.tegel-tekst p:not(.kicker) { color: var(--tekst-2); max-width: 30rem; margin: 0 0 .9rem; }
+/* De twee kleine tegels: de titel in de maat van een h3, zodat beide op één regel staan (eerst
+   32px: "Kozijn en raam, elk een eigen kleur" op twee regels naast "94 houtnerfkleuren" op één).
+   De grote tegel erboven heeft een kop in de maat van een h2. */
+.tegel h3 { font-size: var(--h3); font-weight: 700; letter-spacing: -.016em; line-height: 1.28; margin: 0 0 .7rem; }
+.tegel-tekst p:not(.kicker) { font-size: var(--kaart-tekst); color: var(--tekst-2); max-width: 30rem; margin: 0 0 .9rem; }
 .tegel-beeld { margin-top: auto; width: 100%; height: auto; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
 .tegel:hover .tegel-beeld { transform: scale(1.025); }
 .tegel-groot { grid-column: 1 / -1; flex-direction: row; align-items: center; background: var(--wit); }
 .tegel-groot .tegel-tekst { flex: 0 0 38%; text-align: left; padding-bottom: clamp(1.75rem, 3.5vw, 2.75rem); padding-right: 0; }
-.tegel-groot h3 { font-size: clamp(1.75rem, 2.95vw, 2.48rem); }
+.tegel-groot h3 { font-size: var(--h2); line-height: 1.13; letter-spacing: -.022em; max-width: 14em; }
 .tegel-groot .tegel-beeld { flex: 1 1 62%; min-width: 0; margin: 0; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%); mask-image: linear-gradient(90deg, transparent 0, #000 22%); }
 .tegel-stalen { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .55rem; padding: 1.75rem clamp(1.5rem, 3.5vw, 2.5rem) clamp(1.75rem, 3.5vw, 2.5rem); margin-top: auto; }
 .tegel-stalen .staal-vlak { aspect-ratio: 1; border-radius: 10px; transition: transform .3s ease; }
 .tegel:hover .tegel-stalen .staal-vlak:nth-child(3n + 1) { transform: translateY(-3px); }
+/* Naast de tegel met de drie kozijnen: de stalen in vier kolommen, zodat ze de tegel vullen en er
+   geen lege band tussen de titel en de stalen staat (compositieronde). */
+@media (min-width: 861px) { .tegel-stalen { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; } }
 @media (max-width: 860px) {
   .tegels { grid-template-columns: minmax(0, 1fr); }
   .tegel-groot { flex-direction: column; }
@@ -680,10 +751,11 @@ html:not(.js) .staal-3d, html:not(.js) .kijker-tip { display: none; }
 /* Het hoogste segment: zes redenen, elk op een wit vlak */
 .kwaliteit-lijst { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
 .kwaliteit-lijst li { background: var(--wit); border-radius: var(--r-groot); padding: clamp(1.6rem, 3vw, 2.3rem); }
-.kw-getal { display: inline-block; font-family: var(--kop); font-size: clamp(2.1rem, 3.5vw, 2.75rem); line-height: 1.08; font-weight: 700; letter-spacing: -.03em; margin-bottom: 1rem; color: var(--goud-inkt); }
-.kwaliteit-lijst h3 { font-size: 1.1rem; font-weight: 600; letter-spacing: -.012em; line-height: 1.28; margin-bottom: .45rem; }
-.kwaliteit-lijst p { color: var(--tekst-2); margin: 0; font-size: 1rem; line-height: 1.5; }
-.kwaliteit-verder { text-align: center; margin: 2.4rem 0 0; }
+/* Het getal niet groter dan een sectiekop (eerst 44px tegen een kop van 48px; nu allebei 37px). */
+.kw-getal { display: inline-block; font-family: var(--kop); font-size: var(--h2); line-height: 1.08; font-weight: 700; letter-spacing: -.026em; margin-bottom: .85rem; color: var(--goud-inkt); }
+.kwaliteit-lijst h3 { font-size: var(--kaart-titel); font-weight: 600; letter-spacing: -.012em; line-height: 1.28; margin-bottom: .45rem; }
+.kwaliteit-lijst p { color: var(--tekst-2); margin: 0; font-size: var(--kaart-tekst); line-height: 1.5; }
+.kwaliteit-verder { text-align: center; margin: clamp(1.75rem, 3.5vw, 2.5rem) 0 0; }
 @media (max-width: 960px) { .kwaliteit-lijst { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .kwaliteit-lijst { grid-template-columns: minmax(0, 1fr); } .bewijs { gap: .45rem 1.1rem; font-size: .8125rem; } }
 

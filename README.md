@@ -157,9 +157,10 @@ zo verweert.
 - **Opzet:** licht en rustig, richting Apple, op de basis van iwrap.nl: overal dezelfde
   achtergrond `#f7f6f3` met een zachte waas van blauw en goud over de hele site (`body::before`,
   vast in beeld), inhoud op licht doorschijnende witte vlakken (`--vlak`) die met een heel zachte
-  schaduw zweven (`--schaduw`, bij aanwijzen `--schaduw-op`). Geen wisselende achtergrondbanden. Grote strakke koppen in één maatvoering (`--fs-h2` voor sectiekoppen), het
-  menu altijd zichtbaar (licht doorschijnend). Het offerteblok is een wit vlak met een dunne
-  gouden rand. Geen donkere vlakken en geen crème achtergronden (vindt Max AI-achtig).
+  schaduw zweven (`--schaduw`, bij aanwijzen `--schaduw-op`). Geen wisselende achtergrondbanden.
+  Strakke koppen in één reeks maten (zie Letters), het menu altijd zichtbaar (licht
+  doorschijnend). Het offerteblok is een wit vlak met een dunne gouden rand. Geen donkere vlakken
+  en geen crème achtergronden (vindt Max AI-achtig).
 - **Kleuren:** elke site van iWrap heeft een eigen leidende kleur op dezelfde lichte basis:
   iwrap.nl mint `#a3cdc2`, kozijnwrap.nl hemelsblauw `#a9c8e4`, en deze site **goud met diep
   donkerblauw**. Donkerblauw `--navy` `#13294b` is voor wat leidt en wat je aanklikt: koppen,
@@ -183,6 +184,48 @@ zo verweert.
   vooraf geladen; de terugval `Montserrat-terugval` (Arial op maat) zorgt dat er niets
   verspringt. Op een smal scherm mogen lange woorden in koppen afbreken. De teksten in de
   getekende doorsneden blijven in `--sans`.
+  **Eén reeks maten** (compositieronde, 19 november 2026, dezelfde als op iwrap.nl), als
+  variabelen bovenin `css/site.css`: `--h1` `clamp(2.1rem,1.45rem + 2.3vw,3.1rem)`, `--h2`
+  `clamp(1.65rem,1.25rem + 1.35vw,2.3rem)` en `--h3` `clamp(1.14rem,1.06rem + .3vw,1.28rem)`: op
+  een breed scherm 50 / 37 / 20px, op een telefoon 34 / 26 / 18px. Elke paginakop, artikelkop en
+  de kop van de 3D-uitleg is een `--h1`; elke sectiekop (ook in de 3D-uitleg, in een artikel, bij
+  de kleurgroepen en in het blok naar iWrap) een `--h2`. In een kaart is de titel `1.18rem`
+  (`--kaart-titel`) en de tekst `1.02rem` grijs (`--kaart-tekst`): de zes punten van "Het hoogste
+  segment", de lijst met artikelen, Verder lezen en de zes kaarten op /mogelijkheden. De twee
+  kleine tegels op de homepage en de rijen in het artikeloverzicht hebben een titel in `--h3`, de
+  grote tegel en het uitgelichte artikel een kop in `--h2`. De grote getallen bij "Het hoogste
+  segment" zijn niet groter dan een sectiekop (`--h2`). De inleiding onder een sectiekop is
+  `--lede` (19,5px), op een paginakop, onder een artikelkop en in de 3D-uitleg `--lede-kop` (20px).
+  Maak een kop niet groter dan zijn kolom aankan: een kop breekt op een breed scherm nooit op een
+  los woord ("Renolit / houtnerffolie, / laag voor laag" was zo'n geval; daarom is de tekstkolom
+  van de 3D-intro 34rem en een artikelkop maximaal 18em), en titels in een rij kaarten staan
+  allemaal op één regel. Zijn ze daar te lang voor (Verder lezen), dan staan de regels eronder met
+  subgrid toch op één lijn.
+- **Regellengte:** lopende tekst niet breder dan zo'n 85 tekens. De inleiding onder een kop en op
+  een paginakop `34em`, de tekst in een kanttekening of naast een kop (Wat is Renolit folie?, de
+  kleurgroepen, een kaart) `36em`, de tekstkolom van een artikel `--lees` (40rem). Reken in `em`,
+  niet in `ch`: `ch` is in deze letter breder dan een gemiddeld teken. Een lijst die over de hele
+  breedte zou lopen (Wat niet kan, op /mogelijkheden) staat op een breed scherm in drie kolommen.
+- **Witruimte:** één sectie-eenheid (`--sectie`: 116px op een breed scherm, 64px op een telefoon,
+  net als op iwrap.nl) tussen twee blokken. Een `.sectie` heeft die ruimte boven en onder; volgt er
+  een sectie op een sectie, dan valt de ruimte erboven weg (`.sectie + .sectie`), want de
+  achtergrond is overal dezelfde. Onder de paginakop en de artikelkop staat precies één eenheid:
+  de kop houdt die zelf onderin, het blok eronder begint zonder eigen ruimte. Elk inhoudsblok
+  (`.tekst`, `.spec`, `main > .wrap`) eindigt met één eenheid, en het blok naar iWrap
+  (`.uitvoering`) voegt erboven niets toe en heeft één eenheid tot de voet. Binnen een artikel staan
+  de foto en de tekst dichter op elkaar (64px), en de kleurgroepen op /kleuren een eenheid uit
+  elkaar. Wat als eerste of laatste in een blok staat, voegt geen eigen marge toe; zet dus geen
+  losse `style="padding-bottom"` in een bron.
+- **Compositie:** wat naast elkaar staat, is ongeveer even hoog. De twee kleine tegels op de
+  homepage zijn even hoog en gevuld (de stalen in vier kolommen naast de drie kozijnen); de 3D-intro
+  heeft de kop in twee regels naast het kozijn. Het reviewcijfer in het blok naar iWrap loopt als
+  gewone tekst door, zodat het netjes afbreekt, en de korte zin bij de knop staat op een eigen
+  regel.
+- **Controleren:** na een wijziging in de opmaak de pagina's bekijken op 1440x900, 1366x768 en
+  390 breed, met schermafdrukken die scherm voor scherm worden gemaakt (een schermafdruk van de hele
+  pagina in één keer geeft in Chrome afwijkingen). Meet koppen met een los woord, rijen
+  kaarttitels, regellengtes en de witruimte tussen blokken (alleen 116 breed en 64 op een telefoon
+  zijn goed), en kijk of er niets zijwaarts schuift.
 - **Logo:** de houtnerf vormt een H, als bladgoud met een gegraveerde nerf (`#7a5724`). De
   staanders en de dwarsbalk van de H blijven glad. Getekend in `build.py` (`beeldmerk()`, met de
   lijnen in `NERF_ZIJ` en `NERF_VAK` en het verloop in `GOUD_VERLOOP`); elke build schrijft
