@@ -367,8 +367,9 @@ def render_kop(actief):
   <div class="wrap kop-in">
     <a class="woordmerk" href="/" aria-label="houtnerffolie.nl, alles over Renolit folie: naar de homepage">{beeldmerk("hn-kop")}<span class="woordmerk-tekst">{WOORDMERK} <small>Alles over Renolit folie</small></span></a>
     <a class="kop-renolit" href="/renolit-folie" aria-label="Wat is Renolit folie?"><img src="/images/renolit-logo.svg" alt="RENOLIT" width="34" height="34"></a>
-    <nav class="nav" aria-label="Hoofdmenu">{links}</nav>
-    <a class="knop knop-klein knop-glans" href="{naar_iwrap('menu')}">Laten herstellen</a>
+    <nav class="nav" id="hoofdmenu" aria-label="Hoofdmenu">{links}<a class="knop knop-iwrap menu-iwrap" href="{naar_iwrap('menupaneel')}">Offerte aanvragen bij iWrap</a></nav>
+    <a class="knop knop-klein knop-iwrap kop-iwrap" href="{naar_iwrap('menu')}" aria-label="Offerte aanvragen bij iWrap"><span class="lang">Offerte bij iWrap</span><span class="kort" aria-hidden="true">Offerte</span></a>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="hoofdmenu"><span class="bars" aria-hidden="true"></span><span class="nav-toggle-woord">Menu</span></button>
   </div>
 </header>"""
 
@@ -377,17 +378,32 @@ def render_uitvoering(onderdeel="cta"):
     return f"""<section class="uitvoering" aria-labelledby="uitvoering-kop">
   <div class="wrap">
     <div>
+      <img class="uitvoering-logo" src="/images/iwrap-logo.svg" width="150" height="31" alt="iWrap" loading="lazy">
       <p class="kicker">Laten uitvoeren</p>
       <h2 id="uitvoering-kop">Deze folie op <em>jouw kozijnen?</em></h2>
       <p>Deze site legt uit hoe de folie werkt. Het werk zelf doet iWrap, het bedrijf achter deze site en gecertificeerd verwerker van Renolit folie: herstel van kunststof kozijnen, draairamen, schuifpuien en deuren, door heel Nederland. Tien jaar Renolit-garantie op de folie, vijf jaar garantie op de uitvoering.</p>
     </div>
     <div>
       <p>Stuur een paar foto's, dan krijg je een vaste prijs.</p>
-      <a class="knop knop-glans" href="{naar_iwrap(onderdeel)}">Offerte aanvragen bij iWrap {PIJL_UIT}</a><br>
+      <a class="knop knop-iwrap" href="{naar_iwrap(onderdeel)}">Offerte aanvragen bij iWrap {PIJL_UIT}</a><br>
       <a class="reviews" href="{IWRAP['reviews_url']}" target="_blank" rel="noopener"><span class="sterren" aria-hidden="true">★★★★★</span> <b data-rv="score">{IWRAP['reviews_score']}</b> uit <span data-rv="aantal">{IWRAP['reviews_aantal']}</span> Google-reviews &middot; sinds 2014 duizenden kozijnen hersteld</a>
     </div>
   </div>
 </section>"""
+
+
+def render_familie():
+    """De familieregel onderaan alle drie de sites: welke sites er zijn en wat elke site doet. Deze site
+    linkt alleen naar iwrap.nl, niet naar kozijnwrap.nl (Max, 19 november 2026: de zustersites sturen
+    door naar iWrap, niet naar elkaar)."""
+    return f"""    <div class="familie">
+      <p class="familie-kop">De sites van iWrap</p>
+      <ul class="familie-lijst">
+        <li><a class="familie-site" href="{naar_iwrap('familie', '/')}"><span class="fam-merk"><img src="/images/iwrap-logo.svg" width="96" height="20" alt="iWrap" loading="lazy"></span><span class="fam-rol">Kozijnen laten herstellen en een offerte aanvragen</span></a></li>
+        <li><span class="familie-site"><span class="fam-merk fam-kw"><span class="f1">kozijn</span><span class="f2">wrap</span><span class="f3">.nl</span></span><span class="fam-rol">Uitzoeken wat je kozijn nodig heeft</span></span></li>
+        <li><span class="familie-site is-hier" aria-current="page"><span class="fam-merk fam-hn"><span class="f1">houtnerf</span><span class="f2">folie</span><span class="f3">.nl</span></span><span class="fam-rol">Alles over Renolit folie en de kleuren</span><span class="fam-hier">Je bent hier</span></span></li>
+      </ul>
+    </div>"""
 
 
 def render_voet():
@@ -423,7 +439,8 @@ def render_voet():
       <a href="https://www.renolit.com/" rel="noopener"><img src="/images/renolit-logo.svg" alt="RENOLIT" width="56" height="56" loading="lazy"></a>
       <p>Deze site gaat over de kozijnfolie van <a href="https://www.renolit.com/" rel="noopener">RENOLIT</a>, de Duitse fabrikant van de EXOFOL-folies. RENOLIT en EXOFOL zijn merken van RENOLIT SE. Houtnerffolie.nl is een onafhankelijke kennisbank van iWrap, gecertificeerd verwerker van Renolit-folie, en geen website van RENOLIT zelf.</p>
     </div>
-    <p class="voet-klein"><span>&copy; {jaar} houtnerffolie.nl &middot; onderdeel van iWrap</span><span>Geen cookies; bezoek wordt alleen anoniem geteld &middot; <a href="https://iwrap.nl/privacy">privacy</a></span></p>
+{render_familie()}
+    <p class="voet-klein"><span>&copy; {jaar} houtnerffolie.nl &middot; onderdeel van iWrap</span><span>Geen cookies; bezoek wordt alleen anoniem geteld &middot; <a href="/privacy">privacy</a></span></p>
   </div>
 </footer>"""
 
@@ -502,6 +519,7 @@ def pagina(meta, ver, jsonld, inhoud, actief="", extra_head="", scripts="", cta=
     delen.append(render_voet())
     if cta:
         delen.append(REVIEWS_SCRIPT)
+    delen.append(f'<script defer src="/js/menu.js?v={ver}"></script>')
     if scripts:
         delen.append(scripts)
     delen.append(ANALYTICS)
@@ -652,7 +670,7 @@ Belangrijkste feiten:
 - Houtnerffolie is folie met een voelbare houtnerf, in effen kleuren (zoals crèmewit RAL 9001 en dennengroen RAL 6009) en in houtdecors.
 - De folie bestaat uit drie lagen: een heldere toplaag van acryl (PMMA) met uv-filters, een kleurlaag van pvc (zonder weekmakers, met SolShield, bij houtdecors met een gedrukte houttekening) en een lijmlaag (primer en zelfklevende acrylaatlijm).
 - Voor herstel van bestaande kozijnen gebruikt iWrap RENOLIT EXOFOL PR, de zelfklevende uitvoering in de kwaliteit van RENOLIT EXOFOL PX. Alleen gecertificeerde verwerkers kunnen deze folie bestellen.
-- Levensduur: de folie gaat vijftien tot vijfentwintig jaar mee, het kunststof profiel 50 tot 75 jaar. Tien jaar Renolit-garantie op de folie en vijf jaar op de uitvoering, bij een gecertificeerde verwerker.
+- Levensduur: folie van een oudere generatie ging vijftien tot vijfentwintig jaar mee. De folie van nu is veel sterker en gaat naar verwachting veel langer mee; een precies aantal jaren is nog niet bekend. Het kunststof profiel gaat 50 tot 75 jaar mee. Tien jaar Renolit-garantie op de folie en vijf jaar op de uitvoering, bij een gecertificeerde verwerker; die garantie is iets anders dan de levensduur.
 - Aanbrengen gebeurt tussen ongeveer 18 en 35 °C, daarom van maart tot november.
 - Op {SITE}/kleuren staan alle {aantal_kleuren} houtnerfkleuren van Renolit, met RAL-codes; elke kleur is daar in 3D op een kozijn te bekijken.
 
@@ -703,7 +721,7 @@ def schrijf_feed(artikelen):
 
 def bouw():
     schrijf_beeldmerken()
-    ver = versie("css/site.css", "js/folie3d.js", "js/site.js")
+    ver = versie("css/site.css", "js/folie3d.js", "js/site.js", "js/menu.js")
     stalen, kleuren, decors, populair = laad_stalen()
     per_slug = {s["slug"]: s for s in stalen}
 

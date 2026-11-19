@@ -38,6 +38,7 @@ src/pages/kleuren.html          Kleurenpagina (de stalen komen uit stalen.json);
 src/pages/artikelen/index.html  Overzicht van alle artikelen
 src/pages/artikelen/*.html      De artikelen zelf
 src/pages/404.html              Pagina niet gevonden
+src/pages/privacy.html          Wat deze site bijhoudt (geen cookies, anoniem tellen)
 ```
 
 ### Een artikel toevoegen
@@ -159,7 +160,8 @@ zo verweert.
   vast in beeld), inhoud op licht doorschijnende witte vlakken (`--vlak`) die met een heel zachte
   schaduw zweven (`--schaduw`, bij aanwijzen `--schaduw-op`). Geen wisselende achtergrondbanden.
   Strakke koppen in één reeks maten (zie Letters), het menu altijd zichtbaar (licht
-  doorschijnend). Het offerteblok is een wit vlak met een dunne gouden rand. Geen donkere vlakken
+  doorschijnend). Het offerteblok is een wit vlak met een dunne gouden rand en het logo van iWrap
+  erboven, zoals de brug op kozijnwrap.nl. Geen donkere vlakken
   en geen crème achtergronden (vindt Max AI-achtig).
 - **Kleuren:** elke site van iWrap heeft een eigen leidende kleur op dezelfde lichte basis:
   iwrap.nl mint `#a3cdc2`, kozijnwrap.nl hemelsblauw `#a9c8e4`, en deze site **goud met diep
@@ -168,8 +170,12 @@ zo verweert.
   `--goud` `#b38b4d` (haarlijnen, stippen, sterren), `--goud-inkt` `#876430` (goud als tekst:
   haalt AA op wit en papier), `--goud-lijn` `#d1b885` (randen, onderstrepingen), `--goud-was`
   `#f6efe0` (kleine vlakjes), `--goud-verloop` (bladgoud, voor het logo en actieve nummers) en
-  `--goud-tekst` (verloop voor de woorden met nadruk in grote koppen). Knoppen zijn donkerblauw
-  met een gouden glans; lopende tekst is antraciet `#22262a` of grijs. Geen derde kleur: goud
+  `--goud-tekst` (verloop voor de woorden met nadruk in grote koppen). Knoppen zijn donkerblauw.
+  **De knop naar iWrap** is de uitzondering (19 november 2026, Max): op deze site en op
+  kozijnwrap.nl dezelfde, in de knopkleur van iwrap.nl (`--iwrap`) met het beeldmerk van iWrap
+  ervoor (`.knop-iwrap`); de gouden glans is daarmee vervallen. In de kopbalk "Offerte bij iWrap"
+  (op een tablet "Offerte"; op een telefoon staat hij onderin het menu), in de blokken "Offerte
+  aanvragen bij iWrap". Lopende tekst is antraciet `#22262a` of grijs. Geen derde kleur: goud
   en donkerblauw op gebroken wit is een compleet palet, en het 3D-beeld brengt zelf al kleur.
 - **Vaste onderdelen:** kleine kopjes in goud, in gewone zinsopbouw zoals bij Apple (kapitalen
   met haarlijnen oogden als een sjabloon); nummers in goud met een stipje erachter; links met
@@ -244,8 +250,10 @@ zo verweert.
   een gecentreerde kop staat (de link onder de kaarten), staat ook in het midden, op een vaste
   afstand. Op een telefoon (tot 700px) staat alles links. Gewone lijstjes in lopende tekst springen
   in; lijsten met een eigen opmaak (de ruitjes van `.bewijs`, de stalen, het overzicht) staan op de
-  tekstrand. Past de knop in de kopbalk op een telefoon niet naast het logo (onder 375px), dan staat
-  hij rechts naast het menu, zodat de kopbalk twee regels blijft. In de 3D-uitleg staat het kozijn
+  tekstrand. **Het menu** staat tot 1100px breed achter een knop met het woord "Menu" (open:
+  "Sluiten"), net als op iwrap.nl en kozijnwrap.nl: een paneel met grote regels en onderin de knop
+  naar iWrap (`js/menu.js`). Eerst stond het menu op een telefoon als rij die je opzij moest
+  schuiven; dat zagen oudere bezoekers niet. In de 3D-uitleg staat het kozijn
   in de eerste stand op een telefoon wat lager (`sy` in `BASIS`, `js/folie3d.js`), zodat het niet
   over de grotere tekst valt.
 - **Logo:** de houtnerf vormt een H, als bladgoud met een gegraveerde nerf (`#7a5724`). De
@@ -300,6 +308,7 @@ stalen.json             Alle stalen
 css/site.css            Alle styling
 js/folie3d.js           De 3D-uitleg op de homepage
 js/site.js              Zoeken op de kleurenpagina
+js/menu.js              Het menu op telefoon en tablet (zelfde bestand als op kozijnwrap.nl)
 js/vendor/three-*/      three.js (MIT-licentie)
 images/artikelen/       Artikelbeelden (1600x1000)
 images/og/              Deelafbeeldingen (1200x630), gemaakt met tools/maak_og.py
@@ -322,9 +331,19 @@ Gebouwd en meegecommit: `index.html`, `renolit-folie.html`, `specificaties.html`
 ## Aandachtspunten
 
 - **Feitelijke claims.** Getallen op de site (tien jaar fabrieksgarantie op de folie, vijf
-  jaar op de montage, 95% uv-absorptie, 18 tot 35 °C, profiel 50 tot 75 jaar, folie
-  vijftien tot vijfentwintig jaar, seizoen maart tot november) zijn gecontroleerd en staan
-  ook op iwrap.nl en kozijnwrap.nl. Wijzig je er één, wijzig ze dan op alle drie.
+  jaar op de montage, 95% uv-absorptie, 18 tot 35 °C, profiel 50 tot 75 jaar, seizoen maart
+  tot november) zijn gecontroleerd en staan ook op iwrap.nl en kozijnwrap.nl. Wijzig je er één,
+  wijzig ze dan op alle drie.
+- **Levensduur** (Max, 19 november 2026): vijftien tot vijfentwintig jaar gaat over folie van een
+  oudere generatie. De folie van nu is veel sterker en gaat naar verwachting veel langer mee; noem
+  daar **geen jaartal** bij. Tien jaar is de garantie, niet de levensduur.
+- **Geen bedragen** op de site, net als op iwrap.nl en kozijnwrap.nl (Max, 19 november 2026).
+- **"De folie is op"** schrijven we niet: de folie is aangetast of versleten.
+- **De familieregel** onderaan elke pagina (`render_familie`): de drie sites van iWrap, elk in zijn
+  eigen woordmerk. Deze site linkt daar alleen naar iwrap.nl, **niet naar kozijnwrap.nl**: de
+  zustersites sturen door naar iWrap, niet naar elkaar (Max, 19 november 2026).
+- **Privacy** staat op `/privacy` op deze site zelf (19 november 2026); eerst linkte de voet naar
+  iwrap.nl/privacy, maar die pagina bestaat pas na de overstap van iwrap.nl.
 - **Geen overlap met de andere sites.** kozijnwrap.nl heeft al artikelen over folie die
   loslaat, verkleuring, schilderen, kosten en RAL 7016. Deze site gaat over de folie zelf:
   opbouw, kleuren, decors, structuur en onderhoud.

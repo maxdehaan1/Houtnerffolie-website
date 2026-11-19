@@ -42,6 +42,9 @@
   --gloed: radial-gradient(60% 95% at 88% 0%, rgba(104, 138, 194, .2), rgba(104, 138, 194, 0) 70%), radial-gradient(55% 85% at 8% 0%, rgba(214, 184, 122, .24), rgba(214, 184, 122, 0) 70%);
   --navy: #13294b;           /* diep donkerblauw: koppen, knoppen, links, gekozen standen */
   --navy-hover: #1f3d6b;
+  --iwrap: #2f5a50;          /* de knopkleur van iwrap.nl: alleen voor wat naar iWrap gaat */
+  --iwrap-hover: #244840;
+  --iwrap-rgb: 47, 90, 80;
   --goud: #b38b4d;           /* goud: de leidende kleur van houtnerffolie.nl */
   --goud-inkt: #876430;      /* goud als tekst (kleine kopjes, nummers): haalt AA op wit en papier */
   --goud-lijn: #d1b885;      /* haarlijnen, randen, onderstrepingen */
@@ -169,36 +172,6 @@ button { font: inherit; color: inherit; }
 .nav a { color: var(--tekst-2); padding: .4rem 0; white-space: nowrap; }
 .nav a:hover { color: var(--tekst); text-decoration: none; }
 .nav a[aria-current="page"] { color: var(--navy); font-weight: 600; }
-/* Op een smaller scherm staat het menu op een eigen regel onder het logo */
-@media (max-width: 1100px) {
-  :root { --kop-h: 5.5rem; }
-  .kop-in { flex-wrap: wrap; gap: .1rem 1rem; min-height: 0; padding-block: .65rem .3rem; }
-  .kop .knop { margin-left: auto; }
-  .nav { order: 3; width: 100%; margin: 0; gap: 1.5rem; overflow-x: auto; scrollbar-width: none; }
-  .nav::-webkit-scrollbar { display: none; }
-}
-@media (max-width: 760px) {
-  :root { --kop-h: 5.4rem; }
-  /* Logo, Renolit en de knop op één regel, ook met de knop in een letter van 15px (vanaf 375px breed). */
-  .kop-in { flex-wrap: wrap; gap: .1rem .5rem; min-height: 0; padding-block: .7rem .3rem; }
-  .woordmerk { gap: .45rem; }
-  .woordmerk small { display: none; }
-  .woordmerk-naam { font-size: .9rem; }
-  .woordmerk-teken { width: 1.7rem; height: 1.7rem; }
-  .kop-renolit { height: 1.7rem; padding-left: .5rem; margin-left: -.3rem; }
-  .kop-renolit img { width: 1.7rem; height: 1.7rem; }
-  .kop .knop { margin-left: auto; padding: .5rem .7rem; font-size: .94rem; }
-  .nav { order: 3; width: 100%; margin: 0; gap: 1.2rem; overflow-x: auto; font-size: .94rem; scrollbar-width: none; }
-  .nav::-webkit-scrollbar { display: none; }
-}
-/* Op een heel smal scherm (onder 375px) past de knop niet naast het logo: dan staat hij rechts naast
-   het menu, zodat de kopbalk twee regels blijft. */
-@media (max-width: 374px) {
-  .kop-in::after { content: ""; order: 2; flex-basis: 100%; height: 0; }
-  .nav { order: 3; flex: 1 1 0; width: auto; min-width: 0; }
-  .kop .knop { order: 4; margin-left: .55rem; }
-}
-
 /* Knoppen: rond en donkerblauw, met een gouden glans */
 .knop {
   display: inline-flex; align-items: center; gap: .5rem;
@@ -214,14 +187,64 @@ button { font: inherit; color: inherit; }
 .knop svg { width: .8em; height: .8em; flex: none; }
 /* Knoppen zijn minstens 54px hoog; de knop in de kopbalk 44px, zoals op iwrap.nl. */
 .knop-klein { min-height: 44px; padding: .6rem 1.1rem; font-size: .94rem; }
-/* De knop naar iWrap glanst om de paar seconden even op */
-.knop-glans::after {
-  content: ""; position: absolute; inset: -20% auto -20% -60%; width: 40%; z-index: -1;
-  background: linear-gradient(100deg, transparent, rgba(226, 201, 147, .5), transparent);
-  transform: skewX(-18deg); animation: glans 5s ease-in-out infinite;
+/* De knop naar iWrap: op houtnerffolie.nl en kozijnwrap.nl dezelfde, in de knopkleur van iwrap.nl en
+   met het beeldmerk van iWrap ervoor, zodat je ziet dat je naar het bedrijf gaat (Max, 19 november 2026). */
+.knop-iwrap { background: var(--iwrap); box-shadow: 0 12px 26px -16px rgba(var(--iwrap-rgb), .9); }
+.knop-iwrap:hover { background: var(--iwrap-hover); }
+.knop-iwrap::before { content: ""; flex: none; width: 1.6em; height: .9em; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 297 165'%3E%3Cpath fill='%23a7cec5' d='M181.0 117.0C188.1 131.9 181.8 149.8 166.8 156.9L165.8 157.4C150.8 164.5 133.0 158.1 125.9 143.2L78.5 43.6C71.4 28.6 77.7 10.8 92.7 3.7L93.7 3.2C108.6 -3.8 126.5 2.4 133.6 17.3ZM261.1 117.0C268.2 131.9 261.8 149.8 246.9 156.9L245.8 157.4C230.9 164.5 213.0 158.1 205.9 143.2L158.5 43.6C151.4 28.6 157.8 10.8 172.7 3.7L173.8 3.2C188.7 -3.8 206.6 2.4 213.7 17.3ZM100.9 117.0C108.0 131.9 101.6 149.8 86.7 156.9L85.7 157.4C70.7 164.5 52.9 158.1 45.7 143.2L28.5 108.2C21.4 93.3 27.8 75.4 42.7 68.3L43.7 67.8C58.7 60.7 76.5 67.0 83.6 82.0ZM60.3 30.1C60.3 46.8 46.8 60.3 30.1 60.3C13.5 60.3 0 46.8 0 30.1C0 13.5 13.5 0 30.1 0C46.8 0 60.3 13.5 60.3 30.1ZM296.7 30.1C296.7 46.8 283.2 60.3 266.5 60.3C249.9 60.3 236.3 46.8 236.3 30.1C236.3 13.5 249.9 0 266.5 0C283.2 0 296.7 13.5 296.7 30.1Z'/%3E%3C/svg%3E") center / contain no-repeat; }
+.kop-iwrap .kort, #hoofdmenu .menu-iwrap, .nav-toggle, .menu-laag { display: none; }
+html.menu-open { overflow: hidden; }
+
+/* Het menu op een telefoon en tablet (tot 1100px), op alle drie de sites van iWrap hetzelfde: een knop
+   met het woord "Menu" (open: "Sluiten"), want alleen drie streepjes herkent niet iedereen, en een rij
+   links die je opzij moet schuiven al helemaal niet. Het paneel klapt van boven over de pagina open, met
+   grote regels die makkelijk aan te tikken zijn, en onderin de knop naar iWrap. Gedrag in js/menu.js. */
+@media (max-width: 1100px) {
+  :root { --kop-h: 3.9rem; }
+  .kop-in { gap: .75rem; min-height: var(--kop-h); }
+  .kop-iwrap { margin-left: auto; }
+  .nav-toggle { display: inline-flex; align-items: center; gap: .55rem; height: 44px; padding: 0 .95rem 0 .8rem; border: 1px solid rgba(34, 38, 42, .2); background: var(--wit); border-radius: var(--r-klein); color: var(--tekst); font-family: var(--kop); font-size: .94rem; font-weight: 600; letter-spacing: -.005em; cursor: pointer; transition: border-color .2s; }
+  .nav-toggle:hover { border-color: rgba(34, 38, 42, .4); }
+  .bars, .bars::before, .bars::after { display: block; width: 18px; height: 2px; background: var(--tekst); border-radius: 2px; }
+  .bars { position: relative; transition: background-color 0s linear .15s; }
+  .bars::before, .bars::after { content: ""; position: absolute; left: 0; transition: translate .15s ease .15s, rotate .15s ease; }
+  .bars::before { top: -6px; } .bars::after { top: 6px; }
+  .nav-toggle[aria-expanded="true"] .bars { background-color: transparent; transition-delay: .12s; }
+  .nav-toggle[aria-expanded="true"] .bars::before, .nav-toggle[aria-expanded="true"] .bars::after { transition: translate .15s ease, rotate .15s ease .15s; }
+  .nav-toggle[aria-expanded="true"] .bars::before { translate: 0 6px; rotate: 45deg; }
+  .nav-toggle[aria-expanded="true"] .bars::after { translate: 0 -6px; rotate: -45deg; }
+  .nav { position: absolute; left: 0; right: 0; top: 100%; z-index: 60; flex-direction: column; gap: 0; margin: 0; padding: .25rem var(--rand) 1.4rem; background: var(--wit); border-bottom: 1px solid var(--lijn); font-size: 1.18rem; box-shadow: 0 18px 30px -18px rgba(19, 41, 75, .4); max-height: calc(100vh - var(--kop-h)); max-height: calc(100dvh - var(--kop-h)); overflow-y: auto; overscroll-behavior: contain; clip-path: inset(0 0 100% 0); visibility: hidden; transition: clip-path .3s ease, visibility 0s linear .3s; }
+  .nav.open { clip-path: inset(0 0 -60px 0); visibility: visible; transition-delay: 0s; }
+  .nav a { padding: 1rem 0; border-bottom: 1px solid var(--lijn); color: var(--tekst); }
+  .nav a[aria-current="page"] { font-weight: 700; color: var(--navy); }
+  #hoofdmenu .menu-iwrap { display: flex; margin-top: 1.1rem; padding: .95rem 1.4rem; border-bottom: 0; color: var(--wit); font-size: 1rem; white-space: normal; text-align: center; line-height: 1.25; }
+  .menu-laag { display: block; position: fixed; inset: 0; z-index: 40; background: rgba(19, 41, 75, .3); opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility 0s linear .3s; }
+  .menu-laag.open { opacity: 1; visibility: visible; transition-delay: 0s; }
 }
-@keyframes glans { 0%, 72% { left: -60%; } 90%, 100% { left: 130%; } }
-@media (prefers-reduced-motion: reduce) { .knop-glans::after { animation: none; display: none; } }
+@media (max-width: 760px) {
+  .kop-in { gap: .5rem; }
+  .woordmerk { gap: .45rem; }
+  .woordmerk small { display: none; }
+  .woordmerk-naam { font-size: .9rem; }
+  .woordmerk-teken { width: 1.7rem; height: 1.7rem; }
+  .kop-renolit { height: 1.7rem; padding-left: .5rem; margin-left: -.3rem; }
+  .kop-renolit img { width: 1.7rem; height: 1.7rem; }
+  .kop-iwrap { padding: .5rem .8rem .5rem .7rem; }
+  .kop-iwrap .lang { display: none; }
+  .kop-iwrap .kort { display: inline; }
+}
+/* Op een telefoon passen het logo, het Renolit-logo, de knop naar iWrap en Menu niet naast elkaar. De
+   knop naar iWrap staat dan onderin het menu en onderaan elke pagina; de balk houdt logo en Menu. */
+@media (max-width: 560px) {
+  .kop-iwrap { display: none; }
+  .nav-toggle { margin-left: auto; }
+}
+@media (max-width: 374px) {
+  .woordmerk-naam { font-size: .84rem; }
+  .woordmerk-teken { width: 1.55rem; height: 1.55rem; }
+  .kop-renolit img { width: 1.55rem; height: 1.55rem; }
+  .nav-toggle { padding: 0 .8rem 0 .7rem; }
+}
 
 /* Links met een pijltje: donkere tekst, het pijltje in een dun gouden rondje */
 .lees-verder { font-family: var(--kop); font-size: 1rem; font-weight: 600; display: inline-flex; gap: .6rem; align-items: center; color: var(--navy); }
@@ -468,6 +491,7 @@ figcaption b { color: var(--tekst); font-weight: 600; }
   padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 4rem);
   max-width: calc(var(--breed) - 2 * var(--rand));
 }
+.uitvoering-logo { display: block; height: 28px; width: auto; margin-bottom: 1.1rem; }
 .uitvoering h2 { font-size: var(--h2); line-height: 1.13; letter-spacing: -.022em; font-weight: 700; margin-bottom: 1rem; }
 .uitvoering p { color: var(--tekst-2); max-width: 34rem; }
 .uitvoering .wrap > div > :last-child { margin-bottom: 0; }
@@ -500,6 +524,22 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 .voet-renolit img { width: 56px; height: 56px; flex: none; }
 .voet-renolit p { margin: 0; max-width: 48rem; }
 .voet-renolit p a { color: var(--tekst); font-weight: 600; }
+/* De familieregel: de drie sites van iWrap en wat elke site doet, onderaan alle drie de sites hetzelfde.
+   Elke naam in zijn eigen woordmerk. Deze site linkt alleen naar iwrap.nl. */
+.familie { --fam-kw: #175a99; grid-column: 1 / -1; padding-top: 1.4rem; border-top: 1px solid var(--lijn); }
+.familie-kop { margin: 0 0 .85rem; font-family: var(--kop); font-size: .94rem; font-weight: 600; color: var(--navy); }
+.familie-lijst { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
+.familie-site { display: flex; flex-direction: column; gap: .45rem; height: 100%; padding: 1rem 1.1rem; border-radius: var(--r-klein); background: var(--wit); border: 1px solid var(--vlak-rand); color: inherit; }
+a.familie-site:hover { text-decoration: none; border-color: rgba(var(--iwrap-rgb), .45); }
+.familie-site.is-hier { background: transparent; border-style: dashed; border-color: rgba(19, 41, 75, .18); }
+.fam-merk { display: flex; align-items: baseline; min-height: 24px; font-family: var(--kop); font-size: 1.12rem; line-height: 1; letter-spacing: -.026em; }
+.fam-merk img { height: 21px; width: auto; align-self: center; }
+.fam-merk .f1 { font-weight: 500; } .fam-merk .f2 { font-weight: 800; letter-spacing: -.03em; } .fam-merk .f3 { font-size: .6em; font-weight: 600; letter-spacing: 0; margin-left: .05em; }
+.fam-kw .f1, .fam-kw .f3 { color: var(--fam-kw); } .fam-kw .f2 { color: var(--tekst); }
+.fam-hn .f1, .fam-hn .f3 { color: var(--goud-inkt); } .fam-hn .f2 { color: var(--navy); }
+.fam-rol { font-size: .94rem; line-height: 1.45; color: var(--tekst-2); }
+.fam-hier { margin-top: auto; font-family: var(--kop); font-size: .94rem; font-weight: 600; color: var(--goud-inkt); }
+@media (max-width: 760px) { .familie-lijst { grid-template-columns: minmax(0, 1fr); } }
 .voet-klein { grid-column: 1 / -1; border-top: 1px solid var(--lijn); padding-top: 1.2rem; margin-top: .2rem; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; font-size: .94rem; color: var(--tekst-3); }
 @media (max-width: 760px) { .voet-in { grid-template-columns: 1fr 1fr; } .voet-in > div:first-child { grid-column: 1 / -1; } }
 
