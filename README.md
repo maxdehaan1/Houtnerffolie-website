@@ -226,14 +226,41 @@ zo verweert.
   pagina in één keer geeft in Chrome afwijkingen). Meet koppen met een los woord, rijen
   kaarttitels, regellengtes en de witruimte tussen blokken (alleen 116 breed en 64 op een telefoon
   zijn goed), en kijk of er niets zijwaarts schuift.
+- **Voor oudere bezoekers** (leesbaarheid zoals iwrap.nl, 19 november 2026): lopende tekst 18px
+  (`body`, ook in de 3D-uitleg en in kaders), en alle andere zichtbare tekst minstens `.94rem`
+  (15px): het menu, de knoppen, het kruimelpad, bijschriften, de labels in de 3D-uitleg, de namen
+  en codes onder de stalen, de bronnen en de voet. Alleen de letters in getekende doorsneden (SVG)
+  schalen mee met de tekening, en het woordmerk is het logo. Grijze tekst haalt 7:1 op papier, wit
+  en de voet: `--tekst-2` en `--tekst-3` zijn allebei `#484e54` (eerst haalde het lichtgrijs
+  #8a8f94 maar 3:1); zet er geen lichtgrijze tekst meer bij. Knoppen zijn minstens 54px hoog, de
+  knop in de kopbalk en de schakelaars in de 3D-uitleg (Opbouw/Kleur/Vernieuwen, Kozijn/Raam) 44px.
+  Kleine kopjes zijn gewone letters in goud, geen kapitalen met spaties ertussen.
+- **Uitlijning** (zoals iwrap.nl): één rand. De kopbalk en de inhoud zijn even breed (allebei
+  `.wrap` met `--rand`), dus het logo staat boven de linkerrand van de inhoud en de knop eindigt op
+  de rechterrand; op een telefoon staan logo, menu en tekst, ook die van de 3D-uitleg, op dezelfde
+  marge. De lijnen in de voet lopen van rand tot rand van de inhoud. Deze site werkt met één as:
+  de paginakoppen en de artikelkoppen staan in het midden, boven een tekstkolom die ook in het
+  midden staat, en een kop boven een rij kaarten (ook Verder lezen) staat in het midden. Wat onder
+  een gecentreerde kop staat (de link onder de kaarten), staat ook in het midden, op een vaste
+  afstand. Op een telefoon (tot 700px) staat alles links. Gewone lijstjes in lopende tekst springen
+  in; lijsten met een eigen opmaak (de ruitjes van `.bewijs`, de stalen, het overzicht) staan op de
+  tekstrand. Past de knop in de kopbalk op een telefoon niet naast het logo (onder 375px), dan staat
+  hij rechts naast het menu, zodat de kopbalk twee regels blijft. In de 3D-uitleg staat het kozijn
+  in de eerste stand op een telefoon wat lager (`sy` in `BASIS`, `js/folie3d.js`), zodat het niet
+  over de grotere tekst valt.
 - **Logo:** de houtnerf vormt een H, als bladgoud met een gegraveerde nerf (`#7a5724`). De
   staanders en de dwarsbalk van de H blijven glad. Getekend in `build.py` (`beeldmerk()`, met de
   lijnen in `NERF_ZIJ` en `NERF_VAK` en het verloop in `GOUD_VERLOOP`); elke build schrijft
   daaruit `images/logo.svg` en `favicon.svg` (een eenvoudige versie met alleen de H, die ook op
-  16 pixels leesbaar is). Naast het teken "Houtnerffolie" en daaronder "Alles over Renolit
-  folie", en achter een dun streepje het RENOLIT-logo (`images/renolit-logo.svg`), dat naar
-  /renolit-folie linkt. `images/logo.png` (512 px, voor Google), `apple-touch-icon.png` en
-  `favicon.ico` zijn van dezelfde tekening gemaakt; maak ze opnieuw als het teken verandert.
+  16 pixels leesbaar is). Naast het teken het woordmerk, sinds 19 november 2026 op dezelfde manier
+  als dat van kozijnwrap.nl (Max): de naam in kleine letters en in twee diktes, `houtnerf` normaal
+  in goud (`--goud-inkt`) direct gevolgd door `folie` extra vet in donkerblauw, met `.nl` klein
+  erachter (`WOORDMERK` in `build.py`, `.woordmerk-naam` in `css/site.css`). Echte tekst, dus
+  voorleessoftware en zoekmachines lezen de naam gewoon. Daaronder "Alles over Renolit folie" (niet
+  op een telefoon), en achter een dun streepje het RENOLIT-logo (`images/renolit-logo.svg`), dat
+  naar /renolit-folie linkt. Het woordmerk staat ook in de voet en in de deelafbeeldingen.
+  `images/logo.png` (512 px, voor Google), `apple-touch-icon.png` en `favicon.ico` zijn van de
+  tekening van de H gemaakt; maak ze opnieuw als het teken verandert.
 - **Beelden:** de artikelbeelden staan op `#eeece7`; de deelafbeeldingen (1200x630) hebben
   links het gouden kopje, de kop (in Montserrat, met de woorden met nadruk in goud) en het
   woordmerk, rechts een beeld op `#eeece7`. Ze worden gemaakt met `tools/maak_og.py` (Chrome,

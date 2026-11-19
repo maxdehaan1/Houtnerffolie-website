@@ -324,6 +324,13 @@ NERF_VAK = [  # de vakken boven en onder de dwarsbalk: drie geneste lijnen, zoal
 ]
 
 
+# Het woordmerk zoals bij kozijnwrap.nl (Max, 19 november 2026): de naam in twee diktes, "houtnerf"
+# normaal in goud en "folie" extra vet in donkerblauw, met ".nl" klein erachter. Echte tekst, dus
+# voorleessoftware en zoekmachines lezen de naam gewoon. Ook in de deelafbeeldingen (tools/maak_og.py).
+WOORDMERK = ('<span class="woordmerk-naam"><span class="w1">houtnerf</span>'
+             '<span class="w2">folie<span class="tld">.nl</span></span></span>')
+
+
 def beeldmerk(id_, klasse="woordmerk-teken", eenvoudig=False, rond=13, extra=' aria-hidden="true"'):
     """Het beeldmerk als svg. eenvoudig: alleen de H, met dikkere lijnen (pictogrammen tot 48 px).
     id_ moet per pagina uniek zijn (het teken staat in de kop en in de voet)."""
@@ -358,7 +365,7 @@ def render_kop(actief):
     return f"""<a class="overslaan" href="#inhoud">Naar de inhoud</a>
 <header class="kop">
   <div class="wrap kop-in">
-    <a class="woordmerk" href="/" aria-label="Houtnerffolie, alles over Renolit folie: naar de homepage">{beeldmerk("hn-kop")}<span class="woordmerk-tekst"><b>Houtnerffolie</b><small>Alles over Renolit folie</small></span></a>
+    <a class="woordmerk" href="/" aria-label="houtnerffolie.nl, alles over Renolit folie: naar de homepage">{beeldmerk("hn-kop")}<span class="woordmerk-tekst">{WOORDMERK} <small>Alles over Renolit folie</small></span></a>
     <a class="kop-renolit" href="/renolit-folie" aria-label="Wat is Renolit folie?"><img src="/images/renolit-logo.svg" alt="RENOLIT" width="34" height="34"></a>
     <nav class="nav" aria-label="Hoofdmenu">{links}</nav>
     <a class="knop knop-klein knop-glans" href="{naar_iwrap('menu')}">Laten herstellen</a>
@@ -388,7 +395,7 @@ def render_voet():
     return f"""<footer class="voet">
   <div class="wrap voet-in">
     <div>
-      <a class="woordmerk" href="/">{beeldmerk("hn-voet")}<span class="woordmerk-tekst"><b>Houtnerffolie</b></span></a>
+      <a class="woordmerk" href="/">{beeldmerk("hn-voet")}<span class="woordmerk-tekst">{WOORDMERK}</span></a>
       <p>Alles over Renolit folie en houtnerffolie op kunststof kozijnen: hoe de folie is opgebouwd, welke kleuren er zijn, de specificaties en het onderhoud. Deze site verkoopt niets; wie het werk wil laten doen, verwijzen we door naar iWrap.</p>
     </div>
     <div>

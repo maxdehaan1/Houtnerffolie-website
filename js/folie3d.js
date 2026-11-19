@@ -580,8 +580,10 @@ material.clearcoat *= vwCc;
 // Tussen twee standen wordt geleidelijk overgevloeid.
 // zicht = zichtbare hoogte in mm, focus = naar het losse stuk, hoek = naar de hoek rechtsonder,
 // sx/dy = verschuiving van het beeld op een breed scherm, mx/sy = op een smal scherm,
+// (de eerste stand staat op een telefoon wat lager, sy -0.2: de tekst erboven is sinds de leesbaarheidsronde
+// van 19 november 2026 iets groter),
 // oud = verwering, eraf = de oude folie gaat eraf, erop = de nieuwe folie gaat erop.
-const BASIS = { rotY: -0.5, kant: 0, focus: 0, hoek: 0, zicht: 2050, breed: 1250, az: 0, el: 0.1, til: 0, pel: 0, uit: 0, schaduw: 1, rust: 1, labels: 0, sx: 0.04, sy: -0.13, mx: 0, dy: 0.05, nadruk: -1, oud: 0, eraf: 0, erop: 0, mzoom: 1 };
+const BASIS = { rotY: -0.5, kant: 0, focus: 0, hoek: 0, zicht: 2050, breed: 1250, az: 0, el: 0.1, til: 0, pel: 0, uit: 0, schaduw: 1, rust: 1, labels: 0, sx: 0.04, sy: -0.2, mx: 0, dy: 0.05, nadruk: -1, oud: 0, eraf: 0, erop: 0, mzoom: 1 };
 const LOS = { rotY: -0.06, kant: 1.48, focus: 1, zicht: 600, breed: 590, az: -0.5, el: 0.6, til: 36, pel: 1, uit: 1, schaduw: 0, rust: 0, labels: 1, sx: -0.18, sy: 0.1, mx: -0.27, dy: -0.06 };
 const STANDEN = [
   BASIS,

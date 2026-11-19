@@ -2,7 +2,7 @@
 (dezelfde als de homepage).
 
 Links op papier met een zachte gouden gloed: het kleine kopje in goud, de kop in donkerblauw met de
-woorden met nadruk in goud, en onderaan het woordmerk; alles zoals op de site zelf (koppen in
+woorden met nadruk in goud, en onderaan het woordmerk (houtnerf + folie.nl in twee diktes); alles zoals op de site zelf (koppen in
 Montserrat, sinds 17 november 2026). Rechts het beeld van de pagina: tools/og-beelden/<pagina>.webp
 (600 x 630). De kopjes en koppen van de artikelen komen uit hun metadatablok (categorie en kop), die
 van de andere pagina's staan hieronder in PAGINAS.
@@ -48,8 +48,10 @@ SJABLOON = """<!doctype html><html lang="nl"><head><meta charset="utf-8"><style>
     color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone;}
   .merk{position:absolute;left:64px;bottom:52px;display:flex;align-items:center;gap:14px;}
   .merk img{width:46px;height:46px;display:block;}
-  .merk b{display:block;font-family:var(--kop);font-weight:700;font-size:24px;line-height:1.05;
-    letter-spacing:-.022em;color:var(--navy);}
+  .merk .naam{display:block;font-family:var(--kop);font-size:25px;line-height:1.05;letter-spacing:-.026em;}
+  .merk .w1{font-weight:500;color:var(--goud-inkt);}
+  .merk .w2{font-weight:800;color:var(--navy);letter-spacing:-.03em;}
+  .merk .tld{font-size:.6em;font-weight:600;letter-spacing:0;margin-left:.05em;color:var(--goud-inkt);}
   .merk small{display:block;font-weight:500;font-size:16px;color:var(--goud-inkt);margin-top:4px;}
   .beeld{background:var(--vlak);}
   .beeld img{display:block;width:600px;height:630px;object-fit:cover;}
@@ -57,7 +59,7 @@ SJABLOON = """<!doctype html><html lang="nl"><head><meta charset="utf-8"><style>
 <div class="tekst">
   <p class="kicker">%(kicker)s</p>
   <h1>%(kop)s</h1>
-  <div class="merk"><img src="../images/logo.svg" alt=""><span><b>Houtnerffolie</b><small>Alles over Renolit folie</small></span></div>
+  <div class="merk"><img src="../images/logo.svg" alt=""><span><span class="naam"><span class="w1">houtnerf</span><span class="w2">folie<span class="tld">.nl</span></span></span><small>Alles over Renolit folie</small></span></div>
 </div>
 <div class="beeld"><img src="og-beelden/%(slug)s.webp" alt=""></div>
 <script>

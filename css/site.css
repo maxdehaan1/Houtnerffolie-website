@@ -33,8 +33,11 @@
   --lijn: #e3e1db;
   --lijn-2: #cfccc4;
   --tekst: #22262a;
-  --tekst-2: #555c63;
-  --tekst-3: #8a8f94;
+  /* Grijze tekst haalt 7:1 op papier, wit en de voet (leesbaarheid zoals iwrap.nl, 19 november 2026).
+     Eerst haalde --tekst-2 5,8 tot 6,8:1 en het lichtgrijs --tekst-3 (#8a8f94) maar 3:1; er is nu geen
+     lichtgrijze tekst meer. */
+  --tekst-2: #484e54;
+  --tekst-3: #484e54;
   --kop-h: 3.6rem;
   --gloed: radial-gradient(60% 95% at 88% 0%, rgba(104, 138, 194, .2), rgba(104, 138, 194, 0) 70%), radial-gradient(55% 85% at 8% 0%, rgba(214, 184, 122, .24), rgba(214, 184, 122, 0) 70%);
   --navy: #13294b;           /* diep donkerblauw: koppen, knoppen, links, gekozen standen */
@@ -83,7 +86,7 @@ body {
   background: var(--papier);
   color: var(--tekst);
   font-family: var(--sans);
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   line-height: 1.5;
   letter-spacing: -.011em;
   -webkit-font-smoothing: antialiased;
@@ -113,7 +116,7 @@ h1, h2, h3, h4 { font-family: var(--kop); font-weight: 600; margin: 0; text-wrap
 p { margin: 0 0 1em; }
 button { font: inherit; color: inherit; }
 .verborgen { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.overslaan { position: absolute; left: 1rem; top: -4rem; z-index: 100; background: var(--navy); color: var(--wit); padding: .6rem .9rem; border-radius: 980px; font-family: var(--kop); font-size: .875rem; font-weight: 600; }
+.overslaan { position: absolute; left: 1rem; top: -4rem; z-index: 100; background: var(--navy); color: var(--wit); padding: .6rem .9rem; border-radius: 980px; font-family: var(--kop); font-size: .94rem; font-weight: 600; }
 .overslaan:focus { top: 1rem; text-decoration: none; }
 [hidden] { display: none !important; }
 
@@ -121,7 +124,7 @@ button { font: inherit; color: inherit; }
 
 /* Kleine kopjes boven titels: goud, in gewone zinsopbouw (zoals bij Apple) */
 .kicker {
-  font-family: var(--kop); font-size: .9rem; font-weight: 600; line-height: 1.3; letter-spacing: -.004em;
+  font-family: var(--kop); font-size: .94rem; font-weight: 600; line-height: 1.3; letter-spacing: -.004em;
   color: var(--goud-inkt);
   margin: 0 0 .7rem;
   display: flex; gap: .5rem; align-items: center;
@@ -129,7 +132,7 @@ button { font: inherit; color: inherit; }
 /* Nummers: goud, met een stipje erachter */
 .kicker .nr, .mogelijk-lijst .nr {
   display: inline-flex; align-items: center; gap: .5rem;
-  color: var(--goud-inkt); font-family: var(--kop); font-size: .9rem; font-weight: 700; letter-spacing: 0; font-variant-numeric: tabular-nums;
+  color: var(--goud-inkt); font-family: var(--kop); font-size: .94rem; font-weight: 700; letter-spacing: 0; font-variant-numeric: tabular-nums;
 }
 .kicker .nr::after, .mogelijk-lijst .nr::after { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--goud); }
 /* Het accent in grote koppen: de woorden in goud */
@@ -140,7 +143,7 @@ button { font: inherit; color: inherit; }
     -webkit-box-decoration-break: clone; box-decoration-break: clone;
   }
 }
-.meta { font-size: .875rem; line-height: 1.4; color: var(--tekst-3); letter-spacing: -.005em; }
+.meta { font-size: .94rem; line-height: 1.4; color: var(--tekst-3); letter-spacing: -.005em; }
 .meta span + span::before { content: "·"; margin: 0 .45em; }
 
 /* ---------- kop van de site ---------- */
@@ -152,11 +155,17 @@ button { font: inherit; color: inherit; }
 .woordmerk:hover { text-decoration: none; }
 .woordmerk-teken { width: 2.15rem; height: 2.15rem; flex: none; }
 .woordmerk-tekst { display: flex; flex-direction: column; line-height: 1.05; }
-.woordmerk b { font-family: var(--kop); font-size: 1.1rem; font-weight: 700; letter-spacing: -.022em; color: var(--navy); }
+/* Het woordmerk zoals bij kozijnwrap.nl: twee diktes en twee kleuren. "houtnerf" normaal in goud,
+   "folie" extra vet in donkerblauw, ".nl" klein erachter (Max, 19 november 2026). Het woordmerk is het
+   logo en valt, net als het logo van iwrap.nl, buiten de regel van minstens 15px. */
+.woordmerk-naam { font-family: var(--kop); font-size: 1.15rem; line-height: 1.05; letter-spacing: -.026em; }
+.woordmerk .w1 { font-weight: 500; color: var(--goud-inkt); }
+.woordmerk .w2 { font-weight: 800; color: var(--navy); letter-spacing: -.03em; }
+.woordmerk .tld { font-size: .6em; font-weight: 600; letter-spacing: 0; margin-left: .05em; color: var(--goud-inkt); }
 .woordmerk small { font-size: .6875rem; font-weight: 500; color: var(--goud-inkt); letter-spacing: -.005em; margin-top: .18rem; }
 .kop-renolit { display: inline-flex; align-items: center; height: 2.2rem; padding-left: .95rem; margin-left: -.85rem; border-left: 1px solid var(--lijn); }
 .kop-renolit img { width: 2.15rem; height: 2.15rem; }
-.nav { display: flex; gap: 1.6rem; margin-left: auto; font-family: var(--kop); font-size: .875rem; font-weight: 500; letter-spacing: -.005em; }
+.nav { display: flex; gap: 1.6rem; margin-left: auto; font-family: var(--kop); font-size: .94rem; font-weight: 500; letter-spacing: -.005em; }
 .nav a { color: var(--tekst-2); padding: .4rem 0; white-space: nowrap; }
 .nav a:hover { color: var(--tekst); text-decoration: none; }
 .nav a[aria-current="page"] { color: var(--navy); font-weight: 600; }
@@ -170,15 +179,24 @@ button { font: inherit; color: inherit; }
 }
 @media (max-width: 760px) {
   :root { --kop-h: 5.4rem; }
-  .kop-in { flex-wrap: wrap; gap: .1rem .8rem; min-height: 0; padding-block: .7rem .3rem; }
+  /* Logo, Renolit en de knop op één regel, ook met de knop in een letter van 15px (vanaf 375px breed). */
+  .kop-in { flex-wrap: wrap; gap: .1rem .5rem; min-height: 0; padding-block: .7rem .3rem; }
+  .woordmerk { gap: .45rem; }
   .woordmerk small { display: none; }
-  .woordmerk b { font-size: .96rem; }
-  .woordmerk-teken { width: 1.85rem; height: 1.85rem; }
-  .kop-renolit { height: 1.85rem; padding-left: .7rem; margin-left: -.55rem; }
-  .kop-renolit img { width: 1.85rem; height: 1.85rem; }
-  .kop .knop { margin-left: auto; padding: .5rem .75rem; font-size: .78rem; }
-  .nav { order: 3; width: 100%; margin: 0; gap: 1.2rem; overflow-x: auto; font-size: .875rem; scrollbar-width: none; }
+  .woordmerk-naam { font-size: .9rem; }
+  .woordmerk-teken { width: 1.7rem; height: 1.7rem; }
+  .kop-renolit { height: 1.7rem; padding-left: .5rem; margin-left: -.3rem; }
+  .kop-renolit img { width: 1.7rem; height: 1.7rem; }
+  .kop .knop { margin-left: auto; padding: .5rem .7rem; font-size: .94rem; }
+  .nav { order: 3; width: 100%; margin: 0; gap: 1.2rem; overflow-x: auto; font-size: .94rem; scrollbar-width: none; }
   .nav::-webkit-scrollbar { display: none; }
+}
+/* Op een heel smal scherm (onder 375px) past de knop niet naast het logo: dan staat hij rechts naast
+   het menu, zodat de kopbalk twee regels blijft. */
+@media (max-width: 374px) {
+  .kop-in::after { content: ""; order: 2; flex-basis: 100%; height: 0; }
+  .nav { order: 3; flex: 1 1 0; width: auto; min-width: 0; }
+  .kop .knop { order: 4; margin-left: .55rem; }
 }
 
 /* Knoppen: rond en donkerblauw, met een gouden glans */
@@ -186,7 +204,7 @@ button { font: inherit; color: inherit; }
   display: inline-flex; align-items: center; gap: .5rem;
   font-family: var(--kop); font-size: 1rem; font-weight: 600; line-height: 1; letter-spacing: -.005em;
   background: var(--navy); color: var(--wit);
-  padding: .9rem 1.4rem;
+  min-height: 54px; justify-content: center; padding: .9rem 1.5rem;
   border-radius: 980px;
   position: relative; overflow: hidden; isolation: isolate;
   transition: background-color .2s;
@@ -194,7 +212,8 @@ button { font: inherit; color: inherit; }
 }
 .knop:hover { background: var(--navy-hover); text-decoration: none; }
 .knop svg { width: .8em; height: .8em; flex: none; }
-.knop-klein { padding: .6rem 1rem; font-size: .875rem; }
+/* Knoppen zijn minstens 54px hoog; de knop in de kopbalk 44px, zoals op iwrap.nl. */
+.knop-klein { min-height: 44px; padding: .6rem 1.1rem; font-size: .94rem; }
 /* De knop naar iWrap glanst om de paar seconden even op */
 .knop-glans::after {
   content: ""; position: absolute; inset: -20% auto -20% -60%; width: 40%; z-index: -1;
@@ -239,7 +258,7 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
 }
 .folie-schaal {
   position: absolute; right: var(--rand); bottom: 1.4rem; margin: 0; max-width: 21rem; text-align: right;
-  font-size: .8125rem; line-height: 1.4; color: var(--tekst-3);
+  font-size: .94rem; line-height: 1.4; color: var(--tekst-3);
   opacity: calc(var(--folie-uit, 0) * 1); transition: opacity .3s;
 }
 .folie-stappen { position: relative; z-index: 1; margin-top: -100vh; margin-top: -100svh; pointer-events: none; }
@@ -248,9 +267,9 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
 .folie-hoofdstukken {
   position: absolute; top: calc(var(--kop-h) + 1rem); right: var(--rand);
   display: flex; gap: .15rem; padding: .2rem; border-radius: 980px;
-  background: rgba(239, 237, 232, .92); font-size: .8125rem;
+  background: rgba(239, 237, 232, .92); font-size: .94rem;
 }
-.folie-hoofdstukken a { color: var(--tekst-2); padding: .4rem .85rem; border-radius: 980px; transition: background .2s, color .2s; }
+.folie-hoofdstukken a { display: inline-flex; align-items: center; min-height: 44px; color: var(--tekst-2); padding: 0 .95rem; border-radius: 980px; transition: background .2s, color .2s; }
 .folie-hoofdstukken a:hover { color: var(--tekst); text-decoration: none; }
 .folie-hoofdstukken a[aria-current="step"] { background: var(--navy); color: var(--wit); font-weight: 600; }
 .folie-geen3d .folie-hoofdstukken, html:not(.js) .folie-hoofdstukken { display: none; }
@@ -262,7 +281,7 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
 }
 .stap-in { max-width: 27rem; }
 .stap h2 { font-size: var(--h2); line-height: 1.13; letter-spacing: -.022em; font-weight: 700; margin-bottom: 1rem; }
-.stap p { font-size: 1.0625rem; line-height: 1.55; color: var(--tekst-2); }
+.stap p { font-size: 1.125rem; line-height: 1.55; color: var(--tekst-2); }
 .stap p:last-child { margin-bottom: 0; }
 .stap-intro { align-items: center; }
 .stap-intro h1 {
@@ -274,7 +293,7 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
    los woord ("Renolit / houtnerffolie, / laag voor laag"). */
 .stap-intro .stap-in { max-width: 34rem; }
 .dek { font-size: var(--lede-kop); line-height: 1.5; color: var(--tekst-2); max-width: 28rem; letter-spacing: -.012em; }
-.scroll-hint { display: inline-flex; align-items: center; gap: .7rem; margin-top: 1.75rem; font-size: .875rem; color: var(--tekst-3); }
+.scroll-hint { display: inline-flex; align-items: center; gap: .7rem; margin-top: 1.75rem; font-size: .94rem; color: var(--tekst-3); }
 .scroll-hint i { width: 1.25rem; height: 2rem; border-radius: 980px; box-shadow: inset 0 0 0 1.5px var(--lijn-2); position: relative; }
 .scroll-hint i::after { content: ""; position: absolute; left: 50%; top: .4rem; width: 3px; height: 6px; margin-left: -1.5px; border-radius: 3px; background: var(--goud); animation: zak 2s ease-in-out infinite; }
 @keyframes zak { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(.7rem); opacity: 0; } 100% { transform: translateY(0); opacity: 0; } }
@@ -284,19 +303,19 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
 
 .folie-label {
   display: flex; gap: .5rem; align-items: flex-start;
-  font-size: .8125rem; line-height: 1.25; color: var(--tekst);
-  padding-left: 2.5rem; position: relative; white-space: nowrap; margin-top: -.1rem;
+  font-size: .94rem; line-height: 1.25; color: var(--tekst);
+  padding-left: 2.6rem; position: relative; white-space: nowrap; margin-top: -.1rem;
   transition: opacity .25s;
 }
-.folie-label::before { content: ""; position: absolute; left: 0; top: .65rem; width: 2.1rem; height: 1px; background: var(--tekst-3); }
+.folie-label::before { content: ""; position: absolute; left: 0; top: .8rem; width: 2.1rem; height: 1px; background: var(--tekst-3); }
 .folie-label-nr {
-  flex: none; width: 1.35rem; height: 1.35rem; border-radius: 50%;
-  display: grid; place-items: center; font-size: .6875rem; font-weight: 600;
+  flex: none; width: 1.6rem; height: 1.6rem; border-radius: 50%;
+  display: grid; place-items: center; font-size: .94rem; font-weight: 600;
   background: var(--wit); color: var(--tekst-2); box-shadow: inset 0 0 0 1px var(--lijn-2);
 }
 .folie-label > span:last-child { display: none; background: var(--wit); padding: .4rem .65rem .45rem; border-radius: 10px; box-shadow: 0 0 0 1px var(--lijn); }
 .folie-label b { display: block; font-weight: 600; }
-.folie-label small { display: block; color: var(--tekst-3); font-size: .75rem; white-space: normal; max-width: 11.5rem; margin-top: .1rem; }
+.folie-label small { display: block; color: var(--tekst-3); font-size: .94rem; white-space: normal; max-width: 14rem; margin-top: .15rem; text-wrap: balance; }
 .folie-label.is-actief > span:last-child { display: block; }
 .folie-label.is-actief .folie-label-nr { background: var(--goud-verloop); color: var(--tekst); box-shadow: none; }
 .folie-label.is-actief::before { background: var(--goud); }
@@ -315,31 +334,31 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
 .kiezer-naam b { color: var(--tekst); font-weight: 600; margin-right: .3rem; }
 /* Schakelaar: eerst het deel kiezen */
 .kiezer-deel { display: inline-flex; gap: .15rem; margin: 1.3rem 0 0; padding: .2rem; border-radius: 980px; background: var(--grijs-2); }
-.kiezer-deel button { font-size: .875rem; font-weight: 500; padding: .5rem 1.05rem; border: 0; border-radius: 980px; background: none; color: var(--tekst-2); cursor: pointer; transition: background .15s, color .15s; }
+.kiezer-deel button { min-height: 44px; font-size: .94rem; font-weight: 500; padding: .4rem 1.1rem; border: 0; border-radius: 980px; background: none; color: var(--tekst-2); cursor: pointer; transition: background .15s, color .15s; }
 .kiezer-deel button:hover { color: var(--tekst); }
 .kiezer-deel button[aria-pressed="true"] { background: var(--navy); color: var(--wit); font-weight: 600; }
 .folie-geen3d .kiezer-deel, html:not(.js) .kiezer-deel { display: none; }
 .folie-geen3d .kiezer, html:not(.js) .kiezer, .folie-geen3d .kiezer-naam { display: none; }
-.kiezer-noot { font-size: .8125rem !important; line-height: 1.45 !important; color: var(--tekst-3) !important; margin-top: 1.1rem; }
+.kiezer-noot { font-size: .94rem !important; line-height: 1.45 !important; color: var(--tekst-3) !important; margin-top: 1.1rem; }
 
 @media (max-width: 759px) {
-  .folie-poster { padding: 38vh 1rem 2rem; object-position: 50% 70%; }
+  .folie-poster { padding: 44vh 1rem 2rem; object-position: 50% 70%; }
   .folie-podium { background: radial-gradient(80% 45% at 50% 64%, rgba(214, 184, 122, .28), rgba(214, 184, 122, 0) 72%), radial-gradient(70% 35% at 90% 30%, rgba(104, 138, 194, .2), rgba(104, 138, 194, 0) 70%); }
-  .stap { align-items: flex-end; padding: 1rem 1rem 1.25rem; }
+  .stap { align-items: flex-end; padding: 1rem var(--rand) 1.25rem; }
   .stap-in { background: rgba(255, 255, 255, .97); border-radius: var(--r); box-shadow: 0 0 0 1px var(--lijn); padding: 1.2rem 1.25rem 1.3rem; max-width: none; width: 100%; }
   .stap h2 { font-size: 1.48rem; margin-bottom: .55rem; }
   .stap p { font-size: 1rem; line-height: 1.5; }
   .stap-intro { align-items: flex-start; padding-top: 1.9rem; }
   .stap-intro .stap-in { background: none; box-shadow: none; padding: 0; }
   .stap-intro h1 { margin-bottom: .9rem; }
-  .dek { font-size: 1.0625rem; }
+  .dek { font-size: 1.125rem; }
   .scroll-hint { margin-top: 1rem; }
-  .folie-schaal { left: 1rem; right: auto; top: calc(var(--kop-h) + 3rem); bottom: auto; text-align: left; max-width: 17rem; background: rgba(255, 255, 255, .95); border-radius: 10px; padding: .4rem .6rem; font-size: .75rem; }
-  .folie-hoofdstukken { top: calc(var(--kop-h) + .6rem); left: 1rem; right: auto; font-size: .75rem; opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; }
+  .folie-schaal { left: var(--rand); right: auto; top: calc(var(--kop-h) + 3rem); bottom: auto; text-align: left; max-width: 17rem; background: rgba(255, 255, 255, .95); border-radius: 10px; padding: .4rem .6rem; font-size: .75rem; }
+  .folie-hoofdstukken { top: calc(var(--kop-h) + .6rem); left: var(--rand); right: auto; font-size: .94rem; opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; }
   .folie-hoofdstukken a { padding: .35rem .7rem; }
   .folie.na-intro .folie-hoofdstukken { opacity: 1; visibility: visible; }
   .kiezer-deel { margin-top: .8rem; }
-  .folie-label { font-size: .75rem; padding-left: 1.6rem; }
+  .folie-label { font-size: .94rem; padding-left: 1.9rem; }
   .folie-label::before { width: 1.3rem; }
   .folie-label small { display: none; }
   .kiezer { gap: .45rem; margin: .9rem 0 .5rem; }
@@ -370,7 +389,7 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
 .uitgelicht figure { margin: 0; aspect-ratio: 16 / 10; overflow: hidden; background: var(--grijs-2); }
 .uitgelicht figure img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
 .uitgelicht a:hover img { transform: scale(1.025); }
-.uitgelicht .kicker { padding: 1.6rem 1.9rem 0; margin-bottom: .55rem; font-size: .875rem; }
+.uitgelicht .kicker { padding: 1.6rem 1.9rem 0; margin-bottom: .55rem; font-size: .94rem; }
 .uitgelicht .kicker span + span { color: var(--tekst-3); font-weight: 500; }
 .uitgelicht h3 { font-size: var(--h2); line-height: 1.13; letter-spacing: -.022em; font-weight: 700; margin: 0 1.9rem .7rem; }
 .uitgelicht h3 em { font-style: normal; }
@@ -380,7 +399,7 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
 .lijst a { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: .2rem 0; padding: 1.15rem 0; color: var(--tekst); }
 .lijst a:hover { text-decoration: none; }
 .lijst a:hover h3 { text-decoration: underline; text-decoration-color: var(--goud-lijn); text-decoration-thickness: 1.5px; text-underline-offset: .18em; }
-.lijst .nr { font-family: var(--kop); font-size: .75rem; font-weight: 700; line-height: 2.1; letter-spacing: .08em; color: var(--goud-inkt); font-variant-numeric: tabular-nums; }
+.lijst .nr { font-family: var(--kop); font-size: .94rem; font-weight: 700; line-height: 1.6; letter-spacing: .01em; color: var(--goud-inkt); font-variant-numeric: tabular-nums; }
 .lijst h3 { font-size: var(--kaart-titel); line-height: 1.28; letter-spacing: -.012em; font-weight: 600; transition: color .15s; }
 .lijst h3 em { font-style: normal; }
 .lijst .meta { grid-column: 2; margin-top: .3rem; }
@@ -391,7 +410,7 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
 .kleurstrook li { margin: 0; }
 .kleurstrook .staal-vlak { aspect-ratio: 3 / 4; border-radius: var(--r); }
 .kleurstrook b { display: block; font-size: .9375rem; font-weight: 600; line-height: 1.25; margin-top: .8rem; }
-.kleurstrook span { display: block; font-size: .8125rem; line-height: 1.3; color: var(--tekst-3); }
+.kleurstrook span { display: block; font-size: .94rem; line-height: 1.3; color: var(--tekst-3); }
 @media (max-width: 760px) { .kleurstrook { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1.5rem; } }
 
 /* Staal met nerf: de nerf ligt er als een losse laag overheen */
@@ -403,7 +422,7 @@ a:hover .pijl-uit { transform: translate(2px, -2px); }
 .staal-vlak.nerf-d::before { opacity: .2; }
 .staal-vlak.nerf-l::before { opacity: .24; filter: invert(1); }
 
-figcaption { font-size: .875rem; line-height: 1.45; color: var(--tekst-2); margin-top: .8rem; max-width: 36rem; }
+figcaption { font-size: .94rem; line-height: 1.45; color: var(--tekst-2); margin-top: .8rem; max-width: 36rem; }
 figcaption b { color: var(--tekst); font-weight: 600; }
 
 /* Wat is Renolit folie? */
@@ -454,7 +473,7 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 .uitvoering .wrap > div > :last-child { margin-bottom: 0; }
 /* Het reviewcijfer loopt als gewone tekst door, zodat hij netjes afbreekt (eerst brak hij als losse
    stukjes: "4,9 uit 84" / "Google-reviews · ..."). */
-.reviews { display: inline-block; margin-top: 1.1rem; font-size: .875rem; line-height: 1.5; color: var(--tekst-2); text-wrap: balance; }
+.reviews { display: inline-block; margin-top: 1.1rem; font-size: .94rem; line-height: 1.5; color: var(--tekst-2); text-wrap: balance; }
 .reviews:hover { color: var(--tekst); text-decoration: none; }
 .sterren { color: var(--goud); letter-spacing: .06em; }
 .reviews b { color: var(--tekst); font-weight: 600; }
@@ -466,11 +485,11 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 }
 
 /* ---------- voet ---------- */
-.voet { background: var(--papier-2); padding: 3rem 0 2rem; font-size: .8125rem; line-height: 1.55; color: var(--tekst-2); }
+.voet { background: var(--papier-2); padding: 3rem 0 2rem; font-size: .94rem; line-height: 1.55; color: var(--tekst-2); }
 .voet-in { display: grid; grid-template-columns: minmax(0, 5fr) repeat(2, minmax(0, 3fr)); gap: 2rem 3rem; }
-.voet .woordmerk b { font-size: 1.0625rem; }
+.voet .woordmerk-naam { font-size: 1.1rem; }
 .voet p { margin: .8rem 0 0; max-width: 26rem; }
-.voet h2 { font-size: .8125rem; font-weight: 600; letter-spacing: -.005em; color: var(--navy); margin-bottom: .8rem; }
+.voet h2 { font-size: .94rem; font-weight: 600; letter-spacing: -.005em; color: var(--navy); margin-bottom: .8rem; }
 .voet ul { list-style: none; margin: 0; padding: 0; }
 .voet li { margin: 0 0 .45rem; }
 .voet a { color: var(--tekst-2); }
@@ -481,11 +500,11 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 .voet-renolit img { width: 56px; height: 56px; flex: none; }
 .voet-renolit p { margin: 0; max-width: 48rem; }
 .voet-renolit p a { color: var(--tekst); font-weight: 600; }
-.voet-klein { grid-column: 1 / -1; border-top: 1px solid var(--lijn); padding-top: 1.2rem; margin-top: .2rem; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; font-size: .75rem; color: var(--tekst-3); }
+.voet-klein { grid-column: 1 / -1; border-top: 1px solid var(--lijn); padding-top: 1.2rem; margin-top: .2rem; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; font-size: .94rem; color: var(--tekst-3); }
 @media (max-width: 760px) { .voet-in { grid-template-columns: 1fr 1fr; } .voet-in > div:first-child { grid-column: 1 / -1; } }
 
 /* ---------- artikel ---------- */
-.kruimel { font-size: .8125rem; line-height: 1.4; color: var(--tekst-3); margin: 0 0 1.75rem; }
+.kruimel { font-size: .94rem; line-height: 1.4; color: var(--tekst-3); margin: 0 0 1.75rem; }
 .kruimel ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem; }
 .kruimel li + li::before { content: "›"; margin-right: .35rem; color: var(--tekst-3); }
 .kruimel a { color: var(--tekst-2); }
@@ -529,7 +548,7 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 }
 .tekst figure { margin: 2.4rem 0; }
 .tekst figure img { width: 100%; background: var(--grijs); border-radius: var(--r); }
-.kader { background: var(--grijs); border-radius: var(--r); padding: 1.5rem 1.6rem; margin: 2rem 0; font-size: 1.0625rem; }
+.kader { background: var(--grijs); border-radius: var(--r); padding: 1.5rem 1.6rem; margin: 2rem 0; font-size: 1.125rem; }
 .kader h2, .kader h3 { font-size: 1rem !important; font-weight: 600 !important; letter-spacing: -.01em !important; color: var(--navy); margin: 0 0 .7rem !important; }
 .kader p:last-child, .kader ul:last-child { margin-bottom: 0; }
 .tabel { width: 100%; border-collapse: collapse; margin: 1.6rem 0 2rem; font-size: .9375rem; line-height: 1.45; letter-spacing: -.008em; }
@@ -540,10 +559,10 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 .stalenrij li, .tekst .stalenrij li { margin: 0; padding: 0; }
 .tekst .stalenrij { padding: 0; }
 .stalenrij .staal-vlak { aspect-ratio: 1; }
-.stalenrij b { display: block; font-size: .8125rem; font-weight: 600; line-height: 1.25; margin-top: .55rem; color: var(--tekst); }
-.stalenrij span { display: block; font-size: .75rem; line-height: 1.3; color: var(--tekst-3); }
-.bronnen { border-top: 1px solid var(--lijn); margin-top: 3rem; padding-top: 1.2rem; font-size: .8125rem; line-height: 1.5; color: var(--tekst-3); letter-spacing: -.005em; }
-.bronnen h2 { font-size: .8125rem !important; font-weight: 600 !important; letter-spacing: 0 !important; margin: 0 0 .5rem !important; color: var(--tekst-2); }
+.stalenrij b { display: block; font-size: .94rem; font-weight: 600; line-height: 1.25; margin-top: .55rem; color: var(--tekst); }
+.stalenrij span { display: block; font-size: .94rem; line-height: 1.3; color: var(--tekst-3); }
+.bronnen { border-top: 1px solid var(--lijn); margin-top: 3rem; padding-top: 1.2rem; font-size: .94rem; line-height: 1.5; color: var(--tekst-3); letter-spacing: -.005em; }
+.bronnen h2 { font-size: .94rem !important; font-weight: 600 !important; letter-spacing: 0 !important; margin: 0 0 .5rem !important; color: var(--tekst-2); }
 .bronnen ol { padding-left: 1.1rem; margin: 0; color: var(--tekst-3); max-width: 44em; }
 .bronnen li:last-child { margin-bottom: 0; }
 .bronnen li::marker { color: var(--tekst-3); }
@@ -613,14 +632,14 @@ figcaption b { color: var(--tekst); font-weight: 600; }
 .stalen { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: 1.6rem 1rem; }
 .stalen li { margin: 0; }
 .stalen .staal-vlak { aspect-ratio: 1; border-radius: var(--r); }
-.stalen .geen-foto { display: grid; place-items: center; background: var(--grijs); font-size: .75rem; line-height: 1.3; color: var(--tekst-3); text-align: center; padding: .5rem; }
-.stalen b { display: block; font-size: .875rem; font-weight: 600; line-height: 1.3; margin-top: .65rem; }
-.stalen span { display: block; font-size: .8125rem; line-height: 1.35; color: var(--tekst-3); }
-.stalen .is-populair b::after { content: "veelgekozen"; display: inline-block; margin-left: .4rem; font-size: .6875rem; font-weight: 600; color: var(--goud-inkt); background: var(--goud-was); padding: .15rem .45rem; border-radius: 980px; vertical-align: .1em; }
+.stalen .geen-foto { display: grid; place-items: center; background: var(--grijs); font-size: .94rem; line-height: 1.3; color: var(--tekst-3); text-align: center; padding: .5rem; }
+.stalen b { display: block; font-size: .94rem; font-weight: 600; line-height: 1.3; margin-top: .65rem; }
+.stalen span { display: block; font-size: .94rem; line-height: 1.35; color: var(--tekst-3); }
+.stalen .is-populair b::after { content: "veelgekozen"; display: inline-block; margin-left: .4rem; font-size: .94rem; font-weight: 600; color: var(--goud-inkt); background: var(--goud-was); padding: .15rem .45rem; border-radius: 980px; vertical-align: .1em; }
 .stalen-populair { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 .stalen-populair .staal-vlak { aspect-ratio: 3 / 4; }
 @media (max-width: 760px) { .stalen { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stalen-populair { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.bron-noot { font-size: .8125rem; line-height: 1.5; color: var(--tekst-3); max-width: 44em; }
+.bron-noot { font-size: .94rem; line-height: 1.5; color: var(--tekst-3); max-width: 44em; }
 main > .wrap > .bron-noot:last-child { margin-bottom: 0; }
 /* De overzichtspagina's (kleuren, artikelen) eindigen met één sectie-eenheid. */
 main > .wrap { padding-bottom: var(--sectie); }
@@ -630,7 +649,7 @@ main > .wrap { padding-bottom: var(--sectie); }
 .spec-in { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
 .doorsnede { margin: 0; position: sticky; top: 2rem; background: var(--grijs); border-radius: var(--r-groot); padding: clamp(1.25rem, 3vw, 2rem); }
 .doorsnede svg { display: block; width: 100%; max-width: 30rem; height: auto; margin-inline: auto; }
-.doorsnede figcaption { font-size: .8125rem; line-height: 1.45; color: var(--tekst-3); margin: 1rem 0 0; max-width: none; }
+.doorsnede figcaption { font-size: .94rem; line-height: 1.45; color: var(--tekst-3); margin: 1rem 0 0; max-width: none; }
 .d-naam { font-family: var(--sans); font-size: 13px; font-weight: 600; fill: var(--tekst); }
 .d-uitleg { font-family: var(--sans); font-size: 12px; font-weight: 400; fill: var(--tekst-2); }
 .d-klein { font-family: var(--sans); font-size: 11px; font-weight: 600; }
@@ -672,7 +691,7 @@ main > .wrap { padding-bottom: var(--sectie); }
 .staal-knop:focus-visible { outline: 2px solid var(--tekst); outline-offset: 3px; }
 .staal-knop .staal-vlak { transition: transform .25s ease, box-shadow .2s; }
 .staal-knop:hover .staal-vlak { transform: scale(1.02); }
-.stalen .staal-3d, .kleurstrook .staal-3d { position: absolute; right: .5rem; bottom: .5rem; display: block; font-size: .6875rem; font-weight: 600; letter-spacing: .02em; padding: .3rem .55rem; border-radius: 980px; background: rgba(255, 255, 255, .92); color: var(--tekst); opacity: 0; transition: opacity .15s; }
+.stalen .staal-3d, .kleurstrook .staal-3d { position: absolute; right: .5rem; bottom: .5rem; display: block; font-size: .94rem; font-weight: 600; letter-spacing: .02em; padding: .3rem .55rem; border-radius: 980px; background: rgba(255, 255, 255, .92); color: var(--tekst); opacity: 0; transition: opacity .15s; }
 .staal-knop:hover .staal-3d, .staal-knop:focus-visible .staal-3d { opacity: 1; }
 @media (hover: none) { .stalen .staal-3d { opacity: .95; } }
 html:not(.js) .staal-3d, html:not(.js) .kijker-tip { display: none; }
@@ -685,7 +704,7 @@ html:not(.js) .staal-3d, html:not(.js) .kijker-tip { display: none; }
 .kijker .folie-podium { position: relative; top: auto; height: min(72vh, 40rem); }
 .kijker .folie-doek { position: absolute; inset: 0; width: 100%; height: 100%; cursor: grab; touch-action: pan-y; }
 .kijker .folie-doek:active { cursor: grabbing; }
-.kijker-hint { position: absolute; left: 1.1rem; bottom: .9rem; margin: 0; font-size: .75rem; color: var(--tekst-3); }
+.kijker-hint { position: absolute; left: 1.1rem; bottom: .9rem; margin: 0; font-size: .94rem; color: var(--tekst-3); }
 .kijker-paneel { padding: 2.6rem 2.4rem 2.4rem; align-self: center; }
 .kijker-paneel .kicker { margin-bottom: .6rem; }
 .kijker-paneel h2 { font-size: var(--h2); line-height: 1.13; letter-spacing: -.022em; font-weight: 700; margin: 0 0 .35rem; }
@@ -745,7 +764,7 @@ html:not(.js) .staal-3d, html:not(.js) .kijker-tip { display: none; }
 
 /* ---------- kwaliteit ---------- */
 /* In het kort, onder de intro */
-.bewijs { list-style: none; margin: 1.7rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; font-size: .875rem; line-height: 1.3; color: var(--tekst-2); }
+.bewijs { list-style: none; margin: 1.7rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; font-size: .94rem; line-height: 1.3; color: var(--tekst-2); }
 .bewijs li { display: inline-flex; align-items: center; gap: .55rem; }
 .bewijs li::before { content: ""; width: .4rem; height: .4rem; transform: rotate(45deg); background: var(--goud); flex: none; }
 /* Het hoogste segment: zes redenen, elk op een wit vlak */
@@ -757,7 +776,7 @@ html:not(.js) .staal-3d, html:not(.js) .kijker-tip { display: none; }
 .kwaliteit-lijst p { color: var(--tekst-2); margin: 0; font-size: var(--kaart-tekst); line-height: 1.5; }
 .kwaliteit-verder { text-align: center; margin: clamp(1.75rem, 3.5vw, 2.5rem) 0 0; }
 @media (max-width: 960px) { .kwaliteit-lijst { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 600px) { .kwaliteit-lijst { grid-template-columns: minmax(0, 1fr); } .bewijs { gap: .45rem 1.1rem; font-size: .8125rem; } }
+@media (max-width: 600px) { .kwaliteit-lijst { grid-template-columns: minmax(0, 1fr); } .bewijs { gap: .45rem 1.1rem; } }
 
 /* Kleine kopjes winnen van de algemene stijl voor alinea's in secties (die maken tekst groter en grijs) */
 .stap p.kicker, .sectie-kop p.kicker, .pagina-kop p.kicker, .renolit-in p.kicker, .uitvoering p.kicker, .uitgelicht p.kicker, .kijker-paneel p.kicker {
@@ -766,8 +785,7 @@ html:not(.js) .staal-3d, html:not(.js) .kijker-tip { display: none; }
 .uitgelicht p.kicker { padding: 1.6rem 1.9rem 0; margin-bottom: .7rem; }
 /* Op een kleiner scherm (tablet, kleine laptop) zijn de labels bij de lagen smaller, zodat ze in beeld blijven */
 @media (min-width: 760px) and (max-width: 1240px) {
-  .folie-label { font-size: .75rem; }
-  .folie-label small { max-width: 8.5rem; font-size: .6875rem; }
+  .folie-label small { max-width: 11rem; }
 }
 
 /* ---------- diepte: licht doorschijnende vlakken die zacht zweven (zoals bij Apple) ---------- */
@@ -800,3 +818,28 @@ html:not(.js) .staal-3d, html:not(.js) .kijker-tip { display: none; }
 }
 @media (max-width: 600px) { .kwaliteit-lijst li + li { border-top: 1px solid var(--vlak-rand); } }
 @media (prefers-reduced-motion: reduce) { .tegel:hover, .uitgelicht a:hover { transform: none; } }
+
+/* ---------- uitlijning (19 november 2026, zoals iwrap.nl) ---------- */
+/* Eén rand: de kopbalk en de inhoud zijn even breed (allebei .wrap), dus het logo staat boven de
+   linkerrand van de inhoud en de knop eindigt op de rechterrand; op een telefoon staan logo, menu en
+   tekst (ook die van de 3D-uitleg) op dezelfde marge (--rand). De lijn boven de onderste voetregel
+   loopt van rand tot rand van de inhoud. */
+/* Een artikel heeft één as, net als de andere pagina's van deze site: de kop staat in het midden,
+   boven de tekstkolom die ook in het midden staat (eerst stond de kop op de linkerrand en de tekst in
+   het midden). Verder lezen staat als kop boven een rij kaarten, dus ook in het midden. */
+@media (min-width: 701px) {
+  .artikel-kop { text-align: center; }
+  .artikel-kop .wrap > * { margin-inline: auto; }
+  .artikel-kop .kruimel ol, .artikel-kop .kicker, .byline { justify-content: center; }
+  .verder h2 { text-align: center; }
+}
+/* Wat onder een gecentreerde kop staat (een link onder de kaarten), staat ook in het midden, op een
+   vaste afstand onder de inhoud. */
+.kwaliteit-verder, .mogelijk-verder { margin-top: clamp(1.75rem, 3.5vw, 2.5rem); }
+/* Op een telefoon (tot 700px) staat alles links: gecentreerde alinea's van drie of vier regels lezen
+   slecht. */
+@media (max-width: 700px) {
+  .pagina-kop, .sectie-kop, .kwaliteit-verder, .kijker-tip, #zoek-leeg { text-align: left; }
+  .pagina-kop .kruimel ol, .pagina-kop .kicker, .sectie-kop .kicker, .mogelijk-verder, .zoek { justify-content: flex-start; }
+  .pagina-kop p, .sectie-kop p { margin-left: 0; margin-right: 0; }
+}
